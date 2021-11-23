@@ -1,0 +1,5 @@
+{
+    "liveUrl":"https://api.kinjatoken.com/" ,
+    "testingUrl":"https://api.crypvendor.com/",
+    "testing":"http://165.22.107.205:3000"
+} 
