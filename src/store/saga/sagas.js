@@ -41,5 +41,4 @@ function* signup(action) {
 export function* rootSaga() {
   yield takeLatest(LOGIN, login);
   yield takeLatest(SIGNUP, signup);
-  //yield takeLatest(DASHBOARD, dashboard);
 }
