@@ -3,7 +3,7 @@ import { TextInput, View, Image, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { AppColors } from '../constants/appColors';
 // placeholder, icon, setValue,value
-export const InputTextArea = ({ placeholder, setValue, value, keyboardType, secureTextEntry, onSubmitEditing, maxLength, IconName }) => {
+export const InputTextArea = ({ placeholder, setValue, value, keyboardType, secureTextEntry, onSubmitEditing, maxLength, IconName, IconSize }) => {
   return (
     <View style={styles.inputWrapper}>
       <TextInput
@@ -20,7 +20,7 @@ export const InputTextArea = ({ placeholder, setValue, value, keyboardType, secu
       />
       <Icon
         name={IconName}
-        size={25}
+        size={IconSize}
         style={{marginRight: 10}}
         color={AppColors().iconColor}
       />
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderColor: AppColors().borderColor,
-    borderWidth: 0.5,
+    borderWidth: 1,
     borderRadius: 15
   }
 });

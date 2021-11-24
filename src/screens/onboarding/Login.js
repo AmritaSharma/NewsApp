@@ -40,6 +40,7 @@ const Login = ({navigation}) => {
           onSubmitEditing={(text)=>console.log('text',text)} 
           maxLength={100}
           IconName={'envelope'}
+          IconSize={20}
         />
         <Text style={styles.titleText}>{strings.password}</Text>
         <InputTextArea
@@ -51,6 +52,7 @@ const Login = ({navigation}) => {
           onSubmitEditing={(text)=>console.log('text',text)} 
           maxLength={100}
           IconName={'lock'}
+          IconSize={20}
         />
         <View>
           <Text style={styles.forgetPassText}>{strings.forgetPassword}</Text>
@@ -59,11 +61,11 @@ const Login = ({navigation}) => {
           onPress={()=> loginFun()}
           style={styles.loginButtonView}
         >
-          <Text style={styles.loginButtonText}>Login</Text>
+          <Text style={styles.loginButtonText}>{strings.login}</Text>
         </TouchableOpacity> 
-        <View style={styles.dontHaveAccntView}>
+        <TouchableOpacity style={styles.dontHaveAccntView} onPress={()=>navigation.navigate('Signup')}>
           <Text style={styles.dontHaveAccntText}>{strings.dontHaveAccnt}</Text>
-        </View>   
+        </TouchableOpacity>   
       </ScrollView>  
     </KeyboardAvoidingView>
   );
