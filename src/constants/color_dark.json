@@ -1,19 +1,22 @@
 {
   "primary": "#f7287b",
   "accent": "#c717fc",
+
   "background": "#0b0b1e",
   "buttonColor": "#02031a",
   "bottomTabColor": "#000",
+  "headerColor": "#404270",
+  "borderColor" : "#575873",
+  "iconColor" : "#e1e1e3",
+
   "gradientColor1": "#cb2787",
   "gradientColor2": "#9a278f",
   "gradientColor3": "#5e13bc",
-  "headerColor": "#404270",
-  "borderColor" : "#575873",
-   "heading":"#ffffff",
-   "subHeading":"#e1e1e3",
-   "title":"#ffffff",
-   "subTitle" :"#a1a3d2",
-   "iconColor" : "#e1e1e3",
-   "buttonColor1" : "#131324"
+
+  "heading":"#ffffff",
+  "subHeading":"#e1e1e3",
+  "title":"#ffffff",
+  "subTitle" :"#a1a3d2",
+  "placeHolderColor": "#a1a3d2"
 
 }
