@@ -22,6 +22,11 @@ const strings = new LocalizedStrings({
     Country: 'Country',
     BTCAddress: ' BTC Address',
     TRONAddress: ' TRON Address',
+    InitiateDeposit: 'InitiateDeposit',
+    Deposite: 'Deposite',
+    EnterAmt: 'Enter Amount (In USD)',
+    SelectMode: 'SelectMode',
+    PreviewDeposite: 'PreviewDeposite',
   },
   IN: {
     Reward: 'इनाम',

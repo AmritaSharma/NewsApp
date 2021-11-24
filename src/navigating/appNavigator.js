@@ -5,6 +5,7 @@ import Login from '../screens/onboarding/Login';
 import Splash from '../screens/onboarding/Splash';
 import {useSelector} from 'react-redux';
 import UserAccount from '../screens/Accounts/UserAccount';
+import InitiateDeposite from '../screens/deposits/InitiateDeposite';
 
 const Stack = createStackNavigator();
 
@@ -16,7 +17,6 @@ const loginStack = () => {
         component={Splash}
         options={{headerShown: false}}
       />
-
       <Stack.Screen
         name="Login"
         component={Login}
@@ -25,6 +25,11 @@ const loginStack = () => {
       <Stack.Screen
         name="UserAccount"
         component={UserAccount}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="InitiateDeposite"
+        component={InitiateDeposite}
         options={{headerShown: false}}
       />
     </>

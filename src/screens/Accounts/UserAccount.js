@@ -10,13 +10,15 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   TextInput,
+  Button,
 } from 'react-native';
 import {AppColors} from '../../constants/appColors';
 import textSize from '../../constants/textSize';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import strings from '../../constants/localization';
+import {NavigationContainer} from '@react-navigation/native';
 
-const UserAccount = () => {
+const UserAccount = ({navigation}) => {
   const [userId, setUserId] = useState('');
   const [name, setName] = useState('');
   const [sponserId, setSponserID] = useState('');
@@ -119,6 +121,11 @@ const UserAccount = () => {
                 style={[styles.input]}
                 onChangeText={email => setEmail(email)}
                 value={email}
+              />
+
+              <Button
+                title="deposit"
+                onPress={() => navigation.navigate('InitiateDeposite')}
               />
             </ScrollView>
           </View>
