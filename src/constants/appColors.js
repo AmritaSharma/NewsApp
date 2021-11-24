@@ -3,6 +3,16 @@ import lightColors from '../constants/color_light.json';
 import AsyncStorage from '@react-native-community/async-storage';
 import {DarkBg} from '../components/DarkBg';
 import {LightBg} from '../components/LightBg';
+import {
+  DarkTheme as PaperDarkTheme,
+  DefaultTheme as PaperDefaultTheme,
+  Provider as PaperProvider,
+} from 'react-native-paper';
+import {
+  NavigationContainer,
+  DefaultTheme as NavigationDefaultTheme,
+  DarkTheme as NavigationDarkTheme,
+} from '@react-navigation/native';
 
 let defaultTheme = true;
 export const SetColors = theme => {
