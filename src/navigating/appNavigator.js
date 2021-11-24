@@ -1,8 +1,9 @@
 import React, {useEffect,useState} from 'react';
 //import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import Login from '../screens/Login';
 import DemoTheme from '../screens/DemoTheme';
+import Login from '../screens/onboarding/Login';
+import Splash from '../screens/onboarding/Splash';
 import {useSelector} from 'react-redux';
 import {
   DarkTheme as PaperDarkTheme,
@@ -22,12 +23,7 @@ const Stack = createStackNavigator();
 const loginStack = () => {
   return (
     <>
-      <Stack.Screen
-        name="DemoTheme"
-        component={DemoTheme}
-        options={{headerShown: false}}
-      />
-
+     
       <Stack.Screen
         name="Login"
         component={Login}
