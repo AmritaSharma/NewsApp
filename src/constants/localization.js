@@ -11,6 +11,7 @@ const strings = new LocalizedStrings({
     password: 'Password',
     forgetPassword: 'Forget Password?',
     dontHaveAccnt: 'Don\'t have an account? Sign Up',
+    createAccount: 'Create Account',
     userId: 'User ID',
     fullName: 'Full Name',
     mobile: 'Mobile Number',

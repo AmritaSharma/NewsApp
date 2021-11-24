@@ -39,6 +39,9 @@ const Signup = ({navigation}) => {
               source={require('../../assets/splashscreen_logo.png')}
             />
           </View>
+          <View>
+              <Text style={styles.createAccountText}>{strings.createAccount}</Text>
+          </View>    
           <View style={styles.textInputWrapper}>
             <InputTextArea
               placeholder={strings.userId}
@@ -173,6 +176,12 @@ const styles = StyleSheet.create({
   textInputWrapper: {
     marginVertical: 10,
     // backgroundColor: '#000'
+  },
+  createAccountText: {
+    color: AppColors().headerColor,
+    fontSize: textSize.h1,
+    fontWeight: '800',
+    marginVertical: 10
   },
   signupButtonView: {
     height: 50,
