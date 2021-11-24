@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import Login from '../screens/Login';
-import Splash from '../screens/Splash';
+import Login from '../screens/onboarding/Login';
+import Splash from '../screens/onboarding/Splash';
 import {useSelector} from 'react-redux';
 import UserAccount from '../screens/UserAccount';
 

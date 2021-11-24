@@ -11,8 +11,8 @@ import {
   ScrollView,
   TextInput,
 } from 'react-native';
-import {AppColors} from '../constants/appColors';
-import textSize from '../constants/textSize';
+import {AppColors} from '../../constants/appColors';
+import textSize from '../../constants/textSize';
 
 const UserAccount = () => {
   const [userId, setUserId] = useState('');
