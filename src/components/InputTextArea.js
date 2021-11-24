@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextInput, View, Image, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { AppColors } from '../constants/appColors';
 // placeholder, icon, setValue,value
 export const InputTextArea = ({ placeholder, setValue, value, keyboardType, secureTextEntry, onSubmitEditing, maxLength, IconName }) => {
   return (
@@ -19,9 +20,9 @@ export const InputTextArea = ({ placeholder, setValue, value, keyboardType, secu
       />
       <Icon
         name={IconName}
-        size={20}
+        size={25}
         style={{marginRight: 10}}
-        color="#787878"
+        color={AppColors().iconColor}
       />
     </View>
   );
@@ -29,15 +30,16 @@ export const InputTextArea = ({ placeholder, setValue, value, keyboardType, secu
 
 const styles = StyleSheet.create({
   input: {
+    width: '90%',
     paddingLeft: 16,
-    color: '#000'   
+    color: AppColors().headerColor  
   },
   inputWrapper: {
     flexDirection: 'row',
     width: '99%',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderColor: 'gray',
+    borderColor: AppColors().borderColor,
     borderWidth: 0.5,
     borderRadius: 15
   }

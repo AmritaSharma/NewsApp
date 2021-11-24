@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {View, Text, StyleSheet, ImageBackground, Image, KeyboardAvoidingView, Platform, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground, Image, KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity} from 'react-native';
 import { InputTextArea } from '../../components/InputTextArea';
 import { AppColors } from '../../constants/appColors';
 import strings from '../../constants/localization';
@@ -8,6 +8,9 @@ import textSize from '../../constants/textSize'
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const loginFun = () => {
+    console.log('email'+ email, ' password'+password)
+  }
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"} 
@@ -32,7 +35,7 @@ const Login = ({navigation}) => {
           placeholder={strings.emailPlaceholder}
           setValue={(text)=>setEmail(text)} 
           value={email} 
-          keyboardType={'default'}
+          keyboardType={'email-address'}
           secureTextEntry={false} 
           onSubmitEditing={(text)=>console.log('text',text)} 
           maxLength={100}
@@ -52,9 +55,12 @@ const Login = ({navigation}) => {
         <View>
           <Text style={styles.forgetPassText}>{strings.forgetPassword}</Text>
         </View>  
-        <View style={styles.loginButtonView}>
+        <TouchableOpacity 
+          onPress={()=> loginFun()}
+          style={styles.loginButtonView}
+        >
           <Text style={styles.loginButtonText}>Login</Text>
-        </View> 
+        </TouchableOpacity> 
         <View style={styles.dontHaveAccntView}>
           <Text style={styles.dontHaveAccntText}>{strings.dontHaveAccnt}</Text>
         </View>   
@@ -84,28 +90,28 @@ const styles = StyleSheet.create({
   welcomeTitleText: {
     fontSize: textSize.h1,
     fontWeight: 'bold',
-    color: '#000'
+    color: AppColors().headerColor
   },
   titleText: {
     fontWeight: '500',
     fontSize: textSize.h3,
-    color: '#000',
+    color: AppColors().headerColor,
     marginVertical: 10
   },
   loginTitleText: {
-    color: '#000',
+    color: AppColors().headerColor,
     fontSize: textSize.h1,
     fontWeight: 'bold',
     marginBottom: 20
   },
   forgetPassText: {
     fontSize: textSize.h6,
-    color: '#000',
+    color: AppColors().headerColor,
     textAlign: 'right',
     marginVertical: 15
   },
   loginButtonView: {
-    backgroundColor: '#D1DA35',
+    backgroundColor: AppColors().buttonColor,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 12,
@@ -113,7 +119,7 @@ const styles = StyleSheet.create({
   },
   loginButtonText: {
     fontSize: textSize.h4,
-    color: '#000',
+    color: AppColors().headerColor,
     fontWeight: '600',
   },
   dontHaveAccntView: {
@@ -122,7 +128,7 @@ const styles = StyleSheet.create({
   dontHaveAccntText: {
     fontWeight: '600',
     fontSize: textSize.h4,
-    color: '#000',
+    color: AppColors().headerColor,
     textAlign: 'center'
   }
 })
