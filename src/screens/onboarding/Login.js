@@ -1,29 +1,41 @@
-import React,{useState} from 'react';
-import {View, Text, StyleSheet, ImageBackground, Image, KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity} from 'react-native';
-import { InputTextArea } from '../../components/InputTextArea';
-import { AppColors } from '../../constants/appColors';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  TouchableOpacity,
+  Button,
+} from 'react-native';
+import {InputTextArea} from '../../components/InputTextArea';
+import {AppColors} from '../../constants/appColors';
 import strings from '../../constants/localization';
-import textSize from '../../constants/textSize'
+import textSize from '../../constants/textSize';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const loginFun = () => {
-    console.log('email'+ email, ' password'+password)
-  }
+    console.log('email' + email, ' password' + password);
+    navigation.navigate('UserAccount');
+  };
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"} 
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
       {/*  */}
       <ImageBackground
         source={require('../../assets/login_bg.png')}
         style={styles.imageBackgroundStyle}>
-          <Image
-            style={styles.iconImageStyle}
-            source={require('../../assets/splashscreen_logo.png')}
-          />
-          <Text style={styles.welcomeTitleText}>{strings.welcomeBack}</Text>
+        <Image
+          style={styles.iconImageStyle}
+          source={require('../../assets/splashscreen_logo.png')}
+        />
+        <Text style={styles.welcomeTitleText}>{strings.welcomeBack}</Text>
       </ImageBackground>
       {/*  */}
       <ScrollView style={styles.inputViewWrapper}>
@@ -33,38 +45,37 @@ const Login = ({navigation}) => {
         <Text style={styles.titleText}>{strings.email}</Text>
         <InputTextArea
           placeholder={strings.emailPlaceholder}
-          setValue={(text)=>setEmail(text)} 
-          value={email} 
+          setValue={text => setEmail(text)}
+          value={email}
           keyboardType={'email-address'}
-          secureTextEntry={false} 
-          onSubmitEditing={(text)=>console.log('text',text)} 
+          secureTextEntry={false}
+          onSubmitEditing={text => console.log('text', text)}
           maxLength={100}
           IconName={'envelope'}
         />
         <Text style={styles.titleText}>{strings.password}</Text>
         <InputTextArea
           placeholder={strings.passwordPlaceholder}
-          setValue={(text)=>setPassword(text)} 
-          value={password} 
+          setValue={text => setPassword(text)}
+          value={password}
           keyboardType={'default'}
-          secureTextEntry={true} 
-          onSubmitEditing={(text)=>console.log('text',text)} 
+          secureTextEntry={true}
+          onSubmitEditing={text => console.log('text', text)}
           maxLength={100}
           IconName={'lock'}
         />
         <View>
           <Text style={styles.forgetPassText}>{strings.forgetPassword}</Text>
-        </View>  
-        <TouchableOpacity 
-          onPress={()=> loginFun()}
-          style={styles.loginButtonView}
-        >
+        </View>
+        <TouchableOpacity
+          onPress={() => loginFun()}
+          style={styles.loginButtonView}>
           <Text style={styles.loginButtonText}>Login</Text>
-        </TouchableOpacity> 
+        </TouchableOpacity>
         <View style={styles.dontHaveAccntView}>
           <Text style={styles.dontHaveAccntText}>{strings.dontHaveAccnt}</Text>
-        </View>   
-      </ScrollView>  
+        </View>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 };
@@ -84,38 +95,38 @@ const styles = StyleSheet.create({
   },
   iconImageStyle: {
     marginTop: '20%',
-    height: 150, 
-    width: 150
+    height: 150,
+    width: 150,
   },
   welcomeTitleText: {
     fontSize: textSize.h1,
     fontWeight: 'bold',
-    color: AppColors().headerColor
+    color: AppColors().headerColor,
   },
   titleText: {
     fontWeight: '500',
     fontSize: textSize.h3,
     color: AppColors().headerColor,
-    marginVertical: 10
+    marginVertical: 10,
   },
   loginTitleText: {
     color: AppColors().headerColor,
     fontSize: textSize.h1,
     fontWeight: 'bold',
-    marginBottom: 20
+    marginBottom: 20,
   },
   forgetPassText: {
     fontSize: textSize.h6,
     color: AppColors().headerColor,
     textAlign: 'right',
-    marginVertical: 15
+    marginVertical: 15,
   },
   loginButtonView: {
     backgroundColor: AppColors().buttonColor,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 12,
-    borderRadius: 10
+    borderRadius: 10,
   },
   loginButtonText: {
     fontSize: textSize.h4,
@@ -129,7 +140,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: textSize.h4,
     color: AppColors().headerColor,
-    textAlign: 'center'
-  }
-})
+    textAlign: 'center',
+  },
+});
 export default Login;

@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Login from '../screens/onboarding/Login';
 import Splash from '../screens/onboarding/Splash';
 import {useSelector} from 'react-redux';
-import UserAccount from '../screens/UserAccount';
+import UserAccount from '../screens/Accounts/UserAccount';
 
 const Stack = createStackNavigator();
 

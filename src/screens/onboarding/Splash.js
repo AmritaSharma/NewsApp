@@ -13,10 +13,6 @@ const Splash = ({navigation}) => {
         style={styles.iconImageStyle}
         source={require('../../assets/splashscreen_logo.png')}
       />
-      <Button
-        title="go to accounts"
-        onPress={() => navigation.navigate('UserAccount')}
-      />
     </ImageBackground>
   );
 };

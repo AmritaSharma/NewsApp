@@ -10,13 +10,21 @@ const strings = new LocalizedStrings({
     email: 'Email',
     password: 'Password',
     forgetPassword: 'Forget Password?',
-    dontHaveAccnt: 'Don\'t have an account? Sign Up',
+    dontHaveAccnt: "Don't have an account? Sign Up",
     //sucess :
     Continue: 'Continue',
+    UserAcc: ' User Account',
+    Account: 'Account',
+    AccountInfo: 'Account Information',
+    UserId: 'User Id',
+    FullName: 'Full name',
+    sponserID: 'Sponser ID',
+    Country: 'Country',
+    BTCAddress: ' BTC Address',
+    TRONAddress: ' TRON Address',
   },
   IN: {
     Reward: 'इनाम',
-   
   },
 });
 export default strings;
