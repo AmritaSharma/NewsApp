@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
-import { TextInput, View, Image, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { AppColors } from '../constants/appColors';
+import React, {useState} from 'react';
+import {TextInput, View, Image, StyleSheet} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {AppColors} from '../constants/appColors';
 // placeholder, icon, setValue,value
-export const InputTextArea = ({ placeholder, setValue, value, keyboardType, secureTextEntry, onSubmitEditing, maxLength, IconName }) => {
+export const InputTextArea = ({
+  placeholder,
+  setValue,
+  value,
+  keyboardType,
+  secureTextEntry,
+  onSubmitEditing,
+  maxLength,
+  IconName,
+}) => {
   return (
     <View style={styles.inputWrapper}>
       <TextInput
@@ -20,7 +29,7 @@ export const InputTextArea = ({ placeholder, setValue, value, keyboardType, secu
       />
       <Icon
         name={IconName}
-        size={25}
+        size={20}
         style={{marginRight: 10}}
         color={AppColors().iconColor}
       />
@@ -32,7 +41,7 @@ const styles = StyleSheet.create({
   input: {
     width: '90%',
     paddingLeft: 16,
-    color: AppColors().headerColor  
+    color: AppColors().headerColor,
   },
   inputWrapper: {
     flexDirection: 'row',
@@ -41,6 +50,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderColor: AppColors().borderColor,
     borderWidth: 0.5,
-    borderRadius: 15
-  }
+    borderRadius: 25,
+  },
 });
