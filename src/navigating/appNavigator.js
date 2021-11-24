@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Login from '../screens/Login';
 import Splash from '../screens/Splash';
 import {useSelector} from 'react-redux';
+import UserAccount from '../screens/UserAccount';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,11 @@ const loginStack = () => {
       <Stack.Screen
         name="Login"
         component={Login}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="UserAccount"
+        component={UserAccount}
         options={{headerShown: false}}
       />
     </>
