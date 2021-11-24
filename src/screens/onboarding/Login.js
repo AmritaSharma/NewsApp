@@ -65,7 +65,7 @@ const Login = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: AppColors().background,
   },
   inputViewWrapper: {
     padding: 20,
