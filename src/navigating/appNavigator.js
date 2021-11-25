@@ -23,7 +23,12 @@ const Stack = createStackNavigator();
 const loginStack = () => {
   return (
     <>
-     
+      <Stack.Screen
+        name="DemoTheme"
+        component={DemoTheme}
+        options={{headerShown: false}}
+      />
+
       <Stack.Screen
         name="Login"
         component={Login}

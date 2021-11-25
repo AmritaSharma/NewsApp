@@ -4,10 +4,12 @@ import { InputTextArea } from '../../components/InputTextArea';
 import { AppColors } from '../../constants/appColors';
 import strings from '../../constants/localization';
 import textSize from '../../constants/textSize'
-
+import {useTheme} from 'react-native-paper';
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const theme = useTheme();
+  const {color} = useTheme();
   const loginFun = () => {
     console.log('email'+ email, ' password'+password)
   }
