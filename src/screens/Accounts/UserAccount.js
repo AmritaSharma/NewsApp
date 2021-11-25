@@ -11,6 +11,7 @@ import {
   ScrollView,
   TextInput,
   Button,
+  TouchableOpacity,
 } from 'react-native';
 import {AppColors} from '../../constants/appColors';
 import textSize from '../../constants/textSize';
@@ -123,10 +124,10 @@ const UserAccount = ({navigation}) => {
                 value={email}
               />
 
-              <Button
-                title="deposit"
-                onPress={() => navigation.navigate('InitiateDeposite')}
-              />
+              <TouchableOpacity
+                onPress={() => navigation.navigate('InitiateDeposite')}>
+                <Text> deposit</Text>
+              </TouchableOpacity>
             </ScrollView>
           </View>
         </ImageBackground>
@@ -160,14 +161,14 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: textSize.h4,
-    color: AppColors().subTitle,
+    color: AppColors().background,
     fontWeight: '600',
     margin: 5,
     top: 3,
   },
   toolbar: {
-    backgroundColor: AppColors().subTitle,
-    height: '8%',
+    backgroundColor: AppColors().background,
+    height: '9%',
     flexDirection: 'row',
     paddingTop: 10,
   },
@@ -180,7 +181,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: textSize.h2,
-    color: AppColors().inputBackgroud,
+    color: AppColors().background,
     fontWeight: '600',
     padding: 10,
   },

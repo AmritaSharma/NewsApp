@@ -38,7 +38,7 @@ const InitiateDeposite = () => {
             />
             <View style={{top: -40, left: '35%'}}>
               <Text style={styles.title}>{strings.InitiateDeposit}</Text>
-              <Text style={styles.subTitle}> {strings.Deposite}</Text>
+              <Text style={styles.background}> {strings.Deposite}</Text>
             </View>
           </View>
           <Image
@@ -114,14 +114,14 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: textSize.h4,
-    color: AppColors().subTitle,
+    color: AppColors().background,
     fontWeight: '600',
     margin: 5,
     top: 10,
     paddingVertical: 6,
   },
   toolbar: {
-    backgroundColor: AppColors().subTitle,
+    backgroundColor: AppColors().background,
     height: '8%',
     flexDirection: 'row',
     paddingTop: 10,
