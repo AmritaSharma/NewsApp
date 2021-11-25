@@ -23,10 +23,18 @@ const strings = new LocalizedStrings({
     BTCAddress: ' BTC Address',
     TRONAddress: ' TRON Address',
     InitiateDeposit: 'Initiate Deposit',
-    Deposite: 'Deposite',
+    Deposite: 'Deposit',
     EnterAmt: 'Enter Amount (In USD)',
     SelectMode: 'Select Mode',
     PreviewDeposite: 'Preview Deposite',
+
+    //unsett fund screen
+    UnsettledFundReport: 'Unsettled Fund Report',
+    fromdate: 'From Date',
+    todate: 'To Date',
+    DepositeId: 'Deposite Id',
+    search: 'Search',
+    reset: 'Reset',
   },
   IN: {
     Reward: 'इनाम',

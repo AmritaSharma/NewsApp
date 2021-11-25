@@ -5,6 +5,7 @@ import {
   ImageBackground,
   Image,
   StyleSheet,
+  KeyboardAvoidingView,
   ScrollView,
   TextInput,
 } from 'react-native';
@@ -12,139 +13,152 @@ import {AppColors} from '../../constants/appColors';
 import textSize from '../../constants/textSize';
 import strings from '../../constants/localization';
 import AppButton from '../../constants/AppButton';
+import {useTheme} from '@react-navigation/native';
 
 const InitiateDeposite = ({navigation}) => {
   const [amount, setAmount] = useState('');
   const [prevdeposite, setPrevDeposite] = useState('');
   const [mode, setMode] = useState('');
 
+  const {colors} = useTheme();
+  const theme = useTheme();
+
   const CreateAcc = () => {
     console.log('amount' + amount, ' name' + name);
   };
   return (
-    <View style={{flex: 1}}>
-      <ImageBackground
-        source={require('../../assets/splashscreen_background.png')}
-        resizeMode="cover"
-        style={styles.bgImg}>
-        <View style={styles.toolbar}>
-          <View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <ScrollView>
+        <ImageBackground
+          source={require('../../assets/splashscreen_background.png')}
+          resizeMode="cover"
+          style={styles.bgImg}>
+          <View style={styles(colors).toolbar}>
+            <View>
+              <Image
+                source={require('../../assets/initdeposit_icon.png')}
+                style={{margin: 10, top: 2}}
+              />
+              <View style={{top: -40, left: '35%'}}>
+                <Text style={styles(colors).title}>
+                  {strings.InitiateDeposit}
+                </Text>
+                <Text style={styles(colors).subTitle}> {strings.Deposite}</Text>
+              </View>
+            </View>
             <Image
-              source={require('../../assets/initdeposit_icon.png')}
+              source={require('../../assets/menu_icon.png')}
               style={{margin: 10, top: 2}}
             />
-            <View style={{top: -40, left: '35%'}}>
-              <Text style={styles.title}>{strings.InitiateDeposit}</Text>
-              <Text style={styles.subTitle}> {strings.Deposite}</Text>
-            </View>
           </View>
-          <Image
-            source={require('../../assets/menu_icon.png')}
-            style={{margin: 10, top: 2}}
-          />
-        </View>
 
-        <ScrollView>
-          <View style={styles.body}>
+          <View style={styles(colors).body}>
             <Image
               source={require('../../assets/initdeposite_img.png')}
-              style={{height: 200, width: 260, marginVertical: '10%'}}
+              style={{height: 200, width: 260, marginVertical: '8%'}}
             />
 
-            <View style={styles.innerView}>
-              <Text style={styles.label}>{strings.EnterAmt}</Text>
+            <ScrollView style={styles(colors).innerView}>
+              <Text style={styles(colors).label}>{strings.EnterAmt}</Text>
               <TextInput
                 placeholder="Enter Amount"
-                placeholderTextColor={AppColors().heading}
-                style={styles.input}
+                placeholderTextColor={colors.heading}
+                style={styles(colors).input}
                 onChangeText={amount => setAmount(amount)}
                 value={amount}
                 keyboardType="numeric"
               />
 
-              <Text style={styles.label}> {strings.PreviewDeposite}</Text>
+              <Text style={styles(colors).label}>
+                {' '}
+                {strings.PreviewDeposite}
+              </Text>
               <TextInput
                 placeholder="$"
-                placeholderTextColor={AppColors().heading}
-                style={styles.input}
+                placeholderTextColor={colors.heading}
+                style={styles(colors).input}
                 keyboardType="numeric"
                 onChangeText={prevdeposite => setPrevDeposite(prevdeposite)}
                 value={prevdeposite}
               />
 
-              <Text style={styles.label}> {strings.SelectMode}</Text>
+              <Text style={styles(colors).label}> {strings.SelectMode}</Text>
               <TextInput
                 placeholder="Bitcoin (BTC) "
-                placeholderTextColor={AppColors().heading}
-                style={styles.input}
+                placeholderTextColor={colors.heading}
+                style={styles(colors).input}
                 onChangeText={mode => setMode(mode)}
                 value={mode}
               />
+            </ScrollView>
 
-              <AppButton
-                style={{marginVertical: 20}}
-                onPress={() => {}}
-                text={strings.InitiateDeposit}
-              />
-            </View>
+            <AppButton
+              style={{marginVertical: 20, width: '75%', bottom: '8%'}}
+              onPress={() => {}}
+              text={strings.InitiateDeposit}
+            />
           </View>
-        </ScrollView>
-      </ImageBackground>
-    </View>
+        </ImageBackground>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
 export default InitiateDeposite;
 
-const styles = StyleSheet.create({
-  bgImg: {
-    flex: 1,
-  },
-  title: {
-    fontSize: textSize.h1,
-    color: AppColors().heading,
-  },
-  subTitle: {
-    fontSize: textSize.p,
-    color: AppColors().heading,
-  },
-  input: {
-    backgroundColor: AppColors().inputBackgroud,
-    borderRadius: 30,
-    paddingHorizontal: 20,
-    height: 35,
-    color: AppColors().heading,
-  },
-  label: {
-    fontSize: textSize.h4,
-    color: AppColors().background,
-    fontWeight: '600',
-    margin: 5,
-    top: 10,
-    paddingVertical: 6,
-  },
-  toolbar: {
-    backgroundColor: AppColors().background,
-    height: '9%',
-    flexDirection: 'row',
-    paddingTop: 10,
-    justifyContent: 'space-between',
-  },
-  innerView: {
-    backgroundColor: AppColors().heading,
-    height: '55%',
-    width: '100%',
-    borderRadius: 15,
-    padding: 15,
-  },
-  heading: {
-    fontSize: textSize.h2,
-    color: AppColors().inputBackgroud,
-    fontWeight: '600',
-    padding: 10,
-  },
-  body: {
-    alignItems: 'center',
-    margin: 20,
-  },
-});
+const styles = props =>
+  StyleSheet.create({
+    bgImg: {
+      height: '100%',
+      width: '100%',
+    },
+    title: {
+      fontSize: textSize.h1,
+      color: props.heading,
+    },
+    subTitle: {
+      fontSize: textSize.p,
+      color: props.heading,
+    },
+    input: {
+      backgroundColor: props.inputBackgroud,
+      borderRadius: 30,
+      paddingHorizontal: 20,
+      height: 35,
+      color: props.heading,
+      bottom: 10,
+    },
+    label: {
+      fontSize: textSize.h4,
+      color: props.headerColor,
+      fontWeight: '600',
+      margin: 5,
+      paddingVertical: 10,
+    },
+    toolbar: {
+      backgroundColor: props.headerColor,
+      height: '9%',
+      flexDirection: 'row',
+      paddingTop: 10,
+      justifyContent: 'space-between',
+    },
+    innerView: {
+      backgroundColor: props.heading,
+      height: '37%',
+      width: '100%',
+      borderRadius: 15,
+      padding: 15,
+      marginBottom: 50,
+    },
+    heading: {
+      fontSize: textSize.h2,
+      color: props.inputBackgroud,
+      fontWeight: '600',
+      padding: 10,
+    },
+    body: {
+      alignItems: 'center',
+      margin: 20,
+    },
+  });

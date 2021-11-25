@@ -35,11 +35,14 @@ const styles = StyleSheet.create({
     paddingVertical: '4%',
     borderRadius: 25,
     marginVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: AppColors().background,
   },
 
   ButtonText: {
-    fontSize: textSize.h4,
+    fontSize: textSize.h3,
     color: AppColors().background,
-    fontWeight: '600',
+    fontWeight: '900',
+    letterSpacing: 0.5,
   },
 });
