@@ -1,4 +1,6 @@
-import React, {useEffect,useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
+import darkColors from '../constants/color_dark.json';
+import lightColors from '../constants/color_light.json';
 //import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import DemoTheme from '../screens/DemoTheme';
@@ -15,7 +17,7 @@ import {
   DefaultTheme as NavigationDefaultTheme,
   DarkTheme as NavigationDarkTheme,
 } from '@react-navigation/native';
-import { AuthContext } from '../components/context';
+import {AuthContext} from '../components/context';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const Stack = createStackNavigator();
@@ -24,14 +26,19 @@ const loginStack = () => {
   return (
     <>
       <Stack.Screen
-        name="DemoTheme"
-        component={DemoTheme}
+        name="Splash"
+        component={Splash}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
         options={{headerShown: false}}
       />
 
       <Stack.Screen
-        name="Login"
-        component={Login}
+        name="DemoTheme"
+        component={DemoTheme}
         options={{headerShown: false}}
       />
     </>
@@ -58,33 +65,39 @@ const homeStack = () => {
 
 const AppNavigator = () => {
   const loginData = useSelector(state => state.login.loginData);
-  const authContext = React.useMemo(() => ({
-    toggleTheme: () => {
-      setIsDarkTheme( isDarkTheme => !isDarkTheme );
-    }
-  }), []);
-const [isDarkTheme, setIsDarkTheme] = React.useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  const authContext = useMemo(
+    () => ({
+      toggleTheme: () => {
+        setIsDarkTheme(isDarkTheme => !isDarkTheme);
+      },
+    }),
+    [],
+  );
   const CustomDefaultTheme = {
     ...NavigationDefaultTheme,
     ...PaperDefaultTheme,
     colors: {
-      ...NavigationDefaultTheme.colors,
-      ...PaperDefaultTheme.colors,
-      background: '#ffffff',
-      text: '#333333'
-    }
-  }
-  
+      ...NavigationDarkTheme.colors,
+      ...PaperDarkTheme.colors,
+      background: '#333333',
+      text: '#ffffff',
+      ...lightColors,
+    },
+  };
+
   const CustomDarkTheme = {
     ...NavigationDarkTheme,
     ...PaperDarkTheme,
     colors: {
       ...NavigationDarkTheme.colors,
       ...PaperDarkTheme.colors,
-      background: '#333333',
-      text: '#ffffff'
-    }
-  }
+      background: '#ffffff',
+      text: '#333333',
+      ...darkColors,
+    },
+  };
 
   const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme;
 
@@ -92,15 +105,14 @@ const [isDarkTheme, setIsDarkTheme] = React.useState(false);
 
   return (
     <PaperProvider theme={theme}>
-    <AuthContext.Provider value={authContext} >
-    <NavigationContainer theme={theme}>
-    <Stack.Navigator>
-        {Object.keys(loginData).length > 0 ? loginStack() : loginStack()}
-      </Stack.Navigator>
-    </NavigationContainer>
-    </AuthContext.Provider>
+      <AuthContext.Provider value={authContext}>
+        <NavigationContainer theme={theme}>
+          <Stack.Navigator>
+            {Object.keys(loginData).length > 0 ? loginStack() : loginStack()}
+          </Stack.Navigator>
+        </NavigationContainer>
+      </AuthContext.Provider>
     </PaperProvider>
-
   );
 };
 
