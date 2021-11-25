@@ -19,13 +19,14 @@ import {
 } from '@react-navigation/native';
 import {AuthContext} from '../components/context';
 import AsyncStorage from '@react-native-community/async-storage';
+import DrawerNavigator from '../screens/Drawer/DrawerNavigator';
 
 const Stack = createStackNavigator();
 
 const loginStack = () => {
   return (
     <>
-      <Stack.Screen
+     {/* <Stack.Screen
         name="Splash"
         component={Splash}
         options={{headerShown: false}}
@@ -40,7 +41,13 @@ const loginStack = () => {
         name="DemoTheme"
         component={DemoTheme}
         options={{headerShown: false}}
-      />
+     />*/}
+     
+     <Stack.Screen
+        name="Dashboard"
+        component={DrawerNavigator}
+        options={{headerShown: false}}
+     />
     </>
   );
 };
