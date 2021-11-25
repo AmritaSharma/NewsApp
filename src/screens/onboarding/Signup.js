@@ -10,12 +10,14 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import {AppColors} from '../../constants/appColors';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {InputTextArea} from '../../components/InputTextArea';
 import strings from '../../constants/localization';
 import textSize from '../../constants/textSize'
+import { useTheme } from '@react-navigation/native';
 
 const Signup = ({navigation}) => {
+  const {colors} = useTheme();
   const [userID, setUserID] = useState('');
   const [fullName, setFullName] = useState('');
   const [mobileNo, setMobileNo] = useState('');
@@ -24,25 +26,26 @@ const Signup = ({navigation}) => {
   const [sponsersID, setSponsersID] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [checkTerm, setCheckTerm] = useState(false);
   const signupFun = () => {
 
   }
   return (
     <ImageBackground
       source={require('../../assets/register_bg.png')}
-      style={styles.imageBackgroundStyle}>
+      style={styles(colors).imageBackgroundStyle}>
       <ScrollView>
-        <View style={styles.container}>
+        <View style={styles(colors).container}>
           <View>
             <Image
-              style={styles.iconImageStyle}
-              source={require('../../assets/splashscreen_logo.png')}
+              style={styles(colors).iconImageStyle}
+              source={require('../../assets/login_logo.png')}
             />
           </View>
           <View>
-              <Text style={styles.createAccountText}>{strings.createAccount}</Text>
+              <Text style={styles(colors).createAccountText}>{strings.createAccount}</Text>
           </View>    
-          <View style={styles.textInputWrapper}>
+          <View style={styles(colors).textInputWrapper}>
             <InputTextArea
               placeholder={strings.userId}
               setValue={text => setUserID(text)}
@@ -51,11 +54,11 @@ const Signup = ({navigation}) => {
               secureTextEntry={false}
               onSubmitEditing={text => console.log('text', text)}
               maxLength={100}
-              IconName={'user'}
+              IconName={'person-outline'}
               IconSize={20}
             />
           </View>
-          <View style={styles.textInputWrapper}>
+          <View style={styles(colors).textInputWrapper}>
             <InputTextArea
               placeholder={strings.fullName}
               setValue={text => setFullName(text)}
@@ -64,11 +67,11 @@ const Signup = ({navigation}) => {
               secureTextEntry={false}
               onSubmitEditing={text => console.log('text', text)}
               maxLength={100}
-              IconName={'user'}
+              IconName={'person-outline'}
               IconSize={20}
             />
           </View>
-          <View style={styles.textInputWrapper}>
+          <View style={styles(colors).textInputWrapper}>
             <InputTextArea
               placeholder={strings.mobile}
               setValue={text => setMobileNo(text)}
@@ -77,11 +80,11 @@ const Signup = ({navigation}) => {
               secureTextEntry={false}
               onSubmitEditing={text => console.log('text', text)}
               maxLength={100}
-              IconName={'mobile'}
-              IconSize={26}
+              IconName={'call-outline'}
+              IconSize={20}
             />
           </View>
-          <View style={styles.textInputWrapper}>
+          <View style={styles(colors).textInputWrapper}>
             <InputTextArea
               placeholder={strings.position}
               setValue={text => setPosition(text)}
@@ -90,11 +93,11 @@ const Signup = ({navigation}) => {
               secureTextEntry={false}
               onSubmitEditing={text => console.log('text', text)}
               maxLength={100}
-              IconName={'map'}
+              IconName={'map-outline'}
               IconSize={15}
             />
           </View>
-          <View style={styles.textInputWrapper}>
+          <View style={styles(colors).textInputWrapper}>
             <InputTextArea
               placeholder={strings.email}
               setValue={text => setEmail(text)}
@@ -103,11 +106,11 @@ const Signup = ({navigation}) => {
               secureTextEntry={false}
               onSubmitEditing={text => console.log('text', text)}
               maxLength={100}
-              IconName={'envelope'}
+              IconName={'mail-outline'}
               IconSize={16}
             />
           </View>
-          <View style={styles.textInputWrapper}>
+          <View style={styles(colors).textInputWrapper}>
             <InputTextArea
               placeholder={strings.sponserID}
               setValue={text => setSponsersID(text)}
@@ -116,11 +119,11 @@ const Signup = ({navigation}) => {
               secureTextEntry={false}
               onSubmitEditing={text => console.log('text', text)}
               maxLength={100}
-              IconName={'users'}
+              IconName={'people-outline'}
               IconSize={15}
             />
           </View>
-          <View style={styles.textInputWrapper}>
+          <View style={styles(colors).textInputWrapper}>
             <InputTextArea
               placeholder={strings.signupPassword}
               setValue={text => setPassword(text)}
@@ -129,11 +132,11 @@ const Signup = ({navigation}) => {
               secureTextEntry={false}
               onSubmitEditing={text => console.log('text', text)}
               maxLength={100}
-              IconName={'lock'}
-              IconSize={20}
+              IconName={'lock-closed-outline'}
+              IconSize={15}
             />
           </View>
-          <View style={styles.textInputWrapper}>
+          <View style={styles(colors).textInputWrapper}>
             <InputTextArea
               placeholder={strings.confirmPassword}
               setValue={text => setConfirmPassword(text)}
@@ -142,23 +145,35 @@ const Signup = ({navigation}) => {
               secureTextEntry={false}
               onSubmitEditing={text => console.log('text', text)}
               maxLength={100}
-              IconName={'lock'}
-              IconSize={20}
+              IconName={'lock-closed-outline'}
+              IconSize={15}
             />
           </View>
-          <TouchableOpacity 
+          <View style={styles(colors).passwordNoteView}>
+            <Text style={styles(colors).passwordNoteStyles}>{strings.passwordNote}</Text>
+          </View> 
+          <View style={styles(colors).termsWrapperView}>
+            <Icon
+              name={!checkTerm?'square-outline': 'checkbox-outline'}
+              size={20}
+              style={{marginRight: 10}}
+              color={colors.iconColor}
+              onPress={()=>setCheckTerm(!checkTerm)}
+            />
+            <Text style={styles(colors).passwordNoteStyles}>{strings.readPolicy}</Text>
+          </View>  
+        <TouchableOpacity 
           onPress={()=> signupFun()}
-          style={styles.signupButtonView}
+          style={styles(colors).signupButtonView}
         >
-          <Text style={styles.signupButtonText}>{strings.signup}</Text>
+          <Text style={styles(colors).signupButtonText}>{strings.signup}</Text>
         </TouchableOpacity> 
         </View>
-        
       </ScrollView>
      </ImageBackground>
   );
 };
-const styles = StyleSheet.create({
+const styles = (props) => StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
@@ -170,23 +185,36 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   iconImageStyle: {
-    height: 150,
-    width: 150,
+    height: 110,
+    width: 280,
   },
   textInputWrapper: {
     marginVertical: 10,
-    // backgroundColor: '#000'
   },
   createAccountText: {
-    color: AppColors().headerColor,
+    color: props.headerColor,
     fontSize: textSize.h1,
     fontWeight: '800',
     marginVertical: 10
   },
+  passwordNoteView: {
+    alignSelf: 'flex-start'
+  },
+  passwordNoteStyles: {
+    color: props.headerColor,
+    fontSize: textSize.h5,
+    fontWeight: '400',
+    marginVertical: 5,
+  },
+  termsWrapperView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start'
+  },
   signupButtonView: {
     height: 50,
     width: '100%',
-    backgroundColor: AppColors().buttonColor,
+    backgroundColor: props.buttonColor,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 12,
@@ -195,7 +223,7 @@ const styles = StyleSheet.create({
   },
   signupButtonText: {
     fontSize: textSize.h4,
-    color: AppColors().headerColor,
+    color: props.headerColor,
     fontWeight: '600',
   },
 });
