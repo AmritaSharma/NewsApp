@@ -19,7 +19,7 @@ const App = () => {
   const persistor = persistStore(store);
 
   return (
-    <MenuProvider>
+      <MenuProvider>
       <Provider store={store}>
         <PersistGate persistor={persistor} loading={null}>
           <StatusBar />

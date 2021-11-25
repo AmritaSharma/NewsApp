@@ -2,12 +2,12 @@
   "primary": "#f7287b",
   "accent": "#c717fc",
 
-  "background": "#ffffff",
+  "background": "#333333",
   "buttonColor": "#ffcc00",
   "bottomTabColor": "#000",
-  "headerColor": "#1b2a39",
-  "borderColor" : "#1d2a39",
-  "iconColor" : "#000000",
+  "headerColor": "#ffffff",
+  "borderColor" : "#8A8A8A",
+  "iconColor" : "#ffffff",
   "inputBackgroud" : "#1b2a39",
 
   "gradientColor1": "#cb2787",
@@ -15,11 +15,11 @@
   "gradientColor3": "#5e13bc",
 
   "heading":"#ffffff",
-  "subHeading":"#dcdddf",
-  "title":"#1d2a39",
-  "subTitle" :"#1d2a39",
-  "paragraphColor" :"#a1a3d2", 
-  "placeHolderColor": "#b6babf",
-  "placeHolderColor1": "#b6b8bc"
+  "subHeading":"#ffffff",
+  "title":"#ffffff",
+  "subTitle" :"#ffffff",
+  "paragraphColor" :"#ffffff", 
+  "placeHolderColor": "#ffffff",
+  "placeHolderColor1": "#ffffff"
 
 }
