@@ -32,7 +32,6 @@ const Login = ({navigation}) => {
       <View style={{flex: 1}}>
         <View style={{height: '35%'}}>
           {/*  */}
-
           <ImageBackground
             source={require('../../assets/login_bg.png')}
             style={styles(colors).imageBackgroundStyle}>
