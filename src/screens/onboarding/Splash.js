@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {Image, ImageBackground, StyleSheet} from 'react-native';
 
 const Splash = ({navigation}) => {
@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   iconImageStyle: {
-    height: 150, 
-    width: 150
-  }
-})
+    height: 250,
+    width: 250,
+  },
+});
 export default Splash;
