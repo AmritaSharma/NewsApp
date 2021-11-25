@@ -20,6 +20,8 @@ const strings = new LocalizedStrings({
     signupPassword: 'Password',
     confirmPassword: 'Confirm Password',
     signup: 'Sign Up',
+    passwordNote: 'Note: 1 capital letter, 1 small letter, 1 symbol, 1 number, min 8.',
+    readPolicy: 'I read and agree to Terms and Condition',
     //sucess :
     Continue: 'Continue',
   },
