@@ -39,21 +39,22 @@ const DrawerMenu = () => {
 
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
-            <View style={{flex: 1.2, flexDirection: 'row', backgroundColor: 'black', paddingLeft: '12%', paddingTop: '5%', alignItems: 'center' }}>
-                <Image 
-                // source={require('../../assets/imageedit_2_2851942888.png')}
-                    style={{ height: getDimen(0.18), width: getDimen(0.18), backgroundColor: 'red', borderRadius: getDimen(0.9) }} />
-                <View style={{ flexDirection: 'column', paddingLeft: '5%' }}>
-                    <Text style={{ color: 'white', fontWeight: 'bold' }}>
-                        JOHN DOE
-                    </Text>
-                    <Text style={{ color: 'white' }}>
-                        ASF56666
-                    </Text>
-
-                </View>
-            </View>
+            
             <ScrollView style={styles.menuText}>
+                <View style={{ flex: 1.2, flexDirection: 'row', backgroundColor: 'black', paddingLeft: '12%', paddingTop: '5%', alignItems: 'center' }}>
+                    <Image
+                        // source={require('../../assets/imageedit_2_2851942888.png')}
+                        style={{ height: getDimen(0.18), width: getDimen(0.18), backgroundColor: 'red', borderRadius: getDimen(0.9) }} />
+                    <View style={{ flexDirection: 'column', paddingLeft: '5%' }}>
+                        <Text style={{ color: 'white', fontWeight: 'bold' }}>
+                            JOHN DOE
+                        </Text>
+                        <Text style={{ color: 'white' }}>
+                            ASF56666
+                        </Text>
+
+                    </View>
+                </View>
                 <List.AccordionGroup>
                     <List.Item
                         title="Control Panel"
@@ -400,7 +401,6 @@ const DrawerMenu = () => {
                         // onPress={() => navigation.navigate('BinaryIncome')}
                         />
                     </List.Accordion>
-
 
                     <List.Item
                         title="Logout"
