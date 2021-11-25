@@ -7,16 +7,6 @@ import DemoTheme from '../screens/DemoTheme';
 import Login from '../screens/onboarding/Login';
 import Splash from '../screens/onboarding/Splash';
 import {useSelector} from 'react-redux';
-import DrawerNavigator from '../screens/Drawer/DrawerNavigator'
-import DrawerMenu from '../screens/Drawer/DrawerMenu';
-import {
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-  createDrawerNavigator,
-} from '@react-navigation/drawer';
-import dashboard from '../screens/Dashboard/dashboard';
-import InitiateDeposite from '../screens/Deposite/InitiateDeposite';
 import {
   DarkTheme as PaperDarkTheme,
   DefaultTheme as PaperDefaultTheme,
@@ -29,14 +19,14 @@ import {
 } from '@react-navigation/native';
 import {AuthContext} from '../components/context';
 import AsyncStorage from '@react-native-community/async-storage';
+import DrawerNavigator from '../screens/Drawer/DrawerNavigator';
 
 const Stack = createStackNavigator();
-
 
 const loginStack = () => {
   return (
     <>
-      {/* <Stack.Screen
+     {/* <Stack.Screen
         name="Splash"
         component={Splash}
         options={{headerShown: false}}
@@ -45,18 +35,19 @@ const loginStack = () => {
         name="Login"
         component={Login}
         options={{headerShown: false}}
-      /> */}
-      <Stack.Screen
-        name="Dashboard"
-        component={DrawerNavigator}
-        options={{ headerShown: false }}
       />
 
       <Stack.Screen
         name="DemoTheme"
         component={DemoTheme}
         options={{headerShown: false}}
-      />
+     />*/}
+     
+     <Stack.Screen
+        name="Dashboard"
+        component={DrawerNavigator}
+        options={{headerShown: false}}
+     />
     </>
   );
 };
