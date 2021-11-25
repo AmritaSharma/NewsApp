@@ -7,6 +7,7 @@ import DemoTheme from '../screens/DemoTheme';
 import Login from '../screens/onboarding/Login';
 import Splash from '../screens/onboarding/Splash';
 import Signup from '../screens/onboarding/Signup';
+import ForgotPassword from '../screens/onboarding/ForgotPassword';
 import {useSelector} from 'react-redux';
 import {
   DarkTheme as PaperDarkTheme,
@@ -41,8 +42,12 @@ const loginStack = () => {
         name="Signup"
         component={Signup}
         options={{headerShown: false}}
-        />
-
+      />
+       <Stack.Screen
+        name="ForgotPassword"
+        component={ForgotPassword}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="DemoTheme"
         component={DemoTheme}

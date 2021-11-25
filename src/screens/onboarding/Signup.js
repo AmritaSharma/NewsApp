@@ -15,6 +15,7 @@ import {InputTextArea} from '../../components/InputTextArea';
 import strings from '../../constants/localization';
 import textSize from '../../constants/textSize'
 import { useTheme } from '@react-navigation/native';
+import {Checkbox} from 'react-native-paper';
 
 const Signup = ({navigation}) => {
   const {colors} = useTheme();
@@ -27,8 +28,10 @@ const Signup = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [checkTerm, setCheckTerm] = useState(false);
-  const signupFun = () => {
+  const [checked, setChecked] = useState(false);
 
+  const signupFun = () => {
+    navigation.navigate('ForgotPassword')
   }
   return (
     <ImageBackground
@@ -153,15 +156,36 @@ const Signup = ({navigation}) => {
             <Text style={styles(colors).passwordNoteStyles}>{strings.passwordNote}</Text>
           </View> 
           <View style={styles(colors).termsWrapperView}>
-            <Icon
-              name={!checkTerm?'square-outline': 'checkbox-outline'}
-              size={20}
-              style={{marginRight: 10}}
+            <Checkbox
               color={colors.iconColor}
-              onPress={()=>setCheckTerm(!checkTerm)}
+              uncheckedColor={colors.iconColor}
+              status={checkTerm ? 'checked' : 'unchecked'}
+              onPress={() => {
+                setCheckTerm(!checkTerm);
+              }}
             />
             <Text style={styles(colors).passwordNoteStyles}>{strings.readPolicy}</Text>
-          </View>  
+          </View> 
+          <View style={styles(colors).checkboxContainer}>
+            <View style={styles(colors).checkboxView}>
+              <Checkbox
+                color={colors.iconColor}
+                uncheckedColor={colors.iconColor}
+                status={checked ? 'checked' : 'unchecked'}
+                onPress={() => {
+                  setChecked(!checked);
+                }}
+              />
+              <Text style={styles(colors).textlabel}>{strings.notRobot}</Text>
+            </View>
+            <View style={styles(colors).rightIconWrapper}>
+              <Image
+                style={styles(colors).rightIcon}
+                color={'white'}
+                source={require('../../assets/captcha.png')}
+              />
+            </View>
+          </View> 
         <TouchableOpacity 
           onPress={()=> signupFun()}
           style={styles(colors).signupButtonView}
@@ -212,19 +236,46 @@ const styles = (props) => StyleSheet.create({
     alignSelf: 'flex-start'
   },
   signupButtonView: {
-    height: 50,
     width: '100%',
     backgroundColor: props.buttonColor,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 12,
-    borderRadius: 10,
-    marginTop: 15
+    paddingVertical: '3%',
+    borderRadius: 25,
+    marginVertical: 20
   },
   signupButtonText: {
-    fontSize: textSize.h4,
+    fontSize: textSize.h2,
     color: props.headerColor,
     fontWeight: '600',
+  },
+  checkboxContainer: {
+    flexDirection: 'row',
+    backgroundColor: '#EAEBDC',
+    height: 45,
+    width: '100%',
+    marginTop: 10,
+    // justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  checkboxView: {
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    width: '90%'
+  },
+  textlabel: {
+    color: props.headerColor,
+    fontSize: textSize.h5,
+    fontWeight: 'bold',
+    // marginLeft: 5,
+  },
+  rightIconWrapper: {
+    marginTop: 9, 
+    // marginLeft: '30%'
+  },
+  rightIcon: {
+    height: 30,
+    width: 30,
   },
 });
 export default Signup;

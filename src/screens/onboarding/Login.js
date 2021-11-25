@@ -17,7 +17,6 @@ import {useTheme} from '@react-navigation/native';
 
 const Login = ({navigation}) => {
   const {colors} = useTheme();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const loginFun = () => {
@@ -82,7 +81,7 @@ const Login = ({navigation}) => {
             <TouchableOpacity
               onPress={() => loginFun()}
               style={styles(colors).loginButtonView}>
-              <Text style={styles(colors).loginButtonText}>Login</Text>
+              <Text style={styles(colors).loginButtonText}>{strings.login}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles(colors).dontHaveAccntView} onPress={()=>navigation.navigate('Signup')}>
               <Text style={styles(colors).dontHaveAccntText}>
