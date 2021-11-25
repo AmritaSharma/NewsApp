@@ -12,7 +12,7 @@ import { getDimen } from '../../dimensions/dimen';
 import { useIsFocused } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
-import Dashboard from '../Dashboard/dashboard'
+import Dashboard from '../Dashboard/Dashboard'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { List } from 'react-native-paper';
 
@@ -97,7 +97,7 @@ const DrawerMenu = () => {
                                 />
                             )}
                             titleStyle={styles.itemText}
-                            onPress={() => navigation.navigate('InitialDeposite')}
+                            onPress={() => navigation.navigate('InitiateDeposite')}
                         />
                         <List.Item
                             title="Unsettled Fund Report"

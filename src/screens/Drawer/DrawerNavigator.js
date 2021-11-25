@@ -4,7 +4,7 @@ import { getDimen } from '../../dimensions/dimen';
 import DrawerMenu from '../Drawer/DrawerMenu';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Colour } from '../../constants/color_dark.json'
-import dashboard from '../../screens/Dashboard/dashboard';
+import Dashboard from '../Dashboard/Dashboard';
 import InitiateDeposite from '../../screens/Deposite/InitiateDeposite'
 
 const Drawer = createDrawerNavigator();
@@ -14,19 +14,19 @@ function DrawerNavigator({ navigation }) {
     console.log('DrawerNavigator')
     return (
         <Drawer.Navigator
-            screenOptions={{
-                headerTintColor: '#FFF',
-                headerStyle: {
-                    backgroundColor: '#000',
-                },
-                drawerStyle: {
-                    backgroundColor: '#FFF',
-                    //width: '90%',
-                },
-            }}
-            drawerContent={() => <DrawerMenu />}>
-            <Drawer.Screen name="DashboardScreen" component={dashboard} />
-            <Drawer.Screen name="InitialDeposite" component={InitiateDeposite} />
+        screenOptions={{
+          headerTintColor: '#FFF',
+          headerStyle: {
+            backgroundColor: '#F17E2B',
+          },
+          drawerStyle: {
+            backgroundColor: '#FFF',
+            //width: '90%',
+          },
+        }}
+        drawerContent={() => <DrawerMenu />}>
+            <Drawer.Screen name="DashboardScreen" component={Dashboard} />
+            <Drawer.Screen name="InitiateDeposite" component={InitiateDeposite} />
         </Drawer.Navigator>
     );
 };
