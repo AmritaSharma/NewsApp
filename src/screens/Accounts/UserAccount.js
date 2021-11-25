@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
   },
   innerView: {
     backgroundColor: AppColors().heading,
-    height: '80%',
+    height: '70%',
     width: '100%',
     borderRadius: 15,
     paddingHorizontal: 20,

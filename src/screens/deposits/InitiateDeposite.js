@@ -5,16 +5,15 @@ import {
   ImageBackground,
   Image,
   StyleSheet,
-  KeyboardAvoidingView,
   ScrollView,
   TextInput,
-  TouchableOpacity,
 } from 'react-native';
 import {AppColors} from '../../constants/appColors';
 import textSize from '../../constants/textSize';
 import strings from '../../constants/localization';
+import AppButton from '../../constants/AppButton';
 
-const InitiateDeposite = () => {
+const InitiateDeposite = ({navigation}) => {
   const [amount, setAmount] = useState('');
   const [prevdeposite, setPrevDeposite] = useState('');
   const [mode, setMode] = useState('');
@@ -23,9 +22,7 @@ const InitiateDeposite = () => {
     console.log('amount' + amount, ' name' + name);
   };
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={{flex: 1}}>
+    <View style={{flex: 1}}>
       <ImageBackground
         source={require('../../assets/splashscreen_background.png')}
         resizeMode="cover"
@@ -34,16 +31,16 @@ const InitiateDeposite = () => {
           <View>
             <Image
               source={require('../../assets/initdeposit_icon.png')}
-              style={{margin: 10}}
+              style={{margin: 10, top: 2}}
             />
             <View style={{top: -40, left: '35%'}}>
               <Text style={styles.title}>{strings.InitiateDeposit}</Text>
-              <Text style={styles.background}> {strings.Deposite}</Text>
+              <Text style={styles.subTitle}> {strings.Deposite}</Text>
             </View>
           </View>
           <Image
             source={require('../../assets/menu_icon.png')}
-            style={{margin: 10}}
+            style={{margin: 10, top: 2}}
           />
         </View>
 
@@ -83,11 +80,17 @@ const InitiateDeposite = () => {
                 onChangeText={mode => setMode(mode)}
                 value={mode}
               />
+
+              <AppButton
+                style={{marginVertical: 20}}
+                onPress={() => {}}
+                text={strings.InitiateDeposit}
+              />
             </View>
           </View>
         </ScrollView>
       </ImageBackground>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
@@ -122,17 +125,17 @@ const styles = StyleSheet.create({
   },
   toolbar: {
     backgroundColor: AppColors().background,
-    height: '8%',
+    height: '9%',
     flexDirection: 'row',
     paddingTop: 10,
     justifyContent: 'space-between',
   },
   innerView: {
     backgroundColor: AppColors().heading,
-    height: '49%',
+    height: '55%',
     width: '100%',
     borderRadius: 15,
-    padding: 20,
+    padding: 15,
   },
   heading: {
     fontSize: textSize.h2,
@@ -143,18 +146,5 @@ const styles = StyleSheet.create({
   body: {
     alignItems: 'center',
     margin: 20,
-  },
-  loginButtonView: {
-    backgroundColor: AppColors().buttonColor,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 12,
-    borderRadius: 10,
-    top: 40,
-  },
-  loginButtonText: {
-    fontSize: textSize.h4,
-    color: AppColors().headerColor,
-    fontWeight: '600',
   },
 });
