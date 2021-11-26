@@ -6,6 +6,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Colour } from '../../constants/color_dark.json'
 import Dashboard from '../Dashboard/Dashboard';
 import InitiateDeposite from '../../screens/Deposite/InitiateDeposite'
+import SettledFundReport from '../../screens/Deposite/SettledFundReport'
+import UnsettledFundReport from '../../screens/Deposite/UnsettledFundReport'
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -27,6 +29,9 @@ function DrawerNavigator({ navigation }) {
         drawerContent={() => <DrawerMenu />}>
             <Drawer.Screen name="DashboardScreen" component={Dashboard} />
             <Drawer.Screen name="InitiateDeposite" component={InitiateDeposite} />
+            <Drawer.Screen name="SettledFundReport" component={SettledFundReport} />
+            <Drawer.Screen name="UnsettledFundReport" component={UnsettledFundReport} />
+
         </Drawer.Navigator>
     );
 };

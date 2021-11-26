@@ -108,7 +108,7 @@ const DrawerMenu = () => {
                                 // source={arrowRightImage}
                                 />
                             )}
-                        // onPress={() => navigation.navigate('Security')}
+                          onPress={() => navigation.navigate('UnsettledFundReport')}
                         />
                         <List.Item
                             title="Settled Fund Report"
@@ -120,7 +120,7 @@ const DrawerMenu = () => {
                                 // source={arrowRightImage}
                                 />
                             )}
-                        // onPress={() => navigation.navigate('Security')}
+                          onPress={() => navigation.navigate('SettledFundReport')}
                         />
                         <List.Item
                             title="Perfect Money Fund Report"

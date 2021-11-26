@@ -13,6 +13,17 @@ const strings = new LocalizedStrings({
     dontHaveAccnt: 'Don\'t have an account? Sign Up',
     //sucess :
     Continue: 'Continue',
+    //SettledFund
+    Search:'Search',
+    Deposit:'Deposit ID',
+    Submit:'Submit',
+    Show:'Show',
+    Entries:'Entries',
+    FromDate:'From Date',
+    ToDate:'To Date',
+    Confirm:'Confirm',
+    Cancel:'Cancel'
+    
   },
   IN: {
     Reward: 'इनाम',
