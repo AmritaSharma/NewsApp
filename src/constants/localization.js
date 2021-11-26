@@ -55,6 +55,16 @@ const strings = new LocalizedStrings({
     DepositeId: 'Deposite Id',
     search: 'Search',
     reset: 'Reset',
+    //SettledFund
+    Search: 'Search',
+    Deposit: 'Deposit ID',
+    Submit: 'Submit',
+    Show: 'Show',
+    Entries: 'Entries',
+    FromDate: 'From Date',
+    ToDate: 'To Date',
+    Confirm: 'Confirm',
+    Cancel: 'Cancel',
   },
   IN: {
     Reward: 'इनाम',

@@ -51,7 +51,7 @@ export const InputTextArea = ({
       <MaterialCIcons
         name={materialCName}
         size={msize}
-        style={{right: 0}}
+        style={{right: 10}}
         color={colors.iconColor}
       />
     </View>

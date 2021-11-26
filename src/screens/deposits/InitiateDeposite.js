@@ -14,11 +14,14 @@ import strings from '../../constants/localization';
 import AppButton from '../../constants/AppButton';
 import {useTheme} from '@react-navigation/native';
 import {InputTextArea} from '../../components/InputTextArea';
-
+import SelectDropdown from 'react-native-select-dropdown';
+import Icon from 'react-native-vector-icons/AntDesign';
 const InitiateDeposite = ({navigation}) => {
   const [amount, setAmount] = useState('');
   const [prevdeposite, setPrevDeposite] = useState('');
   const [mode, setMode] = useState('');
+
+  const modeData = ['Bitcoin', 'Tron', 'Binance'];
 
   const {colors} = useTheme();
   const theme = useTheme();
@@ -34,7 +37,7 @@ const InitiateDeposite = ({navigation}) => {
           <View style={styles(colors).body}>
             <Image
               source={require('../../assets/initdeposite_img.png')}
-              style={{height: 200, width: 260, marginVertical: '25%'}}
+              style={{height: 200, width: 260, marginVertical: '18%'}}
             />
 
             <ScrollView style={styles(colors).innerView}>
@@ -43,9 +46,10 @@ const InitiateDeposite = ({navigation}) => {
                 placeholder=" $ Enter Amount"
                 placeholderTextColor={colors.heading}
                 style={styles(colors).input}
-                onChangeText={amount => setAmount(amount)}
+                setValue={amount => setAmount(amount)}
                 value={amount}
                 keyboardType="numeric"
+                maxLength={6}
               />
 
               <Text style={styles(colors).label}>
@@ -57,20 +61,29 @@ const InitiateDeposite = ({navigation}) => {
                 placeholderTextColor={colors.heading}
                 style={styles(colors).input}
                 keyboardType="numeric"
-                onChangeText={prevdeposite => setPrevDeposite(prevdeposite)}
+                setValue={prevdeposite => setPrevDeposite(prevdeposite)}
                 value={prevdeposite}
+                maxLength={6}
               />
 
               <Text style={styles(colors).label}> {strings.SelectMode}</Text>
-              <InputTextArea
-                placeholder="Bitcoin "
-                placeholderTextColor={colors.heading}
-                style={styles(colors).input}
-                onChangeText={mode => setMode(mode)}
-                value={mode}
-                IconName={'caret-down-outline'}
-                IconSize={20}
-              />
+
+              <View style={{flexDirection: 'row'}}>
+                <SelectDropdown
+                  data={modeData}
+                  defaultButtonText="Bitcoin"
+                  buttonTextStyle={styles(colors).DDtextstyle}
+                  buttonStyle={styles(colors).showEntryDropView}
+                  onSelect={(selectedItem, index) => {}}
+                  buttonTextAfterSelection={(selectedItem, index) => {
+                    return selectedItem;
+                  }}
+                  rowTextForSelection={(item, index) => {
+                    return item;
+                  }}
+                />
+                <Icon name="caretdown" size={20} style={{right: 40, top: 10}} />
+              </View>
             </ScrollView>
 
             <AppButton
@@ -98,14 +111,6 @@ const styles = props =>
       height: '100%',
       width: '100%',
     },
-    title: {
-      fontSize: textSize.h1,
-      color: props.heading,
-    },
-    subTitle: {
-      fontSize: textSize.p,
-      color: props.heading,
-    },
 
     label: {
       fontSize: textSize.h4,
@@ -115,28 +120,31 @@ const styles = props =>
       paddingVertical: 2,
       fontWeight: 'bold',
     },
-    toolbar: {
-      backgroundColor: props.headerColor,
-      height: '9%',
-      flexDirection: 'row',
-      paddingTop: 10,
-      justifyContent: 'space-between',
-    },
+
     innerView: {
       backgroundColor: props.heading,
-      height: '45%',
+      height: '47%',
       width: '100%',
       borderRadius: 15,
       padding: 15,
     },
-    heading: {
-      fontSize: textSize.h2,
-      color: props.inputBackgroud,
-      fontWeight: '600',
-      padding: 10,
-    },
+
     body: {
       alignItems: 'center',
       margin: 20,
+    },
+    showEntryDropView: {
+      flexDirection: 'row',
+      width: '99%',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      borderColor: props.borderColor,
+      borderWidth: 1.5,
+      borderRadius: 25,
+      backgroundColor: props.heading,
+    },
+    DDtextstyle: {
+      color: props.headerColor,
+      textAlign: 'left',
     },
   });

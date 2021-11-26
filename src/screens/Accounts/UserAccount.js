@@ -61,6 +61,7 @@ const UserAccount = ({navigation}) => {
                   value={name}
                   name={'person'}
                   size={20}
+                  maxLength={15}
                 />
 
                 <Text style={styles(colors).label}> {strings.sponserID}</Text>
@@ -71,6 +72,7 @@ const UserAccount = ({navigation}) => {
                   value={sponserId}
                   name={'groups'}
                   size={20}
+                  maxLength={10}
                 />
 
                 <Text style={styles(colors).label}> {strings.Country}</Text>
@@ -81,6 +83,7 @@ const UserAccount = ({navigation}) => {
                   value={country}
                   IconName={'ios-location'}
                   IconSize={20}
+                  maxLength={15}
                 />
 
                 <Text style={styles(colors).label}> {strings.BTCAddress}</Text>
@@ -91,6 +94,7 @@ const UserAccount = ({navigation}) => {
                   value={btcadd}
                   materialCName={'bitcoin'}
                   msize={20}
+                  maxLength={20}
                 />
 
                 <Text style={[styles(colors).label]}> {strings.email} </Text>
@@ -103,6 +107,7 @@ const UserAccount = ({navigation}) => {
                   value={email}
                   IconName={'mail'}
                   IconSize={20}
+                  maxLength={15}
                 />
 
                 <Text style={styles(colors).label}> {strings.Mobile}</Text>
@@ -141,15 +146,7 @@ const styles = props =>
       height: '100%',
       width: '100%',
     },
-    title: {
-      fontSize: textSize.h1,
-      color: props.heading,
-    },
-    subTitle: {
-      fontSize: textSize.p,
-      color: props.heading,
-      left: 5,
-    },
+
     input: {
       backgroundColor: props.headerColor,
       borderRadius: 30,
@@ -164,12 +161,7 @@ const styles = props =>
       margin: 5,
       top: 3,
     },
-    toolbar: {
-      backgroundColor: props.headerColor,
-      height: '9%',
-      flexDirection: 'row',
-      paddingTop: 10,
-    },
+
     innerView: {
       backgroundColor: props.heading,
       height: 670,
@@ -178,12 +170,7 @@ const styles = props =>
       padding: 20,
       top: '10%',
     },
-    heading: {
-      fontSize: textSize.h2,
-      color: props.headerColor,
-      fontWeight: '600',
-      padding: 10,
-    },
+
     body: {
       alignItems: 'center',
       margin: 20,

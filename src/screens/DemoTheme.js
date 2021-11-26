@@ -4,13 +4,8 @@ import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import {useTheme, Switch, TouchableRipple} from 'react-native-paper';
 import {AuthContext} from '../components/context';
 const DemoTheme = ({navigation}) => {
-  //const [isDarkTheme, setIsDarkTheme] = React.useState(false);
-  // const [isEnabled, setIsEnabled] = useState(false);
   const paperTheme = useTheme();
-  //console.log('splash',useContext(AuthContext))
-
   const {toggleTheme} = useContext(AuthContext);
-  //const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const goToLogin = () => {
     navigation.navigate('UserAccount');
   };
