@@ -72,7 +72,6 @@ const loginStack = () => {
         component={DemoTheme}
         options={{headerShown: false}}
      />
-
       {/* <Stack.Screen
         name="Dashboard"
         component={DrawerNavigator}
@@ -90,7 +89,6 @@ const homeStack = () => {
         component={Splash}
         options={{headerShown: false}}
       />
-
       <Stack.Screen
         name="Login"
         component={Login}
