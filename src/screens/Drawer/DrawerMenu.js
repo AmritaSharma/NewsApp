@@ -93,7 +93,7 @@ const DrawerMenu = () => {
                 source={controlPanelImg}
               />
             )}
-            onPress={() => navigation.navigate('DashboardScreen')}
+            onPress={() => navigation.navigate('ControlPanal')}
           />
 
           <List.Accordion
