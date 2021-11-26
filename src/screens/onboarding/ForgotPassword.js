@@ -95,12 +95,14 @@ const ForgotPassword = ({navigation}) => {
           </ScrollView>
         </View>
       </View>
-      {modalVisible && (
-        <EnterOtpPopView
-          modalVisible={modalVisible}
-          parentCallback={callbackFromOTP}
-        />
-      )}
+      <View style={{backgroundColor: 'transparent'}}>
+        {modalVisible && (
+          <EnterOtpPopView
+            modalVisible={modalVisible}
+            parentCallback={callbackFromOTP}
+          />
+        )}
+      </View>
     </KeyboardAvoidingView>
   );
 };
