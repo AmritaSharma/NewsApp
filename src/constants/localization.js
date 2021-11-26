@@ -42,7 +42,7 @@ const strings = new LocalizedStrings({
     FromDate:'From Date',
     ToDate:'To Date',
     Confirm:'Confirm',
-    Cancel:'Cancel'
+    Cancel:'Cancel',
     
   },
   IN: {
