@@ -19,9 +19,11 @@ const Login = ({navigation}) => {
   const {colors} = useTheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const theme = useTheme();
+  const {color} = useTheme();
   const loginFun = () => {
     console.log('email' + email, ' password' + password);
-    navigation.navigate('DemoTheme');
+    navigation.navigate('Dashboard');
   };
   return (
     <KeyboardAvoidingView
@@ -30,7 +32,6 @@ const Login = ({navigation}) => {
       <View style={{flex: 1}}>
         <View style={{height: '35%'}}>
           {/*  */}
-
           <ImageBackground
             source={require('../../assets/login_bg.png')}
             style={styles(colors).imageBackgroundStyle}>
@@ -73,17 +74,22 @@ const Login = ({navigation}) => {
               IconName={'lock-closed'}
               IconSize={20}
             />
-            <View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('ForgotPassword')}>
               <Text style={styles(colors).forgetPassText}>
                 {strings.forgetPassword}
               </Text>
-            </View>
+            </TouchableOpacity>
             <TouchableOpacity
               onPress={() => loginFun()}
               style={styles(colors).loginButtonView}>
-              <Text style={styles(colors).loginButtonText}>{strings.login}</Text>
+              <Text style={styles(colors).loginButtonText}>
+                {strings.login}
+              </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles(colors).dontHaveAccntView} onPress={()=>navigation.navigate('Signup')}>
+            <TouchableOpacity
+              style={styles(colors).dontHaveAccntView}
+              onPress={() => navigation.navigate('Signup')}>
               <Text style={styles(colors).dontHaveAccntText}>
                 {strings.dontHaveAccnt}
               </Text>
