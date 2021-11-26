@@ -1,15 +1,11 @@
-import React, {useEffect} from 'react';
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-} from '@react-navigation/drawer';
-import {getDimen} from '../../dimensions/dimen';
+import React from 'react';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import DrawerMenu from '../Drawer/DrawerMenu';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Colour} from '../../constants/color_dark.json';
 import Dashboard from '../Dashboard/dashboard';
 import UserAccount from '../Accounts/UserAccount';
+//import InitiateDeposite from '../../screens/Deposite/InitiateDeposite';
+import DemoTheme from '../DemoTheme';
 import InitiateDeposite from '../deposits/InitiateDeposite';
 
 const Drawer = createDrawerNavigator();
@@ -20,6 +16,7 @@ function DrawerNavigator({navigation}) {
   return (
     <Drawer.Navigator
       screenOptions={{
+        headerShown: true,
         headerTintColor: '#FFF',
         headerStyle: {
           backgroundColor: '#F17E2B',
@@ -33,6 +30,7 @@ function DrawerNavigator({navigation}) {
       <Drawer.Screen name="DashboardScreen" component={Dashboard} />
       <Drawer.Screen name="InitiateDeposite" component={InitiateDeposite} />
       <Drawer.Screen name="UserAccount" component={UserAccount} />
+      <Drawer.Screen name="Logout" component={DemoTheme} />
     </Drawer.Navigator>
   );
 }
