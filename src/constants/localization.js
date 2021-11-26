@@ -33,6 +33,17 @@ const strings = new LocalizedStrings({
     // Genealogy
     userIDPlaceholder: 'Enter User Id',
     createStructure: 'Create Structure',
+    //SettledFund
+    Search:'Search',
+    Deposit:'Deposit ID',
+    Submit:'Submit',
+    Show:'Show',
+    Entries:'Entries',
+    FromDate:'From Date',
+    ToDate:'To Date',
+    Confirm:'Confirm',
+    Cancel:'Cancel'
+    
   },
   IN: {
     Reward: 'इनाम',
