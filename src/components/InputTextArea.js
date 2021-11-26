@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {TextInput, View, Image, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {AppColors} from '../constants/appColors';
-// placeholder, icon, setValue,value
+
 export const InputTextArea = ({
   placeholder,
   setValue,
@@ -13,9 +13,9 @@ export const InputTextArea = ({
   onSubmitEditing,
   maxLength,
   IconName,
+  IconSize
 }) => {
   const {colors} = useTheme();
-
   return (
     <View style={styles(colors).inputWrapper}>
       <TextInput
@@ -32,7 +32,7 @@ export const InputTextArea = ({
       />
       <Icon
         name={IconName}
-        size={20}
+        size={IconSize}
         style={{marginRight: 10}}
         color={colors.iconColor}
       />
@@ -53,7 +53,7 @@ const styles = props =>
       alignItems: 'center',
       justifyContent: 'space-between',
       borderColor: props.borderColor,
-      borderWidth: 0.5,
+      borderWidth: 1.5,
       borderRadius: 25,
     },
   });

@@ -1,6 +1,10 @@
-import React, { useEffect } from 'react';
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
-import { getDimen } from '../../dimensions/dimen';
+import React, {useEffect} from 'react';
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+} from '@react-navigation/drawer';
+import {getDimen} from '../../dimensions/dimen';
 import DrawerMenu from '../Drawer/DrawerMenu';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Colour } from '../../constants/color_dark.json'
@@ -17,12 +21,13 @@ function DrawerNavigator({ navigation }) {
     return (
         <Drawer.Navigator
         screenOptions={{
+          headerShown:true,
           headerTintColor: '#FFF',
           headerStyle: {
             backgroundColor: '#F17E2B',
           },
           drawerStyle: {
-            backgroundColor: '#FFF',
+            backgroundColor: '#FFF000',
             //width: '90%',
           },
         }}
@@ -37,5 +42,3 @@ function DrawerNavigator({ navigation }) {
 };
 
 export default DrawerNavigator;
-
-
