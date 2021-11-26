@@ -23,7 +23,6 @@ import {AuthContext} from '../components/context';
 import AsyncStorage from '@react-native-community/async-storage';
 import DrawerNavigator from '../screens/Drawer/DrawerNavigator';
 
-
 const Stack = createStackNavigator();
 
 const loginStack = () => {
@@ -44,7 +43,7 @@ const loginStack = () => {
         component={Signup}
         options={{headerShown: false}}
       />
-       <Stack.Screen
+      <Stack.Screen
         name="ForgotPassword"
         component={ForgotPassword}
         options={{headerShown: false}}
@@ -53,7 +52,7 @@ const loginStack = () => {
         name="DemoTheme"
         component={DemoTheme}
         options={{headerShown: false}}
-     />
+      />
 
       <Stack.Screen
         name="Dashboard"

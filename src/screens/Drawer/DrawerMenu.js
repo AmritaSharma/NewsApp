@@ -308,7 +308,7 @@ const DrawerMenu = () => {
                 )}
                 style={[styles.menuText, {backgroundColor: colors.headerColor}]}
                 titleStyle={styles.itemText}
-                // onPress={() => navigation.navigate('Genealogy')}
+                onPress={() => navigation.navigate('Genealogy')}
               />
               <List.Item
                 title="Team View"

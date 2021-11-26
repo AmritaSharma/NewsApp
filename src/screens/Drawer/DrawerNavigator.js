@@ -8,9 +8,11 @@ import {getDimen} from '../../dimensions/dimen';
 import DrawerMenu from '../Drawer/DrawerMenu';
 import {createStackNavigator} from '@react-navigation/stack';
 import ControlPanal from '../Dashboard/ControlPanal';
+import {Colour} from '../../constants/color_dark.json';
 import InitiateDeposite from '../../screens/Deposite/InitiateDeposite';
 import SettledFundReport from '../../screens/Deposite/SettledFundReport';
 import UnsettledFundReport from '../../screens/Deposite/UnsettledFundReport';
+import Genealogy from '../../screens/Partners/Genealogy';
 import {useTheme} from '@react-navigation/native';
 
 const Drawer = createDrawerNavigator();
@@ -41,6 +43,7 @@ function DrawerNavigator({navigation}) {
         name="UnsettledFundReport"
         component={UnsettledFundReport}
       />
+      <Drawer.Screen name="Genealogy" component={Genealogy} />
     </Drawer.Navigator>
   );
 }
