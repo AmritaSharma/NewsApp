@@ -16,7 +16,6 @@ import {
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
-import Dashboard from '../Dashboard/dashboard';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {List} from 'react-native-paper';
 import textSize from '../../constants/textSize';
@@ -136,7 +135,7 @@ const DrawerMenu = () => {
                   // source={arrowRightImage}
                 />
               )}
-              // onPress={() => navigation.navigate('Security')}
+               onPress={() => navigation.navigate('UnsettledFundReport')}
             />
             <List.Item
               title="Settled Fund Report"
@@ -148,7 +147,7 @@ const DrawerMenu = () => {
                   // source={arrowRightImage}
                 />
               )}
-              // onPress={() => navigation.navigate('Security')}
+               onPress={() => navigation.navigate('SettledFundReport')}
             />
             <List.Item
               title="Perfect Money Fund Report"

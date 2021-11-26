@@ -30,6 +30,17 @@ const strings = new LocalizedStrings({
     userIdPlaceholder: 'Enter User ID',
     //sucess :
     Continue: 'Continue',
+    //SettledFund
+    Search:'Search',
+    Deposit:'Deposit ID',
+    Submit:'Submit',
+    Show:'Show',
+    Entries:'Entries',
+    FromDate:'From Date',
+    ToDate:'To Date',
+    Confirm:'Confirm',
+    Cancel:'Cancel'
+    
   },
   IN: {
     Reward: 'इनाम',
