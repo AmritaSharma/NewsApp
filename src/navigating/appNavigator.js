@@ -6,6 +6,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import DemoTheme from '../screens/DemoTheme';
 import Login from '../screens/onboarding/Login';
 import Splash from '../screens/onboarding/Splash';
+import Signup from '../screens/onboarding/Signup';
+import ForgotPassword from '../screens/onboarding/ForgotPassword';
 import {useSelector} from 'react-redux';
 import {
   DarkTheme as PaperDarkTheme,
@@ -20,6 +22,7 @@ import {
 import {AuthContext} from '../components/context';
 import AsyncStorage from '@react-native-community/async-storage';
 import DrawerNavigator from '../screens/Drawer/DrawerNavigator';
+
 
 const Stack = createStackNavigator();
 
@@ -36,7 +39,16 @@ const loginStack = () => {
         component={Login}
         options={{headerShown: false}}
       />
-
+      <Stack.Screen
+        name="Signup"
+        component={Signup}
+        options={{headerShown: false}}
+      />
+       <Stack.Screen
+        name="ForgotPassword"
+        component={ForgotPassword}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="DemoTheme"
         component={DemoTheme}
