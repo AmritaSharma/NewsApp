@@ -271,7 +271,7 @@ const DrawerMenu = () => {
                 />
               )}
               titleStyle={styles.itemText}
-              // onPress={() => navigation.navigate('Genealogy')}
+              onPress={() => navigation.navigate('Genealogy')}
             />
             <List.Item
               title="Team View"

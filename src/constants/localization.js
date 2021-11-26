@@ -30,6 +30,9 @@ const strings = new LocalizedStrings({
     userIdPlaceholder: 'Enter User ID',
     //sucess :
     Continue: 'Continue',
+    // Genealogy
+    userIDPlaceholder: 'Enter User Id',
+    createStructure: 'Create Structure',
   },
   IN: {
     Reward: 'इनाम',

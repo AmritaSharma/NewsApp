@@ -8,6 +8,7 @@ import Login from '../screens/onboarding/Login';
 import Splash from '../screens/onboarding/Splash';
 import Signup from '../screens/onboarding/Signup';
 import ForgotPassword from '../screens/onboarding/ForgotPassword';
+import Genealogy from '../screens/Partners/Genealogy'
 import {useSelector} from 'react-redux';
 import {
   DarkTheme as PaperDarkTheme,
@@ -59,6 +60,11 @@ const loginStack = () => {
         name="Dashboard"
         component={DrawerNavigator}
         options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Genealogy"
+        component={Genealogy}
+        options={{ headerShown: false }}
       />
     </>
   );
