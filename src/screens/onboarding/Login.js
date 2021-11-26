@@ -11,14 +11,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {InputTextArea} from '../../components/InputTextArea';
-import {AppColors} from '../../constants/appColors';
 import strings from '../../constants/localization';
 import textSize from '../../constants/textSize';
 import {useTheme} from '@react-navigation/native';
 
 const Login = ({navigation}) => {
   const {colors} = useTheme();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const theme = useTheme();
@@ -63,6 +61,7 @@ const Login = ({navigation}) => {
               onSubmitEditing={text => console.log('text', text)}
               maxLength={100}
               IconName={'mail'}
+              IconSize={20}
             />
             <Text style={styles(colors).titleText}>{strings.password}</Text>
             <InputTextArea
@@ -74,6 +73,7 @@ const Login = ({navigation}) => {
               onSubmitEditing={text => console.log('text', text)}
               maxLength={100}
               IconName={'lock-closed'}
+              IconSize={20}
             />
             <View>
               <Text style={styles(colors).forgetPassText}>
@@ -83,13 +83,13 @@ const Login = ({navigation}) => {
             <TouchableOpacity
               onPress={() => loginFun()}
               style={styles(colors).loginButtonView}>
-              <Text style={styles(colors).loginButtonText}>Login</Text>
+              <Text style={styles(colors).loginButtonText}>{strings.login}</Text>
             </TouchableOpacity>
-            <View style={styles(colors).dontHaveAccntView}>
+            <TouchableOpacity style={styles(colors).dontHaveAccntView} onPress={()=>navigation.navigate('Signup')}>
               <Text style={styles(colors).dontHaveAccntText}>
                 {strings.dontHaveAccnt}
               </Text>
-            </View>
+            </TouchableOpacity>
           </ScrollView>
         </View>
       </View>
