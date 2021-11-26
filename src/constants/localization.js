@@ -46,6 +46,17 @@ const strings = new LocalizedStrings({
     belowDetails: 'You have used your below details.',
     //sucess :
     Continue: 'Continue',
+    //SettledFund
+    Search:'Search',
+    Deposit:'Deposit ID',
+    Submit:'Submit',
+    Show:'Show',
+    Entries:'Entries',
+    FromDate:'From Date',
+    ToDate:'To Date',
+    Confirm:'Confirm',
+    Cancel:'Cancel'
+    
   },
   IN: {
     Reward: 'इनाम',
