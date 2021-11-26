@@ -73,11 +73,11 @@ const loginStack = () => {
         options={{headerShown: false}}
      />
 
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Dashboard"
         component={DrawerNavigator}
         options={{headerShown: false}}
-      />
+      /> */}
     </>
   );
 };
