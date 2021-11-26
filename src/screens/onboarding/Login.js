@@ -74,17 +74,22 @@ const Login = ({navigation}) => {
               IconName={'lock-closed'}
               IconSize={20}
             />
-            <View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('ForgotPassword')}>
               <Text style={styles(colors).forgetPassText}>
                 {strings.forgetPassword}
               </Text>
-            </View>
+            </TouchableOpacity>
             <TouchableOpacity
               onPress={() => loginFun()}
               style={styles(colors).loginButtonView}>
-              <Text style={styles(colors).loginButtonText}>{strings.login}</Text>
+              <Text style={styles(colors).loginButtonText}>
+                {strings.login}
+              </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles(colors).dontHaveAccntView} onPress={()=>navigation.navigate('Signup')}>
+            <TouchableOpacity
+              style={styles(colors).dontHaveAccntView}
+              onPress={() => navigation.navigate('Signup')}>
               <Text style={styles(colors).dontHaveAccntText}>
                 {strings.dontHaveAccnt}
               </Text>
