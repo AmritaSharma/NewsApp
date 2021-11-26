@@ -25,7 +25,7 @@ const Login = ({navigation}) => {
   const {color} = useTheme();
   const loginFun = () => {
     console.log('email' + email, ' password' + password);
-    navigation.navigate('DemoTheme');
+    navigation.navigate('Dashboard');
   };
   return (
     <KeyboardAvoidingView

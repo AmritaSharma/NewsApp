@@ -10,6 +10,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {Colour} from '../../constants/color_dark.json';
 import Dashboard from '../Dashboard/dashboard';
 import InitiateDeposite from '../../screens/Deposite/InitiateDeposite';
+import DemoTheme from '../DemoTheme';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -19,7 +20,8 @@ function DrawerNavigator({navigation}) {
   return (
     <Drawer.Navigator
       screenOptions={{
-        headerTintColor: '#FFF000',
+        headerShown: true,
+        headerTintColor: '#FFF',
         headerStyle: {
           backgroundColor: '#F17E2B',
         },
@@ -31,6 +33,7 @@ function DrawerNavigator({navigation}) {
       drawerContent={() => <DrawerMenu />}>
       <Drawer.Screen name="DashboardScreen" component={Dashboard} />
       <Drawer.Screen name="InitiateDeposite" component={InitiateDeposite} />
+      <Drawer.Screen name="Logout" component={DemoTheme} />
     </Drawer.Navigator>
   );
 }

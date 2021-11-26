@@ -26,7 +26,7 @@ const Stack = createStackNavigator();
 const loginStack = () => {
   return (
     <>
-     {/* <Stack.Screen
+      <Stack.Screen
         name="Splash"
         component={Splash}
         options={{headerShown: false}}
@@ -41,13 +41,13 @@ const loginStack = () => {
         name="DemoTheme"
         component={DemoTheme}
         options={{headerShown: false}}
-     />*/}
-     
-     <Stack.Screen
+     />
+
+      <Stack.Screen
         name="Dashboard"
         component={DrawerNavigator}
         options={{headerShown: false}}
-     />
+      />
     </>
   );
 };
