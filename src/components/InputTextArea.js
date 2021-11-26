@@ -61,6 +61,7 @@ export const InputTextArea = ({
 const styles = props =>
   StyleSheet.create({
     input: {
+      height: 45,
       width: '90%',
       paddingLeft: 16,
       color: props.headerColor,

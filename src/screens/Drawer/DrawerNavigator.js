@@ -2,28 +2,30 @@ import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import DrawerMenu from '../Drawer/DrawerMenu';
 import {createStackNavigator} from '@react-navigation/stack';
-import Dashboard from '../Dashboard/dashboard';
+// import Dashboard from '../Dashboard/dashboard';
 import UserAccount from '../Accounts/UserAccount';
-//import InitiateDeposite from '../../screens/Deposite/InitiateDeposite';
 import DemoTheme from '../DemoTheme';
-import InitiateDeposite from '../deposits/InitiateDeposite';
-import {Colour} from '../../constants/color_dark.json';
 // import ControlPanal from '../Dashboard/ControlPanal';
 import SettledFundReport from '../../screens/Deposite/SettledFundReport';
 import UnsettledFundReport from '../../screens/Deposite/UnsettledFundReport';
+import Genealogy from '../../screens/Partners/Genealogy';
+import {useTheme} from '@react-navigation/native';
+import InitiateDeposite from '../deposits/InitiateDeposite';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
 function DrawerNavigator({navigation}) {
+  const {colors} = useTheme();
+
   console.log('DrawerNavigator');
   return (
     <Drawer.Navigator
       screenOptions={{
         headerShown: true,
-        headerTintColor: '#FFF',
+        headerTintColor: colors.heading,
         headerStyle: {
-          backgroundColor: '#F17E2B',
+          backgroundColor: colors.headerColor,
         },
         drawerStyle: {
           backgroundColor: '#FFF',
@@ -40,6 +42,7 @@ function DrawerNavigator({navigation}) {
         name="UnsettledFundReport"
         component={UnsettledFundReport}
       />
+      <Drawer.Screen name="Genealogy" component={Genealogy} />
     </Drawer.Navigator>
   );
 }
