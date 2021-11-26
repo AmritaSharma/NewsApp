@@ -49,6 +49,8 @@ const UserAccount = ({navigation}) => {
                   placeholderTextColor={colors.heading}
                   setValue={text => setUserId(text)}
                   value={userId}
+                  name={'person'}
+                  size={20}
                 />
 
                 <Text style={styles(colors).label}> {strings.FullName}</Text>
@@ -57,6 +59,8 @@ const UserAccount = ({navigation}) => {
                   placeholderTextColor={colors.heading}
                   setValue={text => setName(text)}
                   value={name}
+                  name={'person'}
+                  size={20}
                 />
 
                 <Text style={styles(colors).label}> {strings.sponserID}</Text>
@@ -65,6 +69,8 @@ const UserAccount = ({navigation}) => {
                   placeholderTextColor={colors.heading}
                   setValue={text => setSponserID(text)}
                   value={sponserId}
+                  name={'groups'}
+                  size={20}
                 />
 
                 <Text style={styles(colors).label}> {strings.Country}</Text>
@@ -73,6 +79,8 @@ const UserAccount = ({navigation}) => {
                   placeholderTextColor={colors.heading}
                   setValue={text => setCountry(text)}
                   value={country}
+                  IconName={'ios-location'}
+                  IconSize={20}
                 />
 
                 <Text style={styles(colors).label}> {strings.BTCAddress}</Text>
@@ -81,6 +89,8 @@ const UserAccount = ({navigation}) => {
                   placeholderTextColor={colors.heading}
                   setValue={text => setBtcAdd(text)}
                   value={btcadd}
+                  materialCName={'bitcoin'}
+                  msize={20}
                 />
 
                 <Text style={[styles(colors).label]}> {strings.email} </Text>
@@ -91,6 +101,8 @@ const UserAccount = ({navigation}) => {
                   placeholderTextColor={colors.heading}
                   setValue={text => setEmail(text)}
                   value={email}
+                  IconName={'mail'}
+                  IconSize={20}
                 />
 
                 <Text style={styles(colors).label}> {strings.Mobile}</Text>
@@ -101,6 +113,8 @@ const UserAccount = ({navigation}) => {
                   placeholderTextColor={colors.heading}
                   setValue={text => setmobile(text)}
                   value={mobile}
+                  name={'phone-iphone'}
+                  size={20}
                 />
               </View>
               <AppButton

@@ -3,7 +3,9 @@ import React, {useState} from 'react';
 import {TextInput, View, Image, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {AppColors} from '../constants/appColors';
-
+import Icons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+// import * as Icons from 'react-native-vector-icons';
 export const InputTextArea = ({
   placeholder,
   setValue,
@@ -14,8 +16,10 @@ export const InputTextArea = ({
   maxLength,
   IconName,
   IconSize,
-  source,
-  style,
+  name,
+  size,
+  materialCName,
+  msize,
 }) => {
   const {colors} = useTheme();
   return (
@@ -38,7 +42,18 @@ export const InputTextArea = ({
         style={{marginRight: 10}}
         color={colors.iconColor}
       />
-      <Image source={source} style={style} color={colors.iconColor} />
+      <Icons
+        name={name}
+        size={size}
+        style={{right: 10}}
+        color={colors.iconColor}
+      />
+      <MaterialCIcons
+        name={materialCName}
+        size={msize}
+        style={{right: 0}}
+        color={colors.iconColor}
+      />
     </View>
   );
 };

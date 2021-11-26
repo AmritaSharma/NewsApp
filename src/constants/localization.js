@@ -41,7 +41,7 @@ const strings = new LocalizedStrings({
     Country: 'Country',
     BTCAddress: ' BTC Address',
     Mobile: ' Mobile',
-    InitiateDeposit: 'Initiate Deposit',
+    InitiatePayment: 'Initiate Payment',
     Deposite: 'Deposit',
     EnterAmt: 'Enter Amount (In USD)',
     SelectMode: 'Select Mode',

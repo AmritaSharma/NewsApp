@@ -7,13 +7,13 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   ScrollView,
-  TextInput,
 } from 'react-native';
 import {AppColors} from '../../constants/appColors';
 import textSize from '../../constants/textSize';
 import strings from '../../constants/localization';
 import AppButton from '../../constants/AppButton';
 import {useTheme} from '@react-navigation/native';
+import {InputTextArea} from '../../components/InputTextArea';
 
 const InitiateDeposite = ({navigation}) => {
   const [amount, setAmount] = useState('');
@@ -31,35 +31,16 @@ const InitiateDeposite = ({navigation}) => {
           source={require('../../assets/splashscreen_background.png')}
           resizeMode="cover"
           style={styles.bgImg}>
-          <View style={styles(colors).toolbar}>
-            <View>
-              <Image
-                source={require('../../assets/initdeposit_icon.png')}
-                style={{margin: 10, top: 2}}
-              />
-              <View style={{top: -40, left: '35%'}}>
-                <Text style={styles(colors).title}>
-                  {strings.InitiateDeposit}
-                </Text>
-                <Text style={styles(colors).subTitle}> {strings.Deposite}</Text>
-              </View>
-            </View>
-            <Image
-              source={require('../../assets/menu_icon.png')}
-              style={{margin: 10, top: 2}}
-            />
-          </View>
-
           <View style={styles(colors).body}>
             <Image
               source={require('../../assets/initdeposite_img.png')}
-              style={{height: 200, width: 260, marginVertical: '8%'}}
+              style={{height: 200, width: 260, marginVertical: '25%'}}
             />
 
             <ScrollView style={styles(colors).innerView}>
               <Text style={styles(colors).label}>{strings.EnterAmt}</Text>
-              <TextInput
-                placeholder="Enter Amount"
+              <InputTextArea
+                placeholder=" $ Enter Amount"
                 placeholderTextColor={colors.heading}
                 style={styles(colors).input}
                 onChangeText={amount => setAmount(amount)}
@@ -67,33 +48,40 @@ const InitiateDeposite = ({navigation}) => {
                 keyboardType="numeric"
               />
 
-              <Text style={styles(colors).label}> {strings.SelectMode}</Text>
-              <TextInput
-                placeholder="Bitcoin (BTC) "
-                placeholderTextColor={colors.heading}
-                style={styles(colors).input}
-                onChangeText={mode => setMode(mode)}
-                value={mode}
-              />
-
               <Text style={styles(colors).label}>
                 {' '}
                 {strings.PreviewDeposite}
               </Text>
-              <TextInput
-                placeholder="$"
+              <InputTextArea
+                placeholder="$ 3314"
                 placeholderTextColor={colors.heading}
                 style={styles(colors).input}
                 keyboardType="numeric"
                 onChangeText={prevdeposite => setPrevDeposite(prevdeposite)}
                 value={prevdeposite}
               />
+
+              <Text style={styles(colors).label}> {strings.SelectMode}</Text>
+              <InputTextArea
+                placeholder="Bitcoin "
+                placeholderTextColor={colors.heading}
+                style={styles(colors).input}
+                onChangeText={mode => setMode(mode)}
+                value={mode}
+                IconName={'caret-down-outline'}
+                IconSize={20}
+              />
             </ScrollView>
 
             <AppButton
-              style={{marginVertical: 20, width: '75%', bottom: '8%'}}
+              style={{
+                marginVertical: 5,
+                width: '90%',
+                bottom: '13%',
+                paddingBottom: 50,
+              }}
               onPress={() => {}}
-              text={strings.InitiateDeposit}
+              text={strings.InitiatePayment}
             />
           </View>
         </ImageBackground>
@@ -118,20 +106,14 @@ const styles = props =>
       fontSize: textSize.p,
       color: props.heading,
     },
-    input: {
-      backgroundColor: props.inputBackgroud,
-      borderRadius: 30,
-      paddingHorizontal: 20,
-      height: 35,
-      color: props.heading,
-      bottom: 10,
-    },
+
     label: {
       fontSize: textSize.h4,
       color: props.headerColor,
       fontWeight: '600',
       margin: 5,
-      paddingVertical: 10,
+      paddingVertical: 2,
+      fontWeight: 'bold',
     },
     toolbar: {
       backgroundColor: props.headerColor,
@@ -142,11 +124,10 @@ const styles = props =>
     },
     innerView: {
       backgroundColor: props.heading,
-      height: '37%',
+      height: '45%',
       width: '100%',
       borderRadius: 15,
       padding: 15,
-      marginBottom: 50,
     },
     heading: {
       fontSize: textSize.h2,
