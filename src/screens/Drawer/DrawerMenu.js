@@ -12,9 +12,10 @@ import { getDimen } from '../../dimensions/dimen';
 import { useIsFocused } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
-import Dashboard from '../Dashboard/Dashboard'
+import Dashboard from '../Dashboard/dashboard'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { List } from 'react-native-paper';
+import textSize from '../../constants/textSize'
 
 const DrawerMenu = () => {
     const navigation = useNavigation();
@@ -22,6 +23,16 @@ const DrawerMenu = () => {
     const [userImage, setUserImage] = React.useState('')
     const [isPro, setIsPro] = React.useState('')
     const [showLoader, setShowLoader] = useState('hide');
+
+    // Images
+    const controlPanelImg = require('../../assets/cryptobrite_wallet.png');
+    const depositeImg = require('../../assets/cryptobrite_wallet.png');
+    const AccountImg = require('../../assets/avatar.png');
+    const PartnersImg = require('../../assets/direct_partners.png');
+    const revenueImg = require('../../assets/deposit_intatted.png');
+    const withdrawalImg = require('../../assets/total_withdrawl.png');
+    const manageAllIdBalanceImg = require('../../assets/receuved_balnce.png');
+    const plusImage = require('../../assets/add.png');
 
 
     const handleLogOut = () => {
@@ -39,14 +50,14 @@ const DrawerMenu = () => {
 
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
-            
-            <ScrollView style={styles.menuText}>
-                <View style={{ flex: 1.2, flexDirection: 'row', backgroundColor: 'black', paddingLeft: '12%', paddingTop: '5%', alignItems: 'center' }}>
+
+            <ScrollView>
+                <View style={{ height: getDimen(0.26), flexDirection: 'row', backgroundColor: 'black', paddingLeft: '12%', alignItems: 'center' }}>
                     <Image
                         // source={require('../../assets/imageedit_2_2851942888.png')}
                         style={{ height: getDimen(0.18), width: getDimen(0.18), backgroundColor: 'red', borderRadius: getDimen(0.9) }} />
                     <View style={{ flexDirection: 'column', paddingLeft: '5%' }}>
-                        <Text style={{ color: 'white', fontWeight: 'bold' }}>
+                        <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>
                             JOHN DOE
                         </Text>
                         <Text style={{ color: 'white' }}>
@@ -63,10 +74,10 @@ const DrawerMenu = () => {
                             <Image
                                 style={[styles.leftIcon, { marginTop: 7 }]}
                                 color='#1b2a39'
-                            // source={dashboardImage}
+                                source={controlPanelImg}
                             />
                         )}
-                    onPress={() => navigation.navigate('DashboardScreen')}
+                        onPress={() => navigation.navigate('DashboardScreen')}
                     />
 
                     <List.Accordion
@@ -75,11 +86,11 @@ const DrawerMenu = () => {
                             <Image
                                 style={styles.leftIcon}
                                 color={'white'}
-                            // source={userMenuImage}
+                                source={depositeImg}
                             />
                         )}
                         right={props => <Image style={styles.rightIcon}
-                        // source={plusImage} 
+                        source={plusImage} 
 
                         />}
                         id="3"
@@ -167,11 +178,11 @@ const DrawerMenu = () => {
                             <Image
                                 style={styles.leftIcon}
                                 color={'white'}
-                            // source={depositImage}
+                                source={AccountImg}
                             />
                         )}
                         right={props => <Image style={styles.rightIcon}
-                        // source={plusImage} 
+                        source={plusImage} 
 
                         />}
                         theme={{ colors: { text: 'white' } }}
@@ -224,12 +235,12 @@ const DrawerMenu = () => {
                         id="5"
                         left={props => (
                             <Image style={styles.leftIcon} color={'white'}
-                            // source={teamImage} 
+                                source={PartnersImg}
 
                             />
                         )}
                         right={props => <Image
-                            // source={plusImage} 
+                            source={plusImage} 
                             style={styles.rightIcon} />}
                         theme={{ colors: { text: 'white' } }}
                         style={styles.menuText}
@@ -279,11 +290,11 @@ const DrawerMenu = () => {
                             <Image
                                 style={styles.leftIcon}
                                 color={'white'}
-                            // source={incomeImage}
+                                source={revenueImg}
                             />
                         )}
                         right={props => <Image style={styles.rightIcon}
-                        // source={plusImage} 
+                        source={plusImage} 
 
                         />}
                         theme={{ colors: { text: 'white' } }}
@@ -299,11 +310,11 @@ const DrawerMenu = () => {
                             <Image
                                 style={styles.leftIcon}
                                 color={'white'}
-                            // source={incomeImage}
+                                source={withdrawalImg}
                             />
                         )}
                         right={props => <Image style={styles.rightIcon}
-                        // source={plusImage} 
+                        source={plusImage} 
 
                         />}
                         theme={{ colors: { text: 'white' } }}
@@ -354,11 +365,11 @@ const DrawerMenu = () => {
                             <Image
                                 style={styles.leftIcon}
                                 color={'white'}
-                            // source={incomeImage}
+                                source={manageAllIdBalanceImg}
                             />
                         )}
                         right={props => <Image style={styles.rightIcon}
-                        // source={plusImage} 
+                        source={plusImage} 
 
                         />}
                         theme={{ colors: { text: 'white' } }}
@@ -423,34 +434,19 @@ const DrawerMenu = () => {
 export default DrawerMenu;
 
 const styles = StyleSheet.create({
-    searchIcon: {
-        //padding: 10,
-        height: 80,
-        width: 80,
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignContent: 'center',
-        borderRadius: 400 / 2,
-        borderColor: 'white',
-        borderWidth: 5,
-        //flex:1
-    },
     menuText: {
         backgroundColor: 'white',
-        fontSize: 20,
+        fontSize: getDimen(0.043),
         color: '#1b2a39',
         paddingLeft: '3%',
-        // borderStartWidth:'1'
     },
     itemText: {
-        // backgroundColor: '#262626',
-        fontSize: 18,
+        fontSize: getDimen(0.025),
         color: '#1b2a39',
-
-        // borderStartWidth:'1'
     },
     rightIcon: {
-        //height:30,
+        height:getDimen(0.036),
+        width: getDimen(0.036),
         marginLeft: 0,
     },
     leftIcon: {

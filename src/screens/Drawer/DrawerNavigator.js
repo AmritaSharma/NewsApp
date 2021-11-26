@@ -4,7 +4,7 @@ import { getDimen } from '../../dimensions/dimen';
 import DrawerMenu from '../Drawer/DrawerMenu';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Colour } from '../../constants/color_dark.json'
-import Dashboard from '../Dashboard/Dashboard';
+import Dashboard from '../Dashboard/dashboard';
 import InitiateDeposite from '../../screens/Deposite/InitiateDeposite'
 
 const Drawer = createDrawerNavigator();
