@@ -5,9 +5,12 @@ import lightColors from '../constants/color_light.json';
 import {createStackNavigator} from '@react-navigation/stack';
 import DemoTheme from '../screens/DemoTheme';
 import Login from '../screens/onboarding/Login';
+import GenerateNewPassword from '../screens/onboarding/GenerateNewPassword';
 import Splash from '../screens/onboarding/Splash';
 import Signup from '../screens/onboarding/Signup';
 import ForgotPassword from '../screens/onboarding/ForgotPassword';
+import PassUpdateSuccessMessage from '../screens/onboarding/PassUpdateSuccessMessage';
+import ThankYou from '../screens/onboarding/ThankYou';
 import {useSelector} from 'react-redux';
 import {
   DarkTheme as PaperDarkTheme,
@@ -46,6 +49,21 @@ const loginStack = () => {
        <Stack.Screen
         name="ForgotPassword"
         component={ForgotPassword}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="GenerateNewPassword"
+        component={GenerateNewPassword}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PassUpdateSuccessMessage"
+        component={PassUpdateSuccessMessage}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ThankYou"
+        component={ThankYou}
         options={{headerShown: false}}
       />
       <Stack.Screen
