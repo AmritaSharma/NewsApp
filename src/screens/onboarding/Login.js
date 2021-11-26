@@ -14,12 +14,15 @@ import {InputTextArea} from '../../components/InputTextArea';
 import strings from '../../constants/localization';
 import textSize from '../../constants/textSize';
 import {useTheme} from '@react-navigation/native';
+
 const Login = ({navigation}) => {
   const {colors} = useTheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const theme = useTheme();
   const {color} = useTheme();
+
   const loginFun = () => {
     console.log('email' + email, ' password' + password);
     navigation.navigate('Dashboard');

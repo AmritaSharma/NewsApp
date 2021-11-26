@@ -23,9 +23,6 @@ const InitiateDeposite = ({navigation}) => {
   const {colors} = useTheme();
   const theme = useTheme();
 
-  const CreateAcc = () => {
-    console.log('amount' + amount, ' name' + name);
-  };
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -70,6 +67,15 @@ const InitiateDeposite = ({navigation}) => {
                 keyboardType="numeric"
               />
 
+              <Text style={styles(colors).label}> {strings.SelectMode}</Text>
+              <TextInput
+                placeholder="Bitcoin (BTC) "
+                placeholderTextColor={colors.heading}
+                style={styles(colors).input}
+                onChangeText={mode => setMode(mode)}
+                value={mode}
+              />
+
               <Text style={styles(colors).label}>
                 {' '}
                 {strings.PreviewDeposite}
@@ -81,15 +87,6 @@ const InitiateDeposite = ({navigation}) => {
                 keyboardType="numeric"
                 onChangeText={prevdeposite => setPrevDeposite(prevdeposite)}
                 value={prevdeposite}
-              />
-
-              <Text style={styles(colors).label}> {strings.SelectMode}</Text>
-              <TextInput
-                placeholder="Bitcoin (BTC) "
-                placeholderTextColor={colors.heading}
-                style={styles(colors).input}
-                onChangeText={mode => setMode(mode)}
-                value={mode}
               />
             </ScrollView>
 

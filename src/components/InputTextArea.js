@@ -13,7 +13,9 @@ export const InputTextArea = ({
   onSubmitEditing,
   maxLength,
   IconName,
-  IconSize
+  IconSize,
+  source,
+  style,
 }) => {
   const {colors} = useTheme();
   return (
@@ -36,6 +38,7 @@ export const InputTextArea = ({
         style={{marginRight: 10}}
         color={colors.iconColor}
       />
+      <Image source={source} style={style} color={colors.iconColor} />
     </View>
   );
 };

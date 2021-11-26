@@ -3,19 +3,17 @@ import {
   View,
   Text,
   ImageBackground,
-  Image,
   StyleSheet,
   Keyboard,
   TouchableWithoutFeedback,
   KeyboardAvoidingView,
   ScrollView,
-  TextInput,
 } from 'react-native';
-import {AppColors} from '../../constants/appColors';
 import textSize from '../../constants/textSize';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import strings from '../../constants/localization';
 import {useTheme} from '@react-navigation/native';
+import {InputTextArea} from '../../components/InputTextArea';
+import AppButton from '../../constants/AppButton';
 
 const UserAccount = ({navigation}) => {
   const {colors} = useTheme();
@@ -26,106 +24,95 @@ const UserAccount = ({navigation}) => {
   const [sponserId, setSponserID] = useState('');
   const [country, setCountry] = useState('');
   const [btcadd, setBtcAdd] = useState('');
-  const [tronadd, setTronAdd] = useState('');
+  const [mobile, setmobile] = useState('');
   const [email, setEmail] = useState('');
 
   const CreateAcc = () => {
     console.log('userId' + userId, ' name' + name);
   };
+
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{flex: 1}}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ImageBackground
           source={require('../../assets/splashscreen_background.png')}
           resizeMode="cover"
           style={styles(colors).bgImg}>
-          <View style={styles(colors).toolbar}>
-            <Image
-              source={require('../../assets/menu_icon.png')}
-              style={{margin: 10}}
-            />
-            <Icon name="user" size={30} color={colors.heading} />
-            <View>
-              <Text style={styles(colors).title}>{strings.UserAcc}</Text>
-              <Text style={styles(colors).subTitle}> {strings.Account}</Text>
+          <ScrollView style={{flex: 1, marginVertical: 20}}>
+            <View style={styles(colors).body}>
+              <View style={styles(colors).innerView}>
+                <Text style={styles(colors).label}>{strings.UserId}</Text>
+                <InputTextArea
+                  placeholder="Cbhc565"
+                  placeholderTextColor={colors.heading}
+                  setValue={text => setUserId(text)}
+                  value={userId}
+                />
+
+                <Text style={styles(colors).label}> {strings.FullName}</Text>
+                <InputTextArea
+                  placeholder="name"
+                  placeholderTextColor={colors.heading}
+                  setValue={text => setName(text)}
+                  value={name}
+                />
+
+                <Text style={styles(colors).label}> {strings.sponserID}</Text>
+                <InputTextArea
+                  placeholder="sponser id"
+                  placeholderTextColor={colors.heading}
+                  setValue={text => setSponserID(text)}
+                  value={sponserId}
+                />
+
+                <Text style={styles(colors).label}> {strings.Country}</Text>
+                <InputTextArea
+                  placeholder="India"
+                  placeholderTextColor={colors.heading}
+                  setValue={text => setCountry(text)}
+                  value={country}
+                />
+
+                <Text style={styles(colors).label}> {strings.BTCAddress}</Text>
+                <InputTextArea
+                  placeholder=" Address"
+                  placeholderTextColor={colors.heading}
+                  setValue={text => setBtcAdd(text)}
+                  value={btcadd}
+                />
+
+                <Text style={[styles(colors).label]}> {strings.email} </Text>
+                <InputTextArea
+                  type="email"
+                  placeholder="Email"
+                  keyboardType={'email-address'}
+                  placeholderTextColor={colors.heading}
+                  setValue={text => setEmail(text)}
+                  value={email}
+                />
+
+                <Text style={styles(colors).label}> {strings.Mobile}</Text>
+                <InputTextArea
+                  placeholder="Mobile"
+                  keyboardType="numeric"
+                  maxLength={10}
+                  placeholderTextColor={colors.heading}
+                  setValue={text => setmobile(text)}
+                  value={mobile}
+                />
+              </View>
+              <AppButton
+                style={{
+                  width: '90%',
+                  height: '9%',
+                }}
+                onPress={() => {}}
+                text={strings.savechanges}
+              />
             </View>
-          </View>
-
-          <View style={styles(colors).body}>
-            <Image
-              source={require('../../assets/user_account_img.png')}
-              style={{}}
-            />
-            <Text style={styles(colors).heading}>{strings.AccountInfo}</Text>
-
-            <ScrollView style={styles(colors).innerView}>
-              <Text style={styles(colors).label}>{strings.UserId}</Text>
-              <TextInput
-                placeholder="Cbhc565"
-                placeholderTextColor={colors.heading}
-                style={styles(colors).input}
-                onChangeText={userId => setUserId(userId)}
-                value={userId}
-              />
-
-              <Text style={styles(colors).label}> {strings.FullName}</Text>
-              <TextInput
-                placeholder="name"
-                placeholderTextColor={colors.heading}
-                style={styles(colors).input}
-                onChangeText={name => setName(name)}
-                value={name}
-              />
-
-              <Text style={styles(colors).label}> {strings.sponserID}</Text>
-              <TextInput
-                placeholder="sponser id"
-                placeholderTextColor={colors.heading}
-                style={styles(colors).input}
-                onChangeText={sponserId => setSponserID(sponserId)}
-                value={sponserId}
-              />
-
-              <Text style={styles(colors).label}> {strings.Country}</Text>
-              <TextInput
-                placeholder="India"
-                placeholderTextColor={colors.heading}
-                style={styles(colors).input}
-                onChangeText={country => setCountry(country)}
-                value={country}
-              />
-
-              <Text style={styles(colors).label}> {strings.BTCAddress}</Text>
-              <TextInput
-                placeholder=" Address"
-                placeholderTextColor={colors.heading}
-                style={styles(colors).input}
-                onChangeText={btcadd => setBtcAdd(btcadd)}
-                value={btcadd}
-              />
-
-              <Text style={styles(colors).label}> {strings.TRONAddress}</Text>
-              <TextInput
-                placeholder="Tron address"
-                placeholderTextColor={colors.heading}
-                style={styles(colors).input}
-                onChangeText={tronadd => setTronAdd(tronadd)}
-                value={tronadd}
-              />
-
-              <Text style={[styles(colors).label]}> {strings.email} </Text>
-              <TextInput
-                type="email"
-                placeholder="Email"
-                keyboardType={'email-address'}
-                placeholderTextColor={colors.heading}
-                style={[styles(colors).input]}
-                onChangeText={email => setEmail(email)}
-                value={email}
-              />
-            </ScrollView>
-          </View>
+          </ScrollView>
         </ImageBackground>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
@@ -153,7 +140,7 @@ const styles = props =>
       backgroundColor: props.headerColor,
       borderRadius: 30,
       paddingHorizontal: 20,
-      height: '7%',
+      height: '6%',
       color: props.heading,
     },
     label: {
@@ -171,10 +158,11 @@ const styles = props =>
     },
     innerView: {
       backgroundColor: props.heading,
-      height: '70%',
+      height: 670,
       width: '100%',
       borderRadius: 15,
-      paddingHorizontal: 20,
+      padding: 20,
+      top: '10%',
     },
     heading: {
       fontSize: textSize.h2,

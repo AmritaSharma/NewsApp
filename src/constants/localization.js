@@ -37,15 +37,16 @@ const strings = new LocalizedStrings({
     AccountInfo: 'Account Information',
     UserId: 'User Id',
     FullName: 'Full name',
-    sponserID: 'Sponser ID',
+    sponserID: 'Sponsor ID',
     Country: 'Country',
     BTCAddress: ' BTC Address',
-    TRONAddress: ' TRON Address',
+    Mobile: ' Mobile',
     InitiateDeposit: 'Initiate Deposit',
     Deposite: 'Deposit',
     EnterAmt: 'Enter Amount (In USD)',
     SelectMode: 'Select Mode',
     PreviewDeposite: 'Preview Deposite',
+    savechanges: 'Save Changes',
 
     //unsett fund screen
     UnsettledFundReport: 'Unsettled Fund Report',

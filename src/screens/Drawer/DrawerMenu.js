@@ -204,7 +204,7 @@ const DrawerMenu = () => {
                   // source={arrowRightImage}
                 />
               )}
-              // onPress={() => navigation.navigate('AddFund')}
+              onPress={() => navigation.navigate('UserAccount')}
             />
             <List.Item
               title="Rearrange Account Details"
