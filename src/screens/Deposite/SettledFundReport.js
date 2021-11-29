@@ -79,7 +79,7 @@ const SettledFundReport = ({ navigation }) => {
   return (
     <View style={styles(colors).container}>
           <ImageBackground
-            source={require('../../assets/login_bg.png')}
+            source={require('../../assets/panelBG.png')}
             style={styles(colors).imageBackgroundStyle}>
       <TableView
         data={DataTable}

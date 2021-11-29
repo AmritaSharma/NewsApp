@@ -38,7 +38,22 @@ function* signup(action) {
   }
 }
 
+
+function* fetchDashboardData(action) {
+  try {
+    yield put({type: LOADING, payload: true});
+    const data = yield call(API.getDashboardData, action.payload);
+    yield put({type: DASHBOARD_DATA, payload: data.data});
+    yield put({type: LOADING, payload: false});
+  } catch (e) {
+    yield put({type: LOADING, payload: false});
+    yield put({type: NOTIFY, payload: e});
+  }
+}
+
 export function* rootSaga() {
   yield takeLatest(LOGIN, login);
   yield takeLatest(SIGNUP, signup);
+  yield takeLatest(DASHBOARD, fetchDashboardData);
+
 }

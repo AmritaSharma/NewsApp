@@ -93,6 +93,7 @@ const strings = new LocalizedStrings({
     ToDate: 'To Date',
     Confirm: 'Confirm',
     Cancel: 'Cancel',
+    Reset:'Reset'
   },
   IN: {
     Reward: 'इनाम',

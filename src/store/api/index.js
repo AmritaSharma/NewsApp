@@ -23,10 +23,9 @@ export const API = {
   },
 
   getDashboardData: async data => {
-    // console.log('getDashboardData', data);
     const result = await axios({
       method: 'GET',
-      url: `dashboard`,
+      url: `get-user-dashboard`,
       headers: {Authorization: `Bearer ${data.token}`},
     });
     return result;

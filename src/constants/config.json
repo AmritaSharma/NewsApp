@@ -1,5 +1,5 @@
 {
-    "liveUrl":"https://api.kinjatoken.com/" ,
+    "liveUrl":"http://172.105.175.248/replica/crypto-brite-app/api/" ,
     "testingUrl":"https://api.crypvendor.com/",
     "testing":"http://165.22.107.205:3000"
 } 
