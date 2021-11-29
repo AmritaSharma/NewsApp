@@ -12,3 +12,5 @@ export const USER_LOGIN = 'USER_LOGIN';
 export const SIGNUP = 'SIGNUP';
 export const DASHBOARD = 'DASHBOARD';
 export const DASHBOARD_DATA = 'DASHBOARD_DATA';
+export const USER_ACCOUNT = 'USER_ACCOUNT';
+export const USER_ACCOUNTDATA = 'USER_ACCOUNTDATA';

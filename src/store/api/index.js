@@ -31,5 +31,14 @@ export const API = {
     });
     return result;
   },
-  
+
+  getUserData: async data => {
+    // console.log('getDashboardData', data);
+    const result = await axios({
+      method: 'GET',
+      url: `get-profile-info`,
+      headers: {Authorization: `Bearer ${data.token}`},
+    });
+    return result;
+  },
 };

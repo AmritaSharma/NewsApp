@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -14,6 +14,7 @@ import strings from '../../constants/localization';
 import {useTheme} from '@react-navigation/native';
 import {InputTextArea} from '../../components/InputTextArea';
 import AppButton from '../../constants/AppButton';
+import showMessage from '../../components/showMessage';
 
 const UserAccount = ({navigation}) => {
   const {colors} = useTheme();
@@ -26,9 +27,51 @@ const UserAccount = ({navigation}) => {
   const [btcadd, setBtcAdd] = useState('');
   const [mobile, setmobile] = useState('');
   const [email, setEmail] = useState('');
+  const Bgimage = require('../../assets/splashscreen_background.png');
 
   const CreateAcc = () => {
+    if (!userId) {
+      Alert.alert(
+        '',
+        'Please Enter userId ..',
+        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+        {cancelable: false},
+      );
+      return;
+    }
+    if (userId.trim() === '') {
+      Alert.alert(
+        '',
+        'Please Enter userId ..',
+        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+        {cancelable: false},
+      );
+      return;
+    }
+    console.log('email', email);
+    console.log('data', userId);
+    axios
+      .patch(
+        'http://172.105.175.248/replica/crypto-brite-app/api/get-profile-info',
+        {
+          // email: email,
+          // code: userId,
+        },
+      )
+      .then(function (response) {
+        console.log('VerifyuserId ResponseData: ', response.data.message);
+        showMessage(response.data.message);
+      })
+      .catch(function (error) {
+        console.log('Error', error);
+        Alert.alert(error.message);
+      });
+
     console.log('userId' + userId, ' name' + name);
+  };
+
+  useEffect = () => {
+    CreateAcc();
   };
 
   return (
@@ -37,10 +80,10 @@ const UserAccount = ({navigation}) => {
       style={{flex: 1}}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ImageBackground
-          source={require('../../assets/splashscreen_background.png')}
+          source={Bgimage}
           resizeMode="cover"
           style={styles(colors).bgImg}>
-          <ScrollView style={{flex: 1, marginVertical: 20}}>
+          <ScrollView style={styles(colors).accountView}>
             <View style={styles(colors).body}>
               <View style={styles(colors).innerView}>
                 <Text style={styles(colors).label}>{strings.UserId}</Text>
@@ -123,10 +166,7 @@ const UserAccount = ({navigation}) => {
                 />
 
                 <AppButton
-                  style={{
-                    width: '100%',
-                    height: '12%',
-                  }}
+                  style={styles(colors).btn}
                   onPress={() => {}}
                   text={strings.savechanges}
                 />
@@ -174,5 +214,15 @@ const styles = props =>
     body: {
       alignItems: 'center',
       margin: 20,
+      flex: 1,
+      marginVertical: 20,
+    },
+    accountView: {
+      flex: 1,
+      marginVertical: 20,
+    },
+    btn: {
+      width: '100%',
+      height: '12%',
     },
   });

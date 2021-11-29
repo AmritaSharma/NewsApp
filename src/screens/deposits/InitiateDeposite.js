@@ -16,6 +16,7 @@ import {useTheme} from '@react-navigation/native';
 import {InputTextArea} from '../../components/InputTextArea';
 import SelectDropdown from 'react-native-select-dropdown';
 import Icon from 'react-native-vector-icons/AntDesign';
+
 const InitiateDeposite = ({navigation}) => {
   const [amount, setAmount] = useState('');
   const [prevdeposite, setPrevDeposite] = useState('');
@@ -25,22 +26,21 @@ const InitiateDeposite = ({navigation}) => {
 
   const {colors} = useTheme();
   const theme = useTheme();
+  const bgImage = require('../../assets/splashscreen_background.png');
+  const screenImage = require('../../assets/initdeposite_img.png');
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <ScrollView>
         <ImageBackground
-          source={require('../../assets/splashscreen_background.png')}
+          source={bgImage}
           resizeMode="cover"
           style={styles.bgImg}>
           <View style={styles(colors).body}>
-            <Image
-              source={require('../../assets/initdeposite_img.png')}
-              style={{height: 200, width: 260, marginVertical: '18%'}}
-            />
+            <Image source={screenImage} style={styles(colors).img} />
 
-            <ScrollView style={styles(colors).innerView}>
+            <View style={styles(colors).innerView}>
               <Text style={styles(colors).label}>{strings.EnterAmt}</Text>
               <InputTextArea
                 placeholder=" $ Enter Amount"
@@ -84,15 +84,10 @@ const InitiateDeposite = ({navigation}) => {
                 />
                 <Icon name="caretdown" size={20} style={{right: 40, top: 10}} />
               </View>
-            </ScrollView>
+            </View>
 
             <AppButton
-              style={{
-                marginVertical: 5,
-                width: '90%',
-                bottom: '13%',
-                paddingBottom: 50,
-              }}
+              style={styles(colors).btn}
               onPress={() => {}}
               text={strings.InitiatePayment}
             />
@@ -110,6 +105,12 @@ const styles = props =>
     bgImg: {
       height: '100%',
       width: '100%',
+    },
+
+    img: {
+      height: 200,
+      width: 260,
+      marginVertical: '15%',
     },
 
     label: {
@@ -139,12 +140,18 @@ const styles = props =>
       alignItems: 'center',
       justifyContent: 'space-between',
       borderColor: props.borderColor,
-      borderWidth: 1.5,
+      borderWidth: 1,
       borderRadius: 25,
       backgroundColor: props.heading,
     },
     DDtextstyle: {
       color: props.headerColor,
       textAlign: 'left',
+    },
+    btn: {
+      marginVertical: 5,
+      width: '90%',
+      bottom: '14%',
+      paddingBottom: 50,
     },
   });
