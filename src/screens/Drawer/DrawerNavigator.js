@@ -34,14 +34,14 @@ function DrawerNavigator({navigation}) {
         },
       }}
       drawerContent={() => <DrawerMenu />}>
-      {/* <Drawer.Screen name="DashboardScreen" component={ControlPanal} /> */}
+      <Drawer.Screen name="DashboardScreen" component={ControlPanal} />
       <Drawer.Screen name="InitiateDeposite" component={InitiateDeposite} />
       <Drawer.Screen name="UserAccount" component={UserAccount} />
       <Drawer.Screen name="Logout" component={DemoTheme} />
       <Drawer.Screen name="SettledFundReport" component={SettledFundReport} />
       <Drawer.Screen
         name="UnsettledFundReport"
-        component={UnsettledFundReport}
+        component={UnsettledFundReport}  
       />
       <Drawer.Screen name="Genealogy" component={Genealogy} />
     </Drawer.Navigator>

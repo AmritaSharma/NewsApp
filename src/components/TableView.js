@@ -81,7 +81,7 @@ const TableView = ({ data, parentCallback,   }) => {
             <View style={styles(colors).tableSearchViewWrapper}>
             <List.Accordion
                         title={strings.Search}
-                        right={props => <Icon name={expanded?"minus":"plus"} size={20} color="#FFF" />} 
+                        right={props => <Icon name={expanded?"minus":"plus"} size={20} color="#FFF" style={{paddingBottom:10}} />} 
                         expanded={expanded}
                         onPress={handlePress}
                         titleStyle={styles(colors).menuText}
@@ -125,7 +125,7 @@ const TableView = ({ data, parentCallback,   }) => {
 
                         <View style={styles(colors).searchBtnInputWrapper}>
                             <View style={styles(colors).inputWrapper}>
-                             <InputTextArea
+                             <TextInput
                                     placeholder={strings.Deposit}
                                     setValue={text => setDepositID(text)}
                                     value={depositID}
@@ -135,9 +135,14 @@ const TableView = ({ data, parentCallback,   }) => {
                                     IconName={'mail'}
                                     />
                             </View>
+                            <View style={styles(colors).buttonWrapper}>
                             <TouchableOpacity style={styles(colors).searchBtnView} >
-                                        <Text style={styles(colors).searchBtnText}>{strings.Submit}</Text>
+                                        <Text style={styles(colors).searchBtnText}>{strings.Search}</Text>
                                     </TouchableOpacity>
+                                    <TouchableOpacity style={styles(colors).searchBtnView} >
+                                        <Text style={styles(colors).searchBtnText}>{strings.Reset}</Text>
+                                    </TouchableOpacity>
+                            </View>
                            
                         </View>
                         </>
@@ -180,7 +185,7 @@ const TableView = ({ data, parentCallback,   }) => {
                                 {index + 1}
                                 </Text>
                                 <Text style={styles(colors).bodyTextStyle} > 
-                                {item.entry_time}
+                                {item.entry_time.slice(0, 10)}
                                 </Text>
                                 <Text style={styles(colors).bodyTextStyle} > 
                                 {item.user_id}
@@ -192,7 +197,7 @@ const TableView = ({ data, parentCallback,   }) => {
                                 {item.selftopup}
                                 </Text>
                                 <Text style={styles(colors).bodyTextStyle} > 
-                                {item.mobile}
+                                {item.selftopup}
                                 </Text>
                                 <Text style={styles(colors).bodyTextStyle} > 
                                 {item.topup_amount}
@@ -205,7 +210,34 @@ const TableView = ({ data, parentCallback,   }) => {
                     ListHeaderComponent={ListHeader}
                 />
             </ScrollView>
-            <View style={{flex:1}} />
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#262626', margin: 10 }}>
+        <View style={styles(colors).previewView}>
+            <TouchableOpacity >
+                <Text style={styles(colors).buttonStyle}>Prev</Text>
+            </TouchableOpacity>
+        </View>
+            <FlatList
+                style={{ backgroundColor: '#262626' }}
+                horizontal
+                pagingEnabled={true}
+                showsHorizontalScrollIndicator={false}
+                legacyImplementation={false}
+                data={1}
+                renderItem={({ index }) => (
+                    <View style={styles(colors).indexView}>
+                        <TouchableOpacity >
+                            <Text style={styles(colors).textStyle} > {index + 1}</Text>
+                        </TouchableOpacity>
+                    </View>
+                )}
+                keyExtractor={item => item.id}
+            />
+            <View style={styles(colors).buttonView}>
+                <TouchableOpacity>
+                <Text style={styles(colors).buttonStyle}>Next</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
         </View>
     )
 }
@@ -215,30 +247,36 @@ const styles = props =>
 StyleSheet.create({
     container: {
         flex: 1,
-        margin: 10,
+        margin: 15,
     },
     // header(search) view
     tableSearchViewWrapper: {
         backgroundColor: '#404040',
+        padding: 10,
+        borderRadius:10
     },
-    searchBtnInputWrapper: {
+    buttonWrapper: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 10,
     },
     inputWrapper: {
-        width: getDimen(0.44),
+        //width: getDimen(0.95),
+        width: '100%', 
         flexDirection: 'row',
         backgroundColor: 'white',
         borderRadius: 25,
+        marginTop:15,
+        paddingLeft:15
     },
     searchBtnView: {
-        height: 50,
-        width: getDimen(0.44),
-        backgroundColor: '#bda800',
+        height: 45,
+        width: getDimen(0.42),
+        backgroundColor: '#FFCC00',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 25,
+        marginTop:10,
+        marginLeft:3
     },
     searchBtnText: {
         color: 'black',
@@ -253,6 +291,8 @@ StyleSheet.create({
         backgroundColor: '#404040',
         height: 50,
         width: 120,
+        
+
     },
     tableHaderTextstyle: {
         fontWeight: 'bold',
@@ -266,7 +306,7 @@ StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#404040',
         height: 50,
-        padding: 15,
+        padding: 10,
     },
     bodyTextStyle: {
         textAlign: 'center',
@@ -281,6 +321,8 @@ StyleSheet.create({
         padding: 10,
         alignItems: 'center',
         marginTop: 10,
+      //  borderRadius:10
+
     },
     showEntryText: {
         color: 'white',
@@ -309,7 +351,7 @@ StyleSheet.create({
         justifyContent: 'flex-start',
     },
     buttonView: {
-        backgroundColor: 'orange', 
+        backgroundColor: '#FFCC00', 
         height: getDimen(0.105), 
         width: getDimen(0.15), 
         justifyContent: 'center', 
@@ -318,7 +360,7 @@ StyleSheet.create({
         marginRight: '2%'
     },
     previewView: {
-        backgroundColor: 'orange', 
+        backgroundColor: '#FFCC00', 
         height: getDimen(0.105),
         width: getDimen(0.15), 
         justifyContent: 'center',
@@ -335,7 +377,7 @@ StyleSheet.create({
     },
     buttonStyle: {
         fontSize: textSize.h5, 
-        color: 'white', 
+        color: 'black', 
         fontWeight: 'bold',
         textAlign: 'center'
     },
@@ -344,7 +386,7 @@ StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#F4F5F8',
+        backgroundColor: '#252E3B',
         height: 50,
         padding: 5,
         width: getDimen(0.12),
@@ -369,11 +411,14 @@ StyleSheet.create({
         fontSize: textSize.h4,
         color: 'white',
         fontWeight:'bold',
+        paddingBottom: 5,
+        height:35
     },
     datePickerView: {
-        width: '49%', 
+        width: '100%', 
         backgroundColor: '#fff',
         borderRadius: 25,
+        marginTop:15
     },
     dateIconStyle: {
         position: 'absolute',
@@ -385,6 +430,8 @@ StyleSheet.create({
         height: 45,
         backgroundColor: '#fff',
         borderRadius: 25,
+        alignItems:'flex-start',
+        paddingLeft:15
 
     },
 })

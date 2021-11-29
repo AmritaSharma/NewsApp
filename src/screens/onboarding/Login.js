@@ -26,7 +26,6 @@ const Login = ({navigation}) => {
   const {color} = useTheme();
 
   const loginFun = () => {
-    // console.log('email' + email, ' password' + password);
     let emailValidation = Validation.validEmail(email)
     let passValidation = Validation.validPassword(password)
     console.log('emailValidation' + emailValidation, ' passValidation' + passValidation);
@@ -39,7 +38,8 @@ const Login = ({navigation}) => {
       return
     }
     console.log('nav')
-    // navigation.navigate('Dashboard');
+    console.log('email' + email, ' password' + password);
+    navigation.navigate('ControlPanal');
   };
   return (
     <KeyboardAvoidingView
