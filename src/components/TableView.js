@@ -125,7 +125,7 @@ const TableView = ({ data, parentCallback,   }) => {
 
                         <View style={styles(colors).searchBtnInputWrapper}>
                             <View style={styles(colors).inputWrapper}>
-                             <InputTextArea
+                             <TextInput
                                     placeholder={strings.Deposit}
                                     setValue={text => setDepositID(text)}
                                     value={depositID}
@@ -135,9 +135,14 @@ const TableView = ({ data, parentCallback,   }) => {
                                     IconName={'mail'}
                                     />
                             </View>
+                            <View style={styles(colors).buttonWrapper}>
                             <TouchableOpacity style={styles(colors).searchBtnView} >
-                                        <Text style={styles(colors).searchBtnText}>{strings.Submit}</Text>
+                                        <Text style={styles(colors).searchBtnText}>{strings.Search}</Text>
                                     </TouchableOpacity>
+                                    <TouchableOpacity style={styles(colors).searchBtnView} >
+                                        <Text style={styles(colors).searchBtnText}>{strings.Reset}</Text>
+                                    </TouchableOpacity>
+                            </View>
                            
                         </View>
                         </>
@@ -215,30 +220,36 @@ const styles = props =>
 StyleSheet.create({
     container: {
         flex: 1,
-        margin: 10,
+        margin: 15,
     },
     // header(search) view
     tableSearchViewWrapper: {
         backgroundColor: '#404040',
+        padding: 10,
+
     },
-    searchBtnInputWrapper: {
+    buttonWrapper: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 10,
     },
     inputWrapper: {
-        width: getDimen(0.44),
+        //width: getDimen(0.95),
+        width: '100%', 
         flexDirection: 'row',
         backgroundColor: 'white',
         borderRadius: 25,
+        marginTop:15,
+        paddingLeft:15
     },
     searchBtnView: {
-        height: 50,
-        width: getDimen(0.44),
-        backgroundColor: '#bda800',
+        height: 45,
+        width: getDimen(0.42),
+        backgroundColor: '#FFCC00',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 25,
+        marginTop:10,
+        marginLeft:3
     },
     searchBtnText: {
         color: 'black',
@@ -371,9 +382,10 @@ StyleSheet.create({
         fontWeight:'bold',
     },
     datePickerView: {
-        width: '49%', 
+        width: '100%', 
         backgroundColor: '#fff',
         borderRadius: 25,
+        marginTop:15
     },
     dateIconStyle: {
         position: 'absolute',
@@ -385,6 +397,8 @@ StyleSheet.create({
         height: 45,
         backgroundColor: '#fff',
         borderRadius: 25,
+        alignItems:'flex-start',
+        paddingLeft:15
 
     },
 })

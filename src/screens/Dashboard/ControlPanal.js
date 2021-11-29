@@ -102,11 +102,9 @@ const ControlPanal = ({navigation}) => {
         <ImageBackground
             source={require('../../assets/panelBG.png')}
             style={styles(colors).imageBackgroundStyle}>
-          <ScrollView style={styles(colors).inputViewWrapper}>
+          <ScrollView>
           <Cards data={ DataTable} />
           <RefferLinkTableView data={DataTable} />
-            <View style={{marginBottom:40}}>
-            </View>
         </ScrollView>
         </ImageBackground>
    </SafeAreaView >
@@ -118,11 +116,6 @@ const styles = props =>
       flex: 1,
       backgroundColor: props.background,
     },
-     inputViewWrapper: {
-       // padding: 25,
-       // flex: 1,
-      // paddingTop:10
-      },
     imageBackgroundStyle: {
         width: '100%',
         height: '100%',
