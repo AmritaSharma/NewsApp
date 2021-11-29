@@ -9,6 +9,8 @@ import Splash from '../screens/onboarding/Splash';
 import Signup from '../screens/onboarding/Signup';
 import ForgotPassword from '../screens/onboarding/ForgotPassword';
 import {useSelector} from 'react-redux';
+import UserAccount from '../screens/Accounts/UserAccount';
+import InitiateDeposite from '../screens/deposits/InitiateDeposite';
 import {
   DarkTheme as PaperDarkTheme,
   DefaultTheme as PaperDefaultTheme,
@@ -57,6 +59,16 @@ const loginStack = () => {
       <Stack.Screen
         name="Dashboard"
         component={DrawerNavigator}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="UserAccount"
+        component={UserAccount}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="InitiateDeposite"
+        component={InitiateDeposite}
         options={{headerShown: false}}
       />
     </>
