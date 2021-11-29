@@ -54,11 +54,13 @@ const Genealogy = () => {
           <View
             style={{
               backgroundColor: 'white',
-              height: '35%',
-              width: '95%',
+              height: '30%',
+              width: '90%',
               marginTop: getDimen(0.02),
               borderRadius: getDimen(0.02),
-              padding: 10,
+              paddingHorizontal: 16,
+              paddingVertical: '5%',
+              marginHorizontal: '5%',
             }}>
             <InputTextArea
               placeholder={strings.userIDPlaceholder}
@@ -74,11 +76,9 @@ const Genealogy = () => {
             <View
               style={{
                 flexDirection: 'row',
-                height: '30%',
+                height: '20%',
                 justifyContent: 'space-between',
-                marginTop: getDimen(0.02),
-                marginLeft: getDimen(0.03),
-                marginRight: getDimen(0.03),
+                margin: getDimen(0.05),
                 alignItems: 'center',
               }}>
               <Image
@@ -147,11 +147,10 @@ const styles = props =>
       justifyContent: 'center',
       paddingVertical: '3%',
       borderRadius: 25,
-      marginTop: getDimen(0.05),
     },
     loginButtonText: {
-      fontSize: textSize.h2,
+      fontSize: textSize.h3,
       color: props.headerColor,
-      fontWeight: 'bold',
+      fontWeight: '600',
     },
   });
