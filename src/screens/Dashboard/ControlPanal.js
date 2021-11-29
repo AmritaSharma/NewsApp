@@ -18,6 +18,7 @@ import textSize from '../../constants/textSize';
 import {useTheme} from '@react-navigation/native';
 import { Card } from 'react-native-paper';
 import { getDimen } from '../../dimensions/dimen';
+import Cards from '../../components/Cards';
 
 const ControlPanal = ({navigation}) => {
   const {colors} = useTheme();
@@ -125,181 +126,10 @@ const HeaderData = [
             source={require('../../assets/panelBG.png')}
             style={styles(colors).imageBackgroundStyle}>
           <ScrollView style={styles(colors).inputViewWrapper}>
-             <Card style={styles(colors).cardBody}>
-             <View style={{flexDirection:'row'}}>
-            <View >
-              <Image
-                source={require('../../assets/direct_partner.png')}
-                resizeMode="contain"
-                style={{
-                  borderRadius: 15,
-                  height: 70,
-                  width: 70,
-                }}
-              />
-            </View>
-            <View style={{marginLeft: 10}}>
-              <View
-                style={{
-                  marginTop: 10,
-                  borderWidth: 0,
-                  width: '85%',
-                  marginRight:5
-                }}>
-                <Text
-                  style={{
-                    color: 'grey',
-                    fontSize: 14,
-                  }}>
-                  User ID
-                </Text>
-              </View>
-              <Text
-                style={{
-                  fontSize: 16,
-                  color: 'black',
-                  fontWeight: 'bold',
-                  textTransform: 'capitalize',
-                }}>
-                CB23935130
-              </Text>
-            </View>
-            </View>
-
-          </Card>
-            <FlatList
-                    data={DataTable}
-                    renderItem={({ item,index }) => (
-                        <View style={styles(colors).tableBodyView}>
-                            <Card style={styles(colors).flatCardBody}>
-                               {/* <Text style={styles(colors).bodyTextStyle} > 
-                                {index + 1}
-                                </Text>*/}
-                                <View style={{flexDirection:'row'}}>
-                                <View>
-                                  <Image
-                                    source={require('../../assets/deposit_intatted.png')}
-                                    resizeMode="contain"
-                                    style={{
-                                      borderRadius: 15,
-                                      height: 70,
-                                      width: 100,
-                                      alignSelf:'center'
-                                    }}
-                                  />
-                                  <Text
-                                      style={{
-                                        fontSize: 18,
-                                        color: 'black',
-                                        fontWeight: 'bold',
-                                        textTransform: 'capitalize',
-                                        marginTop: 2,
-                                        alignSelf:'center'
-                                      }}>
-                                      $0 
-                                    </Text>
-                                    <Text
-                                      style={{
-                                        fontSize: 16,
-                                        color: 'black',
-                                        marginTop: 2,
-                                        alignSelf:'center'
-                                      }}>
-                                      Royal Title
-                                    </Text>
-                                    <Text
-                                      style={{
-                                        fontSize: 16,
-                                        color: 'black',
-                                        marginTop: 2,
-                                        alignSelf:'center',
-                                        paddingLeft:10
-                                      }}>
-                                      Achievers Revenue
-                                    </Text>
-                                </View>
-                                </View>
-                            </Card>
-                            
-                            <Card style={styles(colors).flatCardBody}>
-                                <View style={{flexDirection:'row'}}>
-                                <View>
-                                  <Image
-                                    source={require('../../assets/sent_balance.png')}
-                                    resizeMode="contain"
-                                    style={{
-                                      borderRadius: 15,
-                                      height: 70,
-                                      width: 100,
-                                      alignSelf:'center'
-                                    }}
-                                  />
-                                  <Text
-                                      style={{
-                                        fontSize: 18,
-                                        color: 'black',
-                                        fontWeight: 'bold',
-                                        textTransform: 'capitalize',
-                                        marginTop: 2,
-                                        alignSelf:'center'
-                                      }}>
-                                      $0 
-                                    </Text>
-                                    <Text
-                                      style={{
-                                        fontSize: 16,
-                                        color: 'black',
-                                        marginTop: 2,
-                                        alignSelf:'center'
-                                      }}>
-                                      Royal Title
-                                    </Text>
-                                    <Text
-                                      style={{
-                                        fontSize: 16,
-                                        color: 'black',
-                                        marginTop: 2,
-                                        alignSelf:'center',
-                                        paddingLeft:10
-                                      }}>
-                                      Achievers Revenue
-                                    </Text>
-                                </View>
-                                </View>
-                            </Card>
-                            
-
-                        </View>
-                    )}
-                />
-            <Card style={styles(colors).cardBody}>
-             <View style={{flexDirection:'row'}}>
-            <View >
-              <Image
-                source={require('../../assets/receuved_balnce.png')}
-                resizeMode="contain"
-                style={{
-                  borderRadius: 15,
-                  height: 70,
-                  width: 70,
-                }}
-              />
-            </View>
-            <View style={{marginLeft: 10}}>
-              <Text
-                  style={{
-                    fontSize: 16,
-                    color: 'black',
-                    fontWeight: 'bold',
-                    textTransform: 'capitalize',
-                    marginTop: 20,
-                  }}>
-                  $0 Recieved Balance
-                </Text>
-            </View>
-            </View>
-
-          </Card>
+          <Cards
+                data={ DataTable}
+                header={HeaderData}
+          />
                 <FlatList
                     style={{ backgroundColor: '#252E3B',marginTop:15,}}
                     data={DataTable}
@@ -317,7 +147,8 @@ const HeaderData = [
                         </View>
                     )}
                     ListHeaderComponent={ListHeader}
-                />
+                    />
+
             <Card style={styles(colors).refferCardBody}>
              <View style={{flexDirection:'row'}}>
             <View Style={{background:'#FFFFFF'}}>
@@ -401,15 +232,6 @@ const styles = props =>
       flex: 1,
       backgroundColor: props.background,
     },
-    tableBodyView: {
-        flex: 1,
-        flexDirection: 'row',
-        //alignItems: 'center',
-        justifyContent: 'center',
-        //backgroundColor: 'transparent',
-       // height: 50,
-        padding: 7,
-    },
     secondTableBodyView: {
         flex: 1,
         flexDirection: 'row',
@@ -418,13 +240,6 @@ const styles = props =>
         backgroundColor: '#404040',
         height: 50,
         padding: 10,
-    },
-    bodyTextStyle: {
-        textAlign: 'center',
-        color: 'black',
-        fontWeight: '500',
-        fontSize: textSize.h4,
-       // width: 120,
     },
     secondBodyTextStyle: {
         textAlign: 'center',
@@ -435,51 +250,10 @@ const styles = props =>
        // borderRightWidth:5,
         //borderRightColor:'yellow'
     },
-    flatCardBody: {
-        //height: getDimen(0.300),
-        width: getDimen(0.44),
-        marginRight:10,
-        paddingTop:10,
-        paddingBottom:10,
-        borderRadius: 12,
-        backgroundColor: 'white',
-        //alignItems: 'center',
-        justifyContent: 'space-between',
-       // margin:20
-       paddingLeft:20,
-       shadowColor: 'grey',
-        shadowOffset: {width: 0, height: 0},
-        shadowOpacity: 1,
-        shadowRadius: 30,
-        elevation: 8,
-
-     },
      inputViewWrapper: {
         padding: 25,
         flex: 1,
       },
-    cardBody: {
-        /*height: getDimen(0.150),
-        width: getDimen(0.88),
-        borderRadius: 12,
-        backgroundColor: 'white',
-        borderColor:'black',
-        borderWidth: 1,
-        borderStyle: 'solid',
-        //alignItems: 'center',*/
-       // justifyContent: 'space-between',
-        flexDirection:'row',
-        backgroundColor: 'white',
-        borderWidth: 1,
-        borderRadius:12,
-        padding:10,
-        marginBottom:5,
-        shadowColor: 'grey',
-        shadowOffset: {width: 0, height: 0},
-        shadowOpacity: 1,
-        shadowRadius: 30,
-        elevation: 8,
-     },
      refferCardBody: {
         flexDirection:'row',
         backgroundColor: 'white',
