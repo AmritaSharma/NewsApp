@@ -31,11 +31,23 @@ export const API = {
     return result;
   },
 
-  getUserData: async data => {
-    // console.log('getDashboardData', data);
+  getRoiRevenueApi: async data => {
+    console.log('getRoiRevenueApi', data);
     const result = await axios({
-      method: 'GET',
-      url: `get-profile-info`,
+      method: 'POST',
+      url: `roi-income`,
+      data: data.data,
+      headers: {Authorization: `Bearer ${data.token}`},
+    });
+    return result;
+  },
+
+  getBinaryRevenueApi: async data => {
+    console.log('getBinaryRevenueApi', data);
+    const result = await axios({
+      method: 'POST',
+      url: `binary-income`,
+      data: data.data,
       headers: {Authorization: `Bearer ${data.token}`},
     });
     return result;

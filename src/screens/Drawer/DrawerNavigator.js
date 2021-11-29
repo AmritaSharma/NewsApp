@@ -12,6 +12,8 @@ import UnsettledFundReport from '../../screens/Deposite/UnsettledFundReport';
 import Genealogy from '../../screens/Partners/Genealogy';
 import {useTheme} from '@react-navigation/native';
 import InitiateDeposite from '../deposits/InitiateDeposite';
+import RoiRevenue from '../Revenue/RoiRevenue';
+import BinaryRevenue from '../Revenue/BinaryRevenue';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -44,6 +46,9 @@ function DrawerNavigator({navigation}) {
         component={UnsettledFundReport}
       />
       <Drawer.Screen name="Genealogy" component={Genealogy} />
+
+      <Drawer.Screen name="ROIRevenue" component={RoiRevenue} />
+      <Drawer.Screen name="BinaryRevenue" component={BinaryRevenue} />
     </Drawer.Navigator>
   );
 }

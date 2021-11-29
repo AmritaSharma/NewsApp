@@ -13,6 +13,7 @@ export const InputTextArea = ({
   keyboardType,
   secureTextEntry,
   onSubmitEditing,
+  onEndEditing,
   maxLength,
   IconName,
   IconSize,
@@ -34,6 +35,7 @@ export const InputTextArea = ({
         secureTextEntry={secureTextEntry}
         underlineColorAndroid="transparent"
         onSubmitEditing={onSubmitEditing}
+        onEndEditing={onEndEditing}
         maxLength={maxLength}
       />
       <Icon

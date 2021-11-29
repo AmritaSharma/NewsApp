@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   KeyboardAvoidingView,
   ScrollView,
+  Alert,
 } from 'react-native';
 import textSize from '../../constants/textSize';
 import strings from '../../constants/localization';
@@ -15,6 +16,7 @@ import {useTheme} from '@react-navigation/native';
 import {InputTextArea} from '../../components/InputTextArea';
 import AppButton from '../../constants/AppButton';
 import showMessage from '../../components/showMessage';
+import axios from 'axios';
 
 const UserAccount = ({navigation}) => {
   const {colors} = useTheme();
@@ -27,52 +29,75 @@ const UserAccount = ({navigation}) => {
   const [btcadd, setBtcAdd] = useState('');
   const [mobile, setmobile] = useState('');
   const [email, setEmail] = useState('');
-  const Bgimage = require('../../assets/splashscreen_background.png');
+  const [userdata, setUserData] = useState('');
+  const [showresult, setShowResult] = useState(false);
+
+  const token =
+    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjlkNWY0ZDQ0Yzc0MmM5NzJjZTllYmM1NTM2M2YwMzRhNzJlYzhiYzNjYWI5MTUwOTgyNjNiNzM0NzRjNThkNjRkNTdjMjg5Mjg2ZDYxYTdiIn0.eyJhdWQiOiI2IiwianRpIjoiOWQ1ZjRkNDRjNzQyYzk3MmNlOWViYzU1MzYzZjAzNGE3MmVjOGJjM2NhYjkxNTA5ODI2M2I3MzQ3NGM1OGQ2NGQ1N2MyODkyODZkNjFhN2IiLCJpYXQiOjE2MzgxNzI1ODIsIm5iZiI6MTYzODE3MjU4MiwiZXhwIjoxNjY5NzA4NTgyLCJzdWIiOiIyIiwic2NvcGVzIjpbIioiXX0.gJgMgEiXuGDWAiq62HN2Fy7BTskWUgEHqbluVltqKmJ9hkGBnJ47lXiJkE1TprVNIfiDWyNOGsG0NtTue0eJJMFzkLmjM7TQoJ1t0Q-raYqgASqh9mz9_c4cJ_wj4eMZY0hfW1x4kMz__z6VDsrxuA3sdX4aEj9PBVjuZQTLemyZTmnaRQSUBu2dMqvnsjywiKef-yD5hp_YqE7agSus2lDMFxJ5wNQLwHxxo1CAsY5-zgWcidE2rrS6rsuhuUClmP4x4nvcuO6Eo5fnm6s4-YU5pjlyreArNGN601VdvvBaFE-gVTNipFgFFgO3-ZgmVpKYrh96zj7gArTFXPrvVhhGvJLyw2CcFGEQZ5j3QY5gVocDMzbOjPttUSWhSeazHLuajhRCccgLWA9V1co6QwMHq7gqm8AexL6WRfBAqZBr_GzH9zPvsKLJX-m6izNHpTxXHggIpVBbZlvnnvkj1X5GxzUGegKoh2DahhYg4zQsqUpcXNGot6YkHC_2y37nGao8fJql3jEpdKyud9AJqpsXOwAxZUwcTeAhEgWpnmZjyLO4AQ2lzk3yop0LQQokJwCE6ywJrKIz4lFK5IEIaRbT_lbwNHVED0IPRvUlwaP4odHwiHeMYKphyPwwUPqZPRwo492Ki2zbYXI5_MvWAVREsRFJnjK3ZQCqDqnch-0';
+  const Bgimage = require('../../assets/panelBG.png');
 
   const CreateAcc = () => {
-    if (!userId) {
-      Alert.alert(
-        '',
-        'Please Enter userId ..',
-        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
-        {cancelable: false},
-      );
-      return;
-    }
-    if (userId.trim() === '') {
-      Alert.alert(
-        '',
-        'Please Enter userId ..',
-        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
-        {cancelable: false},
-      );
-      return;
-    }
+    // if (!userId) {
+    //   Alert.alert(
+    //     '',
+    //     'Please Enter userId ..',
+    //     [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+    //     {cancelable: false},
+    //   );
+    //   return;
+    // }
+    // if (userId.trim() === '') {
+    //   Alert.alert(
+    //     '',
+    //     'Please Enter userId ..',
+    //     [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+    //     {cancelable: false},
+    //   );
+    //   return;
+    // }
     console.log('email', email);
     console.log('data', userId);
     axios
-      .patch(
+      .get(
         'http://172.105.175.248/replica/crypto-brite-app/api/get-profile-info',
         {
+          auth: token,
           // email: email,
           // code: userId,
         },
       )
       .then(function (response) {
-        console.log('VerifyuserId ResponseData: ', response.data.message);
-        showMessage(response.data.message);
+        console.log('VerifyuserId ResponseData: ', response);
+        // showMessage(response.data.message);
       })
       .catch(function (error) {
         console.log('Error', error);
-        Alert.alert(error.message);
+        // Alert.alert(error.message);
       });
 
-    console.log('userId' + userId, ' name' + name);
+    // console.log('userId' + userId, ' name' + name);
   };
 
-  useEffect = () => {
-    CreateAcc();
-  };
+  // const CreateAcc = async () => {
+  //   try {
+  //     const data = await axios.get(
+  //       'http://172.105.175.248/replica/crypto-brite-app/api/get-profile-info',
+  //       {
+  //         auth: token,
+  //       },
+  //     );
+  //     setUserData(data);
+
+  //     setShowResult(true);
+  //   } catch (error) {
+  //     //console.log(error);
+  //     console.log(userdata);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   console.log(userdata, '====userdata');
+  // }, [userdata]);
 
   return (
     <KeyboardAvoidingView
@@ -163,11 +188,14 @@ const UserAccount = ({navigation}) => {
                   value={mobile}
                   name={'phone-iphone'}
                   size={20}
+                  onEndEditing={() => {
+                    CreateAcc();
+                  }}
                 />
 
                 <AppButton
                   style={styles(colors).btn}
-                  onPress={() => {}}
+                  onPress={() => CreateAcc()}
                   text={strings.savechanges}
                 />
               </View>

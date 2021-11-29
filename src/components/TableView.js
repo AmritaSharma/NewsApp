@@ -175,6 +175,7 @@ const TableView = ({ data, parentCallback,   }) => {
                 </View>
                 <Text style={styles(colors).showEntryText}>{strings.Entries}</Text>
             </View>
+           
             <ScrollView horizontal >
                 <FlatList
                     style={{ backgroundColor: '#E6E4E4'}}
