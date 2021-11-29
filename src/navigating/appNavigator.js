@@ -11,11 +11,7 @@ import Signup from '../screens/onboarding/Signup';
 import ForgotPassword from '../screens/onboarding/ForgotPassword';
 import PassUpdateSuccessMessage from '../screens/onboarding/PassUpdateSuccessMessage';
 import ThankYou from '../screens/onboarding/ThankYou';
-import TeamView from '../screens/Partners/TeamView';
-import DirectPartnerList from '../screens/Partners/DirectPartnerList'
 import {useSelector} from 'react-redux';
-import UserAccount from '../screens/Accounts/UserAccount';
-import InitiateDeposite from '../screens/deposits/InitiateDeposite';
 import {
   DarkTheme as PaperDarkTheme,
   DefaultTheme as PaperDefaultTheme,
@@ -80,26 +76,6 @@ const loginStack = () => {
         name="ControlPanal"
         component={DrawerNavigator}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="UserAccount"
-        component={UserAccount}
-        options={{headerShown: false}}
-      />
-       <Stack.Screen
-        name="InitiateDeposite"
-        component={InitiateDeposite}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="TeamView"
-        component={TeamView}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="DirectPartnerList"
-        component={DirectPartnerList}
-        options={{ headerShown: false }}
       />
     </>
   );

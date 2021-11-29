@@ -94,6 +94,9 @@ const strings = new LocalizedStrings({
     Confirm: 'Confirm',
     Cancel: 'Cancel',
     Reset:'Reset',
+    //DepositFromPurchaseWallet
+    UserId:'Enter User',
+    Package:'Select Package',
     // TeamView
     UserID: 'User Id',
     Prev: 'Prev',
