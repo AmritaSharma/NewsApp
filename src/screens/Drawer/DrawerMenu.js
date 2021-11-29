@@ -16,26 +16,16 @@ import {
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {List} from 'react-native-paper';
 import textSize from '../../constants/textSize';
+import {useTheme} from '@react-navigation/native';
+import {RevenueImg} from '../../assets/revenueImg';
+import {WithdrowWalletImg} from '../../assets/withdrowWalletImg';
 
 const DrawerMenu = () => {
   const navigation = useNavigation();
-  const [accessToken, setAccessToken] = React.useState('');
-  const [userImage, setUserImage] = React.useState('');
-  const [isPro, setIsPro] = React.useState('');
-  const [showLoader, setShowLoader] = useState('hide');
-
-  // Images
-  const controlPanelImg = require('../../assets/cryptobrite_wallet.png');
-  const depositeImg = require('../../assets/cryptobrite_wallet.png');
-  const AccountImg = require('../../assets/avatar.png');
-  const PartnersImg = require('../../assets/direct_partners.png');
-  const revenueImg = require('../../assets/deposit_intatted.png');
-  const withdrawalImg = require('../../assets/total_withdrawl.png');
-  const manageAllIdBalanceImg = require('../../assets/receuved_balnce.png');
-  const plusImage = require('../../assets/add.png');
+  const {colors} = useTheme();
 
   const handleLogOut = () => {
     Alert.alert(
@@ -60,382 +50,458 @@ const DrawerMenu = () => {
       <ScrollView>
         <View
           style={{
-            height: getDimen(0.26),
+            height: getDimen(0.4),
             flexDirection: 'row',
-            backgroundColor: 'black',
+            backgroundColor: colors.headerColor,
             paddingLeft: '12%',
             alignItems: 'center',
           }}>
           <Image
-            // source={require('../../assets/imageedit_2_2851942888.png')}
+            source={{
+              uri: 'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg',
+            }}
             style={{
-              height: getDimen(0.18),
-              width: getDimen(0.18),
+              height: 70,
+              width: 70,
               backgroundColor: 'red',
               borderRadius: getDimen(0.9),
+              borderWidth: 1,
+              borderColor: colors.heading,
+              marginRight: 8,
             }}
           />
           <View style={{flexDirection: 'column', paddingLeft: '5%'}}>
-            <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>
+            <Text
+              numberOfLines={1}
+              style={{
+                color: colors.buttonColor,
+                fontWeight: '800',
+                fontSize: 18,
+              }}>
               JOHN DOE
             </Text>
-            <Text style={{color: 'white'}}>ASF56666</Text>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Icon name="ios-person" size={14} color={colors.heading} />
+              <Text
+                numberOfLines={1}
+                style={{
+                  color: colors.heading,
+                  fontSize: 14,
+                  fontWeight: '600',
+                  marginStart: 4,
+                }}>
+                ASF56666
+              </Text>
+            </View>
           </View>
         </View>
-        <List.AccordionGroup>
-          <List.Item
-            title="Control Panel"
-            titleStyle={styles.menuText}
-            left={props => (
-              <Image
-                style={[styles.leftIcon, {marginTop: 7}]}
-                color="#1b2a39"
-                source={controlPanelImg}
-              />
-            )}
-            onPress={() => navigation.navigate('DashboardScreen')}
-          />
+        <View style={{paddingLeft: 16, paddingVertical: 16}}>
+          <List.AccordionGroup>
+            <List.Item
+              title="Control Panel"
+              titleStyle={styles.menuText}
+              left={props => (
+                <Icon name="desktop-outline" size={24} color={colors.title} />
+              )}
+              onPress={() => navigation.navigate('DashboardScreen')}
+            />
 
-          <List.Accordion
-            title="Deposit"
-            left={props => (
-              <Image
-                style={styles.leftIcon}
-                color={'white'}
-                source={depositeImg}
+            <List.Accordion
+              title="Deposit"
+              left={props => (
+                <Icon name="md-wallet" size={24} color={colors.title} />
+              )}
+              right={props => (
+                <View>
+                  {props.isExpanded ? (
+                    <Icon
+                      name="remove-outline"
+                      size={24}
+                      color={colors.title}
+                    />
+                  ) : (
+                    <Icon name="md-add" size={24} color={colors.title} />
+                  )}
+                </View>
+              )}
+              id="3"
+              theme={{colors: {text: 'white'}}}
+              style={styles.menuText}
+              titleStyle={styles.menuText}>
+              <List.Item
+                title="Initial Deposite"
+                left={props => (
+                  <Image
+                    {...props}
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                onPress={() => navigation.navigate('InitiateDeposite')}
               />
-            )}
-            right={props => (
-              <Image style={styles.rightIcon} source={plusImage} />
-            )}
-            id="3"
-            theme={{colors: {text: 'white'}}}
-            style={styles.menuText}
-            titleStyle={styles.menuText}>
-            <List.Item
-              title="Initial Deposite"
-              left={props => (
-                <Image
-                  {...props}
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-              titleStyle={styles.itemText}
-              onPress={() => navigation.navigate('InitiateDeposite')}
-            />
-            <List.Item
-              title="Unsettled Fund Report"
-              titleStyle={styles.itemText}
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-               onPress={() => navigation.navigate('UnsettledFundReport')}
-            />
-            <List.Item
-              title="Settled Fund Report"
-              titleStyle={styles.itemText}
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-               onPress={() => navigation.navigate('SettledFundReport')}
-            />
-            <List.Item
-              title="Perfect Money Fund Report"
-              titleStyle={styles.itemText}
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-              // onPress={() => navigation.navigate('Security')}
-            />
-            <List.Item
-              title="Deposit From Purchase Wallet"
-              titleStyle={styles.itemText}
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-              // onPress={() => navigation.navigate('Security')}
-            />
-            <List.Item
-              title="Purchase Wallet Report"
-              titleStyle={styles.itemText}
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-              // onPress={() => navigation.navigate('Security')}
-            />
-          </List.Accordion>
-          <List.Accordion
-            title="Account"
-            id="4"
-            left={props => (
-              <Image
-                style={styles.leftIcon}
-                color={'white'}
-                source={AccountImg}
+              <List.Item
+                title="Unsettled Fund Report"
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                onPress={() => navigation.navigate('UnsettledFundReport')}
               />
-            )}
-            right={props => (
-              <Image style={styles.rightIcon} source={plusImage} />
-            )}
-            theme={{colors: {text: 'white'}}}
-            style={styles.menuText}
-            titleStyle={styles.menuText}>
-            <List.Item
-              title="User Account"
-              titleStyle={styles.itemText}
+              <List.Item
+                title="Settled Fund Report"
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                onPress={() => navigation.navigate('SettledFundReport')}
+              />
+              <List.Item
+                title="Perfect Money Fund Report"
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                // onPress={() => navigation.navigate('Security')}
+              />
+              <List.Item
+                title="Deposit From Purchase Wallet"
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                // onPress={() => navigation.navigate('Security')}
+              />
+              <List.Item
+                title="Purchase Wallet Report"
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                // onPress={() => navigation.navigate('Security')}
+              />
+            </List.Accordion>
+            <List.Accordion
+              title="Account"
+              id="4"
               left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
+                <Icon name="ios-person" size={24} color={colors.title} />
               )}
-              // onPress={() => navigation.navigate('AddFund')}
-            />
-            <List.Item
-              title="Rearrange Account Details"
-              titleStyle={styles.itemText}
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
+              right={props => (
+                <View>
+                  {props.isExpanded ? (
+                    <Icon
+                      name="remove-outline"
+                      size={24}
+                      color={colors.title}
+                    />
+                  ) : (
+                    <Icon name="md-add" size={24} color={colors.title} />
+                  )}
+                </View>
               )}
-              // onPress={() =>
-              //     navigation.navigate('FundReports', { routeName: 'FundReport' })
-              // }
-            />
-            <List.Item
-              title="Reset Password"
-              titleStyle={styles.itemText}
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-              // onPress={() =>
-              //     navigation.navigate('FundReports', { routeName: 'PerfectMoney' })
-              // }
-            />
-          </List.Accordion>
+              theme={{colors: {text: 'white'}}}
+              style={styles.menuText}
+              titleStyle={styles.menuText}>
+              <List.Item
+                title="User Account"
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                // onPress={() => navigation.navigate('AddFund')}
+              />
+              <List.Item
+                title="Rearrange Account Details"
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                // onPress={() =>
+                //     navigation.navigate('FundReports', { routeName: 'FundReport' })
+                // }
+              />
+              <List.Item
+                title="Reset Password"
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                // onPress={() =>
+                //     navigation.navigate('FundReports', { routeName: 'PerfectMoney' })
+                // }
+              />
+            </List.Accordion>
 
-          <List.Accordion
-            title="Partners"
-            id="5"
-            left={props => (
-              <Image
-                style={styles.leftIcon}
-                color={'white'}
-                source={PartnersImg}
+            <List.Accordion
+              title="Partners"
+              id="5"
+              left={props => (
+                <Icon name="ios-people-sharp" size={24} color={colors.title} />
+              )}
+              right={props => (
+                <View>
+                  {props.isExpanded ? (
+                    <Icon
+                      name="remove-outline"
+                      size={24}
+                      color={colors.title}
+                    />
+                  ) : (
+                    <Icon name="md-add" size={24} color={colors.title} />
+                  )}
+                </View>
+              )}
+              theme={{colors: {text: 'white'}}}
+              style={styles.menuText}
+              titleStyle={styles.menuText}>
+              <List.Item
+                title="Genealogy"
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                onPress={() => navigation.navigate('Genealogy')}
               />
-            )}
-            right={props => (
-              <Image source={plusImage} style={styles.rightIcon} />
-            )}
-            theme={{colors: {text: 'white'}}}
-            style={styles.menuText}
-            titleStyle={styles.menuText}>
-            <List.Item
-              title="Genealogy"
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-              titleStyle={styles.itemText}
-              // onPress={() => navigation.navigate('Genealogy')}
-            />
-            <List.Item
-              title="Team View"
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-              titleStyle={styles.itemText}
-              // onPress={() => navigation.navigate('DirectUserList')}
-            />
-            <List.Item
-              title="Direct Partner List"
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-              titleStyle={styles.itemText}
-              // onPress={() => navigation.navigate('TeamView')}
-            />
-          </List.Accordion>
+              <List.Item
+                title="Team View"
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                // onPress={() => navigation.navigate('DirectUserList')}
+              />
+              <List.Item
+                title="Direct Partner List"
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                // onPress={() => navigation.navigate('TeamView')}
+              />
+            </List.Accordion>
 
-          <List.Accordion
-            title="Revenue"
-            id="6"
-            left={props => (
-              <Image
-                style={styles.leftIcon}
-                color={'white'}
-                source={revenueImg}
-              />
-            )}
-            right={props => (
-              <Image style={styles.rightIcon} source={plusImage} />
-            )}
-            theme={{colors: {text: 'white'}}}
-            style={styles.menuText}
-            titleStyle={styles.menuText}></List.Accordion>
+            <List.Accordion
+              title="Revenue"
+              id="6"
+              left={props => (
+                <RevenueImg height={20} width={20} color="black" />
+              )}
+              right={props => (
+                <View>
+                  {props.isExpanded ? (
+                    <Icon
+                      name="remove-outline"
+                      size={24}
+                      color={colors.title}
+                    />
+                  ) : (
+                    <Icon name="md-add" size={24} color={colors.title} />
+                  )}
+                </View>
+              )}
+              theme={{colors: {text: 'white'}}}
+              style={styles.menuText}
+              titleStyle={styles.menuText}></List.Accordion>
 
-          <List.Accordion
-            title="Withdrawal Wallet"
-            id="7"
-            left={props => (
-              <Image
-                style={styles.leftIcon}
-                color={'white'}
-                source={withdrawalImg}
+            <List.Accordion
+              title="Withdrawal Wallet"
+              id="7"
+              left={props => (
+                <WithdrowWalletImg height={20} width={20} color="black" />
+              )}
+              right={props => (
+                <View>
+                  {props.isExpanded ? (
+                    <Icon
+                      name="remove-outline"
+                      size={24}
+                      color={colors.title}
+                    />
+                  ) : (
+                    <Icon name="md-add" size={24} color={colors.title} />
+                  )}
+                </View>
+              )}
+              theme={{colors: {text: 'white'}}}
+              style={styles.menuText}
+              titleStyle={styles.menuText}>
+              <List.Item
+                title="Cryptobrite Wallet"
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                // onPress={() => navigation.navigate('DirectIncome')}
               />
-            )}
-            right={props => (
-              <Image style={styles.rightIcon} source={plusImage} />
-            )}
-            theme={{colors: {text: 'white'}}}
-            style={styles.menuText}
-            titleStyle={styles.menuText}>
-            <List.Item
-              title="Cryptobrite Wallet"
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-              titleStyle={styles.itemText}
-              // onPress={() => navigation.navigate('DirectIncome')}
-            />
-            <List.Item
-              title="Withdrawal Wallet Report"
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-              titleStyle={styles.itemText}
-              // onPress={() => navigation.navigate('ROIBonusIncome')}
-            />
-            <List.Item
-              title="Cryptobrite Wallet To Purchase Wallet Trans"
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-              titleStyle={styles.itemText}
-              // onPress={() => navigation.navigate('BinaryIncome')}
-            />
-          </List.Accordion>
+              <List.Item
+                title="Withdrawal Wallet Report"
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                // onPress={() => navigation.navigate('ROIBonusIncome')}
+              />
+              <List.Item
+                title="Cryptobrite Wallet To Purchase Wallet Trans"
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                // onPress={() => navigation.navigate('BinaryIncome')}
+              />
+            </List.Accordion>
 
-          <List.Accordion
-            title="Manage All Id Balance"
-            id="8"
-            left={props => (
-              <Image
-                style={styles.leftIcon}
-                color={'white'}
-                source={manageAllIdBalanceImg}
+            <List.Accordion
+              title="Manage All Id Balance"
+              id="8"
+              left={props => (
+                <Icon name="ios-document-text" size={24} color={colors.title} />
+              )}
+              right={props => (
+                <View>
+                  {props.isExpanded ? (
+                    <Icon
+                      name="remove-outline"
+                      size={24}
+                      color={colors.title}
+                    />
+                  ) : (
+                    <Icon name="md-add" size={24} color={colors.title} />
+                  )}
+                </View>
+              )}
+              theme={{colors: {text: 'white'}}}
+              style={styles.menuText}
+              titleStyle={styles.menuText}>
+              <List.Item
+                title="All Id Balance Receive"
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                // onPress={() => navigation.navigate('DirectIncome')}
               />
-            )}
-            right={props => (
-              <Image style={styles.rightIcon} source={plusImage} />
-            )}
-            theme={{colors: {text: 'white'}}}
-            style={styles.menuText}
-            titleStyle={styles.menuText}>
-            <List.Item
-              title="All Id Balance Receive"
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-              titleStyle={styles.itemText}
-              // onPress={() => navigation.navigate('DirectIncome')}
-            />
-            <List.Item
-              title="Unsetteled Balance Receive Request"
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-              titleStyle={styles.itemText}
-              // onPress={() => navigation.navigate('ROIBonusIncome')}
-            />
-            <List.Item
-              title="Confirmed Balance Report"
-              left={props => (
-                <Image
-                  style={styles.subMenuStyle}
-                  color={'white'}
-                  // source={arrowRightImage}
-                />
-              )}
-              titleStyle={styles.itemText}
-              // onPress={() => navigation.navigate('BinaryIncome')}
-            />
-          </List.Accordion>
+              <List.Item
+                title="Unsetteled Balance Receive Request"
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                // onPress={() => navigation.navigate('ROIBonusIncome')}
+              />
+              <List.Item
+                title="Confirmed Balance Report"
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                // onPress={() => navigation.navigate('BinaryIncome')}
+              />
+            </List.Accordion>
 
-          <List.Item
-            title="Logout"
-            titleStyle={styles.menuText}
-            left={props => (
-              <Image
-                style={[styles.leftIcon, {marginTop: 7}]}
-                color={'white'}
-                // source={logoutImage}
-              />
-            )}
-            onPress={() => handleLogOut(navigation)}
-          />
-        </List.AccordionGroup>
+            <List.Item
+              title="Exit"
+              titleStyle={styles.menuText}
+              left={props => (
+                <Icon
+                  name="exit"
+                  style={{marginTop: 6}}
+                  size={24}
+                  color={colors.title}
+                />
+              )}
+              onPress={() => handleLogOut(navigation)}
+            />
+          </List.AccordionGroup>
+        </View>
       </ScrollView>
     </View>
   );
@@ -446,13 +512,13 @@ export default DrawerMenu;
 const styles = StyleSheet.create({
   menuText: {
     backgroundColor: 'white',
-    fontSize: getDimen(0.043),
+    fontSize: 14,
     color: '#1b2a39',
     paddingLeft: '3%',
   },
   itemText: {
-    fontSize: getDimen(0.025),
-    color: '#1b2a39',
+    fontSize: 12,
+    color: 'white',
   },
   rightIcon: {
     height: getDimen(0.036),

@@ -46,6 +46,9 @@ const strings = new LocalizedStrings({
     belowDetails: 'You have used your below details.',
     //sucess :
     Continue: 'Continue',
+    // Genealogy
+    userIDPlaceholder: 'Enter User Id',
+    createStructure: 'Create Structure',
     //SettledFund
     Search:'Search',
     Deposit:'Deposit ID',
@@ -55,7 +58,7 @@ const strings = new LocalizedStrings({
     FromDate:'From Date',
     ToDate:'To Date',
     Confirm:'Confirm',
-    Cancel:'Cancel'
+    Cancel:'Cancel',
     
   },
   IN: {
