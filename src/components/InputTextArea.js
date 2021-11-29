@@ -3,7 +3,9 @@ import React, {useState} from 'react';
 import {TextInput, View, Image, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {AppColors} from '../constants/appColors';
-
+import Icons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+// import * as Icons from 'react-native-vector-icons';
 export const InputTextArea = ({
   placeholder,
   setValue,
@@ -14,6 +16,10 @@ export const InputTextArea = ({
   maxLength,
   IconName,
   IconSize,
+  name,
+  size,
+  materialCName,
+  msize,
 }) => {
   const {colors} = useTheme();
   return (
@@ -36,6 +42,18 @@ export const InputTextArea = ({
         style={{marginRight: 10}}
         color={colors.iconColor}
       />
+      <Icons
+        name={name}
+        size={size}
+        style={{right: 10}}
+        color={colors.iconColor}
+      />
+      <MaterialCIcons
+        name={materialCName}
+        size={msize}
+        style={{right: 10}}
+        color={colors.iconColor}
+      />
     </View>
   );
 };
@@ -54,7 +72,7 @@ const styles = props =>
       alignItems: 'center',
       justifyContent: 'space-between',
       borderColor: props.borderColor,
-      borderWidth: 1.5,
+      borderWidth: 1,
       borderRadius: 25,
     },
   });

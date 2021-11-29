@@ -24,9 +24,9 @@ const ForgotPassword = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const forgotPasswordFun = () => {
-    console.log('userID' + userID);
-    setModalVisible(true);
-    // navigation.navigate('DemoTheme');
+    // console.log('userID' + userID);
+    // setModalVisible(true);
+    navigation.navigate('GenerateNewPassword');
   };
   const callbackFromOTP = useCallback(status => {
     setModalVisible(status);
@@ -90,17 +90,19 @@ const ForgotPassword = ({navigation}) => {
             <TouchableOpacity
               onPress={() => forgotPasswordFun()}
               style={styles(colors).sendButtonView}>
-              <Text style={styles(colors).sendButtonText}>Send</Text>
+              <Text style={styles(colors).sendButtonText}>{strings.send}</Text>
             </TouchableOpacity>
           </ScrollView>
         </View>
       </View>
-      {modalVisible && (
-        <EnterOtpPopView
-          modalVisible={modalVisible}
-          parentCallback={callbackFromOTP}
-        />
-      )}
+      <View style={{backgroundColor: 'transparent'}}>
+        {modalVisible && (
+          <EnterOtpPopView
+            modalVisible={modalVisible}
+            parentCallback={callbackFromOTP}
+          />
+        )}
+      </View>
     </KeyboardAvoidingView>
   );
 };

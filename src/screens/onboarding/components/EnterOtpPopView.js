@@ -4,6 +4,8 @@ import OTPTextView from 'react-native-otp-textinput';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
 import {useTheme} from '@react-navigation/native';
+import strings from '../../../constants/localization';
+import textSize from '../../../constants/textSize';
 
 const EnterOtpPopView = ({modalVisible, parentCallback}) => {
   const navigation = useNavigation();
@@ -20,29 +22,30 @@ const EnterOtpPopView = ({modalVisible, parentCallback}) => {
           // Alert.alert("Modal has been closed.");
           parentCallback(!modalVisible);
         }}>
-        <>
-          <View style={styles(colors).closeBtnView}>
-            <TouchableOpacity onPress={() => parentCallback(!modalVisible)}>
-              <Icon name="close" size={35} color={'#FFFFFF'} />
-            </TouchableOpacity>
-          </View>
-          <View style={styles(colors).container}>
-            <Text style={styles(colors).textlabel}>Enter OTP </Text>
+        <View style={styles(colors).centeredView}>
+          <View style={styles(colors).modalView}>
+            <View style={styles(colors).closeBtnView}>
+              <TouchableOpacity onPress={() => parentCallback(!modalVisible)}>
+                <Icon name="close" size={35} color={'#FFFFFF'} />
+              </TouchableOpacity>
+            </View>
+            <Text style={styles(colors).textlabel}>{strings.enterOtp}</Text>
             <OTPTextView
               handleTextChange={otpInput => setotpInput(otpInput)}
               textInputStyle={styles(colors).roundedTextInput}
               inputCount={6}
               inputCellLength={1}
             />
-
             {otpInput ? (
               <TouchableOpacity
                 style={[
                   styles(colors).buttonContainer,
                   styles(colors).submitButton,
                 ]}
-                onPress={() => verifyOtpFun()}>
-                <Text style={styles.loginText}>SUBMIT</Text>
+                onPress={() => console.log('pressed')}>
+                <Text style={styles(colors).submitBtnText}>
+                  {strings.submit}
+                </Text>
               </TouchableOpacity>
             ) : (
               <View
@@ -50,11 +53,13 @@ const EnterOtpPopView = ({modalVisible, parentCallback}) => {
                   styles(colors).buttonContainer,
                   styles(colors).submitDisableButton,
                 ]}>
-                <Text style={styles(colors).loginText}>SUBMIT</Text>
+                <Text style={styles(colors).submitBtnText}>
+                  {strings.submit}
+                </Text>
               </View>
             )}
           </View>
-        </>
+        </View>
       </Modal>
     </View>
   );
@@ -62,17 +67,30 @@ const EnterOtpPopView = ({modalVisible, parentCallback}) => {
 
 const styles = props =>
   StyleSheet.create({
-    container: {
+    centeredView: {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor: 'rgba(0,0,0,0.7)',
+    },
+    modalView: {
+      flex: 0.5,
+      margin: 20,
       backgroundColor: '#262626',
+      borderRadius: 20,
+      padding: 35,
+      alignItems: 'center',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 50,
     },
     closeBtnView: {
-      paddingTop: 10,
-      paddingRight: 10,
-      alignItems: 'flex-end',
-      backgroundColor: '#262626',
+      alignSelf: 'flex-end',
     },
     textlabel: {
       color: '#FFFFFF',
@@ -100,9 +118,9 @@ const styles = props =>
       borderRadius: 10,
       backgroundColor: 'transparent',
     },
-    loginText: {
-      color: '#FFFFFF',
-      fontSize: 22,
+    submitBtnText: {
+      color: props.headerColor,
+      fontSize: textSize.h2,
       fontWeight: 'bold',
     },
     submitButton: {

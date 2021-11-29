@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   View,
   Text,
@@ -15,17 +15,12 @@ import strings from '../../constants/localization';
 import textSize from '../../constants/textSize';
 import {useTheme} from '@react-navigation/native';
 
-const Login = ({navigation}) => {
+const GenerateNewPassword = ({navigation}) => {
   const {colors} = useTheme();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [userID, setUserID] = useState('');
 
-  const theme = useTheme();
-  const {color} = useTheme();
-
-  const loginFun = () => {
-    console.log('email' + email, ' password' + password);
-    navigation.navigate('Dashboard');
+  const generatePasswordFun = () => {
+    navigation.navigate('PassUpdateSuccessMessage');
   };
   return (
     <KeyboardAvoidingView
@@ -41,60 +36,47 @@ const Login = ({navigation}) => {
               style={styles(colors).iconImageStyle}
               source={require('../../assets/login_logo.png')}
             />
-            <Text style={styles(colors).welcomeTitleText}>
-              {strings.welcomeBack}
-            </Text>
           </ImageBackground>
         </View>
         <View style={{height: '65%'}}>
           {/*  */}
           <ScrollView style={styles(colors).inputViewWrapper}>
             <View>
-              <Text style={styles(colors).loginTitleText}>{strings.login}</Text>
+              <Text style={styles(colors).generatePassTitleText}>
+                {strings.generateNewPass}
+              </Text>
+              <Text style={styles(colors).generatePassParagraphText}>
+                {strings.generateNewPassParagraph}
+              </Text>
             </View>
-            <Text style={styles(colors).titleText}>{strings.email}</Text>
+            <Text style={styles(colors).titleText}>{strings.newPass}</Text>
             <InputTextArea
-              placeholder={strings.emailPlaceholder}
-              setValue={text => setEmail(text)}
-              value={email}
-              keyboardType={'email-address'}
+              placeholder={strings.newPassPlaceholder}
+              setValue={text => setUserID(text)}
+              value={userID}
+              keyboardType={'default'}
               secureTextEntry={false}
               onSubmitEditing={text => console.log('text', text)}
               maxLength={100}
-              IconName={'mail'}
+              IconName={'lock-closed'}
               IconSize={20}
             />
-            <Text style={styles(colors).titleText}>{strings.password}</Text>
+            <Text style={styles(colors).titleText}>{strings.confirmPassword}</Text>
             <InputTextArea
-              placeholder={strings.passwordPlaceholder}
-              setValue={text => setPassword(text)}
-              value={password}
+              placeholder={strings.confirmNewPassPlaceholder}
+              setValue={text => setUserID(text)}
+              value={userID}
               keyboardType={'default'}
-              secureTextEntry={true}
+              secureTextEntry={false}
               onSubmitEditing={text => console.log('text', text)}
               maxLength={100}
               IconName={'lock-closed'}
               IconSize={20}
             />
             <TouchableOpacity
-              onPress={() => navigation.navigate('ForgotPassword')}>
-              <Text style={styles(colors).forgetPassText}>
-                {strings.forgetPassword}
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => loginFun()}
-              style={styles(colors).loginButtonView}>
-              <Text style={styles(colors).loginButtonText}>
-                {strings.login}
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles(colors).dontHaveAccntView}
-              onPress={() => navigation.navigate('Signup')}>
-              <Text style={styles(colors).dontHaveAccntText}>
-                {strings.dontHaveAccnt}
-              </Text>
+              onPress={() => generatePasswordFun()}
+              style={styles(colors).updateButtonView}>
+              <Text style={styles(colors).updateButtonText}>{strings.updatePass}</Text>
             </TouchableOpacity>
           </ScrollView>
         </View>
@@ -118,15 +100,9 @@ const styles = props =>
       alignItems: 'center',
     },
     iconImageStyle: {
-      marginTop: '10%',
+      marginTop: '20%',
       height: '34%',
       width: '50%',
-    },
-    welcomeTitleText: {
-      fontSize: textSize.h1,
-      marginTop: '5%',
-      fontWeight: 'bold',
-      color: props.headerColor,
     },
     titleText: {
       fontWeight: '500',
@@ -134,38 +110,31 @@ const styles = props =>
       color: props.headerColor,
       marginVertical: 10,
     },
-    loginTitleText: {
+    generatePassTitleText: {
       color: props.headerColor,
       fontSize: textSize.h1,
       fontWeight: 'bold',
-      marginBottom: 20,
+      marginBottom: 10,
     },
-    forgetPassText: {
-      fontSize: textSize.h6,
-      color: props.headerColor,
-      textAlign: 'right',
-      marginVertical: 15,
+    generatePassParagraphText: {
+        color: props.headerColor,
+        fontSize: textSize.h5,
+        fontWeight: '500',
+        marginBottom: 20,
     },
-    loginButtonView: {
+    updateButtonView: {
       backgroundColor: props.buttonColor,
       alignItems: 'center',
       justifyContent: 'center',
-      paddingVertical: '4%',
+      paddingVertical: '3%',
       borderRadius: 25,
+      marginVertical: 20,
     },
-    loginButtonText: {
-      fontSize: textSize.h4,
+    updateButtonText: {
+      fontSize: textSize.h2,
       color: props.headerColor,
       fontWeight: '600',
     },
-    dontHaveAccntView: {
-      marginVertical: 10,
-    },
-    dontHaveAccntText: {
-      fontWeight: '600',
-      fontSize: textSize.h4,
-      color: props.headerColor,
-      textAlign: 'center',
-    },
+    
   });
-export default Login;
+export default GenerateNewPassword;
