@@ -205,15 +205,18 @@ const styles = props =>
         flex: 1,
         flexDirection: 'row',
         //alignItems: 'center',
-        justifyContent: 'center',
+       // justifyContent: 'center',
         //backgroundColor: 'transparent',
        // height: 50,
-        padding: 7,
+       justifyContent: 'space-between',
+        //padding: 7,
+        
     },
     flatCardBody: {
         //height: getDimen(0.300),
         width: getDimen(0.44),
-        marginRight:10,
+        margin:5,
+       // marginRight:10,
         paddingTop:10,
         paddingBottom:10,
         borderRadius: 12,
@@ -250,6 +253,7 @@ const styles = props =>
         shadowOpacity: 1,
         shadowRadius: 30,
         elevation: 8,
+        marginTop:10
      },
 });
 export default Cards;
