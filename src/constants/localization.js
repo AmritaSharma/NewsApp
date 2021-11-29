@@ -93,7 +93,10 @@ const strings = new LocalizedStrings({
     ToDate: 'To Date',
     Confirm: 'Confirm',
     Cancel: 'Cancel',
-    Reset:'Reset'
+    Reset:'Reset',
+    //DepositFromPurchaseWallet
+    UserId:'Enter User',
+    Package:'Select Package'
   },
   IN: {
     Reward: 'इनाम',

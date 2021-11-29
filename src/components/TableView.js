@@ -12,7 +12,6 @@ import {useTheme} from '@react-navigation/native';
 import DatePicker from 'react-native-datepicker'
 import {InputTextArea} from '../components/InputTextArea';
 
-
 const TableView = ({ data, parentCallback,   }) => {
     const [expanded, setExpanded] = useState(false);
     const {colors} = useTheme();
@@ -142,8 +141,7 @@ const TableView = ({ data, parentCallback,   }) => {
                                     <TouchableOpacity style={styles(colors).searchBtnView} >
                                         <Text style={styles(colors).searchBtnText}>{strings.Reset}</Text>
                                     </TouchableOpacity>
-                            </View>
-                           
+                            </View>   
                         </View>
                         </>
                         </List.Accordion>

@@ -84,11 +84,6 @@ const loginStack = () => {
         component={UserAccount}
         options={{headerShown: false}}
       /> */}
-      <Stack.Screen
-        name="InitiateDeposite"
-        component={InitiateDeposite}
-        options={{headerShown: false}}
-      />
     </>
   );
 };

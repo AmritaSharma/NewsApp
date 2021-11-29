@@ -11,7 +11,10 @@ import SettledFundReport from '../../screens/Deposite/SettledFundReport';
 import UnsettledFundReport from '../../screens/Deposite/UnsettledFundReport';
 import Genealogy from '../../screens/Partners/Genealogy';
 import {useTheme} from '@react-navigation/native';
-import InitiateDeposite from '../deposits/InitiateDeposite';
+import InitiateDeposite from '../../screens/Deposite/InitiateDeposite';
+import PerfectMoneyFundReports from '../../screens/Deposite/PerfectMoneyFundReports';
+import PurchaseWalletReport from '../../screens/Deposite/PurchaseWalletReport';
+import DepositFromPurchaseWallet from '../../screens/Deposite/DepositFromPurchaseWallet';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -39,10 +42,10 @@ function DrawerNavigator({navigation}) {
       <Drawer.Screen name="UserAccount" component={UserAccount} />
       <Drawer.Screen name="Logout" component={DemoTheme} />
       <Drawer.Screen name="SettledFundReport" component={SettledFundReport} />
-      <Drawer.Screen
-        name="UnsettledFundReport"
-        component={UnsettledFundReport}  
-      />
+      <Drawer.Screen name="UnsettledFundReport"component={UnsettledFundReport}  />
+      <Drawer.Screen name="PerfectMoneyFundReports" component={PerfectMoneyFundReports} />
+      <Drawer.Screen name="PurchaseWalletReport" component={PurchaseWalletReport} />
+      <Drawer.Screen name="DepositFromPurchaseWallet" component={DepositFromPurchaseWallet} />
       <Drawer.Screen name="Genealogy" component={Genealogy} />
     </Drawer.Navigator>
   );

@@ -178,7 +178,7 @@ const DrawerMenu = () => {
                     // source={arrowRightImage}
                   />
                 )}
-                // onPress={() => navigation.navigate('Security')}
+                 onPress={() => navigation.navigate('PerfectMoneyFundReports')}
               />
               <List.Item
                 title="Deposit From Purchase Wallet"
@@ -191,7 +191,7 @@ const DrawerMenu = () => {
                     // source={arrowRightImage}
                   />
                 )}
-                // onPress={() => navigation.navigate('Security')}
+                 onPress={() => navigation.navigate('DepositFromPurchaseWallet')}
               />
               <List.Item
                 title="Purchase Wallet Report"
@@ -204,7 +204,7 @@ const DrawerMenu = () => {
                     // source={arrowRightImage}
                   />
                 )}
-                // onPress={() => navigation.navigate('Security')}
+                 onPress={() => navigation.navigate('PurchaseWalletReport')}
               />
             </List.Accordion>
             <List.Accordion
