@@ -121,15 +121,16 @@ const UserAccount = ({navigation}) => {
                   name={'phone-iphone'}
                   size={20}
                 />
+
+                <AppButton
+                  style={{
+                    width: '100%',
+                    height: '12%',
+                  }}
+                  onPress={() => {}}
+                  text={strings.savechanges}
+                />
               </View>
-              <AppButton
-                style={{
-                  width: '90%',
-                  height: '9%',
-                }}
-                onPress={() => {}}
-                text={strings.savechanges}
-              />
             </View>
           </ScrollView>
         </ImageBackground>
@@ -164,11 +165,10 @@ const styles = props =>
 
     innerView: {
       backgroundColor: props.heading,
-      height: 670,
+      height: '100%',
       width: '100%',
       borderRadius: 15,
       padding: 20,
-      top: '10%',
     },
 
     body: {
