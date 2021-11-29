@@ -30,5 +30,26 @@ export const API = {
     });
     return result;
   },
-  
+
+  getRoiRevenueApi: async data => {
+    console.log('getRoiRevenueApi', data);
+    const result = await axios({
+      method: 'POST',
+      url: `roi-income`,
+      data: data.data,
+      headers: {Authorization: `Bearer ${data.token}`},
+    });
+    return result;
+  },
+
+  getBinaryRevenueApi: async data => {
+    console.log('getBinaryRevenueApi', data);
+    const result = await axios({
+      method: 'POST',
+      url: `binary-income`,
+      data: data.data,
+      headers: {Authorization: `Bearer ${data.token}`},
+    });
+    return result;
+  },
 };

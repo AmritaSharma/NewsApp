@@ -81,12 +81,12 @@ const loginStack = () => {
         component={DrawerNavigator}
         options={{headerShown: false}}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="UserAccount"
         component={UserAccount}
         options={{headerShown: false}}
-      /> */}
-      <Stack.Screen
+      />
+       <Stack.Screen
         name="InitiateDeposite"
         component={InitiateDeposite}
         options={{headerShown: false}}

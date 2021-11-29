@@ -9,6 +9,7 @@ import {
   Platform,
   ScrollView,
   TouchableOpacity,
+  Alert
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {InputTextArea} from '../../components/InputTextArea';
@@ -16,6 +17,7 @@ import strings from '../../constants/localization';
 import textSize from '../../constants/textSize'
 import { useTheme } from '@react-navigation/native';
 import {Checkbox} from 'react-native-paper';
+import Validation from '../../utils/Validation';
 
 const Signup = ({navigation}) => {
   const {colors} = useTheme();
@@ -31,6 +33,34 @@ const Signup = ({navigation}) => {
   const [checked, setChecked] = useState(false);
 
   const signupFun = () => {
+    let emailValidation = Validation.validEmail(email)
+    let mobileValidation = Validation.validPhoneNumber(mobileNo)
+    let passwordValidation = Validation.validPassword(password)
+    let cpasswordValidation = Validation.validPassword(confirmPassword)
+    if(!userID || !fullName || !mobileNo || !position || !email || !sponsersID || !password || !confirmPassword){
+      Alert.alert('fill all fields')
+      return
+    }
+    if(!mobileValidation){
+      Alert.alert('Invalid Mobile no')
+      return
+    }
+    if(!emailValidation){
+      Alert.alert('Invalid email ID')
+      return
+    }
+    if(!passwordValidation){
+      Alert.alert('Invalid password')
+      return
+    }
+    if(!cpasswordValidation){
+      Alert.alert('Invalid confirm password')
+      return
+    }
+    if(!checkTerm || !checked){
+      Alert.alert('Read Terms and Condition')
+      return 
+    }
     navigation.navigate('ForgotPassword')
   }
   return (
