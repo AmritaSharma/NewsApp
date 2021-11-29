@@ -31,27 +31,9 @@ const InitiateDeposite = ({navigation}) => {
   const bgImage = require('../../assets/panelBG.png');
   const screenImage = require('../../assets/initdeposite_img.png');
   const token =
-    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjlkNWY0ZDQ0Yzc0MmM5NzJjZTllYmM1NTM2M2YwMzRhNzJlYzhiYzNjYWI5MTUwOTgyNjNiNzM0NzRjNThkNjRkNTdjMjg5Mjg2ZDYxYTdiIn0.eyJhdWQiOiI2IiwianRpIjoiOWQ1ZjRkNDRjNzQyYzk3MmNlOWViYzU1MzYzZjAzNGE3MmVjOGJjM2NhYjkxNTA5ODI2M2I3MzQ3NGM1OGQ2NGQ1N2MyODkyODZkNjFhN2IiLCJpYXQiOjE2MzgxNzI1ODIsIm5iZiI6MTYzODE3MjU4MiwiZXhwIjoxNjY5NzA4NTgyLCJzdWIiOiIyIiwic2NvcGVzIjpbIioiXX0.gJgMgEiXuGDWAiq62HN2Fy7BTskWUgEHqbluVltqKmJ9hkGBnJ47lXiJkE1TprVNIfiDWyNOGsG0NtTue0eJJMFzkLmjM7TQoJ1t0Q-raYqgASqh9mz9_c4cJ_wj4eMZY0hfW1x4kMz__z6VDsrxuA3sdX4aEj9PBVjuZQTLemyZTmnaRQSUBu2dMqvnsjywiKef-yD5hp_YqE7agSus2lDMFxJ5wNQLwHxxo1CAsY5-zgWcidE2rrS6rsuhuUClmP4x4nvcuO6Eo5fnm6s4-YU5pjlyreArNGN601VdvvBaFE-gVTNipFgFFgO3-ZgmVpKYrh96zj7gArTFXPrvVhhGvJLyw2CcFGEQZ5j3QY5gVocDMzbOjPttUSWhSeazHLuajhRCccgLWA9V1co6QwMHq7gqm8AexL6WRfBAqZBr_GzH9zPvsKLJX-m6izNHpTxXHggIpVBbZlvnnvkj1X5GxzUGegKoh2DahhYg4zQsqUpcXNGot6YkHC_2y37nGao8fJql3jEpdKyud9AJqpsXOwAxZUwcTeAhEgWpnmZjyLO4AQ2lzk3yop0LQQokJwCE6ywJrKIz4lFK5IEIaRbT_lbwNHVED0IPRvUlwaP4odHwiHeMYKphyPwwUPqZPRwo492Ki2zbYXI5_MvWAVREsRFJnjK3ZQCqDqnch-0';
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjlkNWY0ZDQ0Yzc0MmM5NzJjZTllYmM1NTM2M2YwMzRhNzJlYzhiYzNjYWI5MTUwOTgyNjNiNzM0NzRjNThkNjRkNTdjMjg5Mjg2ZDYxYTdiIn0.eyJhdWQiOiI2IiwianRpIjoiOWQ1ZjRkNDRjNzQyYzk3MmNlOWViYzU1MzYzZjAzNGE3MmVjOGJjM2NhYjkxNTA5ODI2M2I3MzQ3NGM1OGQ2NGQ1N2MyODkyODZkNjFhN2IiLCJpYXQiOjE2MzgxNzI1ODIsIm5iZiI6MTYzODE3MjU4MiwiZXhwIjoxNjY5NzA4NTgyLCJzdWIiOiIyIiwic2NvcGVzIjpbIioiXX0.gJgMgEiXuGDWAiq62HN2Fy7BTskWUgEHqbluVltqKmJ9hkGBnJ47lXiJkE1TprVNIfiDWyNOGsG0NtTue0eJJMFzkLmjM7TQoJ1t0Q-raYqgASqh9mz9_c4cJ_wj4eMZY0hfW1x4kMz__z6VDsrxuA3sdX4aEj9PBVjuZQTLemyZTmnaRQSUBu2dMqvnsjywiKef-yD5hp_YqE7agSus2lDMFxJ5wNQLwHxxo1CAsY5-zgWcidE2rrS6rsuhuUClmP4x4nvcuO6Eo5fnm6s4-YU5pjlyreArNGN601VdvvBaFE-gVTNipFgFFgO3-ZgmVpKYrh96zj7gArTFXPrvVhhGvJLyw2CcFGEQZ5j3QY5gVocDMzbOjPttUSWhSeazHLuajhRCccgLWA9V1co6QwMHq7gqm8AexL6WRfBAqZBr_GzH9zPvsKLJX-m6izNHpTxXHggIpVBbZlvnnvkj1X5GxzUGegKoh2DahhYg4zQsqUpcXNGot6YkHC_2y37nGao8fJql3jEpdKyud9AJqpsXOwAxZUwcTeAhEgWpnmZjyLO4AQ2lzk3yop0LQQokJwCE6ywJrKIz4lFK5IEIaRbT_lbwNHVED0IPRvUlwaP4odHwiHeMYKphyPwwUPqZPRwo492Ki2zbYXI5_MvWAVREsRFJnjK3ZQCqDqnch-0';
 
-  const deposite = async () => {
-    try {
-      const data = await axios.get(
-        'http://172.105.175.248/replica/crypto-brite-app/api/getall-currency',
-        {
-          auth: token,
-        },
-      );
-      if (code == '200') {
-        console.log(response);
-      }
-      setUserData(data);
-
-      setShowResult(true);
-    } catch (error) {
-      //console.log(error);
-      console.log(userdata);
-    }
-  };
+  const deposite = async () => {};
 
   useEffect(() => {
     console.log(userdata, '====userdata');
