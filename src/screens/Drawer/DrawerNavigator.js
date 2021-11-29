@@ -4,7 +4,6 @@ import DrawerMenu from '../Drawer/DrawerMenu';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Colour} from '../../constants/color_dark.json';
 import ControlPanal from '../Dashboard/ControlPanal';
-import InitiateDeposite from '../../screens/Deposite/InitiateDeposite';
 // import Dashboard from '../Dashboard/dashboard';
 import UserAccount from '../Accounts/UserAccount';
 import DemoTheme from '../DemoTheme';
