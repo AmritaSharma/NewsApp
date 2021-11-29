@@ -320,7 +320,7 @@ const DrawerMenu = () => {
                 )}
                 style={[styles.menuText, {backgroundColor: colors.headerColor}]}
                 titleStyle={styles.itemText}
-                // onPress={() => navigation.navigate('DirectUserList')}
+                onPress={() => navigation.navigate('TeamView')}
               />
               <List.Item
                 title="Direct Partner List"
@@ -333,7 +333,7 @@ const DrawerMenu = () => {
                 )}
                 style={[styles.menuText, {backgroundColor: colors.headerColor}]}
                 titleStyle={styles.itemText}
-                // onPress={() => navigation.navigate('TeamView')}
+                onPress={() => navigation.navigate('DirectPartnerList')}
               />
             </List.Accordion>
 

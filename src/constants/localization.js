@@ -93,7 +93,11 @@ const strings = new LocalizedStrings({
     ToDate: 'To Date',
     Confirm: 'Confirm',
     Cancel: 'Cancel',
-    Reset:'Reset'
+    Reset:'Reset',
+    // TeamView
+    UserID: 'User Id',
+    Prev: 'Prev',
+    Next: 'Next',
   },
   IN: {
     Reward: 'इनाम',
