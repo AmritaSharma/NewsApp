@@ -80,7 +80,7 @@ const TableView = ({ data, parentCallback,   }) => {
             <View style={styles(colors).tableSearchViewWrapper}>
             <List.Accordion
                         title={strings.Search}
-                        right={props => <Icon name={expanded?"minus":"plus"} size={20} color="#FFF" style={{paddingBottom:10}} />} 
+                        right={props => <Icon name={expanded?"minus":"plus"} size={20} color="#FFF" style={{paddingBottom:0, backgroundColor: 'red'}} />} 
                         expanded={expanded}
                         onPress={handlePress}
                         titleStyle={styles(colors).menuText}
@@ -173,6 +173,7 @@ const TableView = ({ data, parentCallback,   }) => {
                 </View>
                 <Text style={styles(colors).showEntryText}>{strings.Entries}</Text>
             </View>
+           
             <ScrollView horizontal >
                 <FlatList
                     style={{ backgroundColor: '#E6E4E4'}}

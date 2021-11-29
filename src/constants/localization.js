@@ -96,7 +96,11 @@ const strings = new LocalizedStrings({
     Reset:'Reset',
     //DepositFromPurchaseWallet
     UserId:'Enter User',
-    Package:'Select Package'
+    Package:'Select Package',
+    // TeamView
+    UserID: 'User Id',
+    Prev: 'Prev',
+    Next: 'Next',
   },
   IN: {
     Reward: 'इनाम',

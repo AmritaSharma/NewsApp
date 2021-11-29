@@ -9,11 +9,13 @@ import {
   Platform,
   ScrollView,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {InputTextArea} from '../../components/InputTextArea';
 import strings from '../../constants/localization';
 import textSize from '../../constants/textSize';
 import {useTheme} from '@react-navigation/native';
+import Validation from '../../utils/Validation';
 
 const Login = ({navigation}) => {
   const {colors} = useTheme();
@@ -24,6 +26,21 @@ const Login = ({navigation}) => {
   const {color} = useTheme();
 
   const loginFun = () => {
+    let emailValidation = Validation.validEmail(email);
+    let passValidation = Validation.validPassword(password);
+    console.log(
+      'emailValidation' + emailValidation,
+      ' passValidation' + passValidation,
+    );
+    if (!emailValidation) {
+      Alert.alert('Invalid email ID');
+      return;
+    }
+    // if(!passValidation){
+    //   Alert.alert('Invalid password')
+    //   return
+    // }
+    console.log('nav');
     console.log('email' + email, ' password' + password);
     navigation.navigate('ControlPanal');
   };

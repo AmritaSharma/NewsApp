@@ -15,6 +15,10 @@ import InitiateDeposite from '../../screens/Deposite/InitiateDeposite';
 import PerfectMoneyFundReports from '../../screens/Deposite/PerfectMoneyFundReports';
 import PurchaseWalletReport from '../../screens/Deposite/PurchaseWalletReport';
 import DepositFromPurchaseWallet from '../../screens/Deposite/DepositFromPurchaseWallet';
+import RoiRevenue from '../Revenue/RoiRevenue';
+import BinaryRevenue from '../Revenue/BinaryRevenue';
+import TeamView from '../../screens/Partners/TeamView';
+import DirectPartnerList from '../../screens/Partners/DirectPartnerList';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -47,6 +51,10 @@ function DrawerNavigator({navigation}) {
       <Drawer.Screen name="PurchaseWalletReport" component={PurchaseWalletReport} />
       <Drawer.Screen name="DepositFromPurchaseWallet" component={DepositFromPurchaseWallet} />
       <Drawer.Screen name="Genealogy" component={Genealogy} />
+      <Drawer.Screen name="ROIRevenue" component={RoiRevenue} />
+      <Drawer.Screen name="BinaryRevenue" component={BinaryRevenue} />
+      <Drawer.Screen name="TeamView" component={TeamView} />
+      <Drawer.Screen name="DirectPartnerList" component={DirectPartnerList} />
     </Drawer.Navigator>
   );
 }

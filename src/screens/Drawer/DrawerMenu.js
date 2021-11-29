@@ -320,7 +320,7 @@ const DrawerMenu = () => {
                 )}
                 style={[styles.menuText, {backgroundColor: colors.headerColor}]}
                 titleStyle={styles.itemText}
-                // onPress={() => navigation.navigate('DirectUserList')}
+                onPress={() => navigation.navigate('TeamView')}
               />
               <List.Item
                 title="Direct Partner List"
@@ -333,7 +333,7 @@ const DrawerMenu = () => {
                 )}
                 style={[styles.menuText, {backgroundColor: colors.headerColor}]}
                 titleStyle={styles.itemText}
-                // onPress={() => navigation.navigate('TeamView')}
+                onPress={() => navigation.navigate('DirectPartnerList')}
               />
             </List.Accordion>
 
@@ -358,7 +358,73 @@ const DrawerMenu = () => {
               )}
               theme={{colors: {text: 'white'}}}
               style={styles.menuText}
-              titleStyle={styles.menuText}></List.Accordion>
+              titleStyle={styles.menuText}>
+              <List.Item
+                title="ROI Revenue"
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                onPress={() => navigation.navigate('ROIRevenue')}
+              />
+              <List.Item
+                title="Binary Revenue"
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                onPress={() => navigation.navigate('BinaryRevenue')}
+              />
+              <List.Item
+                title="Direct Partners Revenue"
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                // onPress={() => navigation.navigate('BinaryIncome')}
+              />
+              <List.Item
+                title="Royal Title Achievers Revenue"
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                // onPress={() => navigation.navigate('BinaryIncome')}
+              />
+              <List.Item
+                title="Royal Matching Revenue Revenue"
+                left={props => (
+                  <Image
+                    style={styles.subMenuStyle}
+                    color={'white'}
+                    // source={arrowRightImage}
+                  />
+                )}
+                style={[styles.menuText, {backgroundColor: colors.headerColor}]}
+                titleStyle={styles.itemText}
+                // onPress={() => navigation.navigate('BinaryIncome')}
+              />
+            </List.Accordion>
 
             <List.Accordion
               title="Withdrawal Wallet"

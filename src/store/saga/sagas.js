@@ -8,6 +8,10 @@ import {
   LOADING,
   NOTIFY,
   DASHBOARD_DATA,
+  ROI_REVENUE,
+  ROI_REVENUE_DATA,
+  BINARY_REVENUE,
+  BINARY_REVENUE_DATA,
 } from '../action';
 import {call, put, takeLatest} from 'redux-saga/effects';
 import {API} from '../api';
@@ -38,6 +42,30 @@ function* signup(action) {
   }
 }
 
+function* getRoiRevnue(action) {
+  try {
+    yield put({type: LOADING, payload: true});
+    const data = yield call(API.getRoiRevenueApi, action.payload);
+    yield put({type: ROI_REVENUE_DATA, payload: data.data});
+    yield put({type: LOADING, payload: false});
+  } catch (e) {
+    yield put({type: LOADING, payload: false});
+    yield put({type: NOTIFY, payload: e});
+  }
+}
+
+function* getBinaryRevnue(action) {
+  try {
+    yield put({type: LOADING, payload: true});
+    const data = yield call(API.getBinaryRevenueApi, action.payload);
+    yield put({type: BINARY_REVENUE_DATA, payload: data.data});
+    yield put({type: LOADING, payload: false});
+  } catch (e) {
+    yield put({type: LOADING, payload: false});
+    yield put({type: NOTIFY, payload: e});
+  }
+}
+
 
 function* fetchDashboardData(action) {
   try {
@@ -55,5 +83,8 @@ export function* rootSaga() {
   yield takeLatest(LOGIN, login);
   yield takeLatest(SIGNUP, signup);
   yield takeLatest(DASHBOARD, fetchDashboardData);
+  yield takeLatest(ROI_REVENUE, getRoiRevnue);
+    yield takeLatest(BINARY_REVENUE, getBinaryRevnue);
+
 
 }
