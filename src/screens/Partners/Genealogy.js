@@ -48,7 +48,7 @@ const Genealogy = () => {
   return (
     <View style={{flex: 1}}>
       <ImageBackground
-        source={require('../../assets/splashscreen_background.png')}
+        source={require('../../assets/panelBG.png')}
         style={styles(colors).imageBackgroundStyle}>
         <ScrollView>
           <View
