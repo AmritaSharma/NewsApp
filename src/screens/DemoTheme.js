@@ -7,7 +7,7 @@ const DemoTheme = ({navigation}) => {
   const paperTheme = useTheme();
   const {toggleTheme} = useContext(AuthContext);
   const goToLogin = () => {
-    navigation.navigate('Login');
+    navigation.navigate('UserAccount');
   };
   return (
     <View style={styles.container}>

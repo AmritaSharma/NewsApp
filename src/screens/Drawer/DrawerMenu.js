@@ -9,7 +9,6 @@ import {
   ScrollView,
 } from 'react-native';
 import {getDimen} from '../../dimensions/dimen';
-import {useIsFocused} from '@react-navigation/native';
 import {useNavigation} from '@react-navigation/native';
 import {
   DrawerContentScrollView,
@@ -241,7 +240,7 @@ const DrawerMenu = () => {
                     // source={arrowRightImage}
                   />
                 )}
-                // onPress={() => navigation.navigate('AddFund')}
+                onPress={() => navigation.navigate('UserAccount')}
               />
               <List.Item
                 title="Rearrange Account Details"
