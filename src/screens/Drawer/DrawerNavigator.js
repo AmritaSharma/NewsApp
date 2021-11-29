@@ -41,7 +41,7 @@ function DrawerNavigator({navigation}) {
       <Drawer.Screen name="SettledFundReport" component={SettledFundReport} />
       <Drawer.Screen
         name="UnsettledFundReport"
-        component={UnsettledFundReport}
+        component={UnsettledFundReport}  
       />
       <Drawer.Screen name="Genealogy" component={Genealogy} />
     </Drawer.Navigator>
