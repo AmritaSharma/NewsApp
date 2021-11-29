@@ -19,8 +19,10 @@ const Login = ({navigation}) => {
   const {colors} = useTheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const theme = useTheme();
   const {color} = useTheme();
+
   const loginFun = () => {
     console.log('email' + email, ' password' + password);
     navigation.navigate('Dashboard');
