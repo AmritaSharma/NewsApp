@@ -54,7 +54,7 @@ const styles = props =>
       alignItems: 'center',
       justifyContent: 'space-between',
       borderColor: props.borderColor,
-      borderWidth: 1.5,
+      borderWidth: 1,
       borderRadius: 25,
     },
   });
