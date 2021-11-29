@@ -25,7 +25,7 @@ const Login = ({navigation}) => {
 
   const loginFun = () => {
     console.log('email' + email, ' password' + password);
-    navigation.navigate('Dashboard');
+    navigation.navigate('ControlPanal');
   };
   return (
     <KeyboardAvoidingView

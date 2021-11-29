@@ -27,6 +27,8 @@ import {
 import {AuthContext} from '../components/context';
 import AsyncStorage from '@react-native-community/async-storage';
 import DrawerNavigator from '../screens/Drawer/DrawerNavigator';
+import ControlPanal from '../screens/Dashboard/ControlPanal';
+
 
 const Stack = createStackNavigator();
 
@@ -73,12 +75,11 @@ const loginStack = () => {
         component={DemoTheme}
         options={{headerShown: false}}
      />
-{/*
       <Stack.Screen
-        name="Dashboard"
+        name="ControlPanal"
         component={DrawerNavigator}
         options={{headerShown: false}}
-      /> */}
+      /> 
       <Stack.Screen
         name="UserAccount"
         component={UserAccount}
