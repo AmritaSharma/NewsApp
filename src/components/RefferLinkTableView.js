@@ -141,7 +141,7 @@ const HeaderData = [
               </View>
             </View>
             </View>
-          </Card>   
+          </Card>  
         </View>
   );
 };
