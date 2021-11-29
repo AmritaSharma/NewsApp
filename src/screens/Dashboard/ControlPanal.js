@@ -22,10 +22,12 @@ import { Card } from 'react-native-paper';
 import { getDimen } from '../../dimensions/dimen';
 import Cards from '../../components/Cards';
 import RefferLinkTableView from '../../components/RefferLinkTableView';
+import {useDispatch, useSelector} from 'react-redux';
 
 const ControlPanal = ({navigation}) => {
   const {colors} = useTheme();
-  const [userID, setUserID] = useState('');
+  const dispatch = useDispatch();
+  const userLogin = useSelector(state => state.login.loginData);
   const DataTable = [
     {
         "id": 175,
