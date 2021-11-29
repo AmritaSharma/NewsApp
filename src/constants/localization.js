@@ -12,7 +12,6 @@ const strings = new LocalizedStrings({
     password: 'Password',
     forgetPassword: 'Forget Password?',
     dontHaveAccnt: "Don't have an account? Sign Up",
-
     // sigup
     createAccount: 'Create Account',
     userId: 'User ID',
@@ -30,6 +29,22 @@ const strings = new LocalizedStrings({
     // forgot password
     forgotPassword: 'Forgot Password',
     userIdPlaceholder: 'Enter User ID',
+    send: 'Send',
+    submit: 'Submit',
+    enterOtp: 'Enter OTP ',
+    // Generate new pass
+    generateNewPass: 'Generate New Password',
+    generateNewPassParagraph: 'We recieved your reset password request. Please enter your new password',
+    newPass: 'New Password',
+    newPassPlaceholder: 'Enter new password',
+    confirmNewPass: 'Confirm New Password',
+    confirmNewPassPlaceholder: 'Confirm new password',
+    updatePass: 'Update Password',
+    passUpdateSuccessMessage: 'Your Password Has Been Updated!',
+    gotoAccount: 'Go To Your Account',
+    // thank you
+    thankYouMessage: 'Thank You For Registration!',
+    belowDetails: 'You have used your below details.',
     //sucess :
     Continue: 'Continue',
     UserAcc: ' User Account',
