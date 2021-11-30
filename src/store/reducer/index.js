@@ -7,19 +7,17 @@ import {LOGOUT_DATA} from '../action';
 import {ThemeReducer} from './themeReducer';
 import {RevenueReducer} from './revenueReducer';
 import {useraccountReducer} from './useraccountReducer';
+import {newsReducer} from './newsReducer';
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['login', 'theme', 'revenue', 'account'],
+  whitelist: ['news'],
 };
 
 const RootReducer = combineReducers({
   common: CommonReducer,
-  login: LoginReducer,
-  theme: ThemeReducer,
-  revenue: RevenueReducer,
-  account: useraccountReducer,
+  news:newsReducer,
 });
 
 const rootReducer1 = (state, action) => {

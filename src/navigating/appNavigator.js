@@ -1,16 +1,8 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import darkColors from '../constants/color_dark.json';
 import lightColors from '../constants/color_light.json';
-//import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import DemoTheme from '../screens/DemoTheme';
-import Login from '../screens/onboarding/Login';
-import GenerateNewPassword from '../screens/onboarding/GenerateNewPassword';
 import Splash from '../screens/onboarding/Splash';
-import Signup from '../screens/onboarding/Signup';
-import ForgotPassword from '../screens/onboarding/ForgotPassword';
-import PassUpdateSuccessMessage from '../screens/onboarding/PassUpdateSuccessMessage';
-import ThankYou from '../screens/onboarding/ThankYou';
 import {useSelector} from 'react-redux';
 import {
   DarkTheme as PaperDarkTheme,
@@ -24,8 +16,8 @@ import {
 } from '@react-navigation/native';
 import {AuthContext} from '../components/context';
 import AsyncStorage from '@react-native-community/async-storage';
-import DrawerNavigator from '../screens/Drawer/DrawerNavigator';
-import ControlPanal from '../screens/Dashboard/ControlPanal';
+import NewsList from '../screens/News/NewsList';
+import NewsDetails from '../screens/News/NewsDetails';
 
 const Stack = createStackNavigator();
 
@@ -38,60 +30,13 @@ const loginStack = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Login"
-        component={Login}
+        name="NewsList"
+        component={NewsList}
         options={{headerShown: false}}
       />
-      <Stack.Screen
-        name="Signup"
-        component={Signup}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ForgotPassword"
-        component={ForgotPassword}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="GenerateNewPassword"
-        component={GenerateNewPassword}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="PassUpdateSuccessMessage"
-        component={PassUpdateSuccessMessage}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ThankYou"
-        component={ThankYou}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="DemoTheme"
-        component={DemoTheme}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ControlPanal"
-        component={DrawerNavigator}
-        options={{headerShown: false}}
-      />
-    </>
-  );
-};
-
-const homeStack = () => {
-  return (
-    <>
-      <Stack.Screen
-        name="Splash"
-        component={Splash}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Login"
-        component={Login}
+       <Stack.Screen
+        name="NewsDetails"
+        component={NewsDetails}
         options={{headerShown: false}}
       />
     </>
@@ -99,7 +44,6 @@ const homeStack = () => {
 };
 
 const AppNavigator = () => {
-  const loginData = useSelector(state => state.login.loginData);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const authContext = useMemo(
@@ -136,14 +80,13 @@ const AppNavigator = () => {
 
   const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme;
 
-  useEffect(() => {}, [loginData]);
 
   return (
     <PaperProvider theme={theme}>
       <AuthContext.Provider value={authContext}>
         <NavigationContainer theme={theme}>
           <Stack.Navigator>
-            {Object.keys(loginData).length > 0 ? loginStack() : loginStack()}
+            { loginStack() }
           </Stack.Navigator>
         </NavigationContainer>
       </AuthContext.Provider>

@@ -3,15 +3,15 @@ import {Image, ImageBackground, StyleSheet} from 'react-native';
 
 const Splash = ({navigation}) => {
   useEffect(() => {
-    setTimeout(() => navigation.navigate('Login'), 2000);
+    setTimeout(() => navigation.navigate('NewsList'), 2000);
   });
   return (
     <ImageBackground
-      source={require('../../assets/splashscreen_background.png')}
+      source={require('../../assets/splash_design.png')}
       style={styles.imageBackgroundStyle}>
       <Image
         style={styles.iconImageStyle}
-        source={require('../../assets/splashscreen_logo.png')}
+        source={require('../../assets/logoTatva.png')}
       />
     </ImageBackground>
   );
