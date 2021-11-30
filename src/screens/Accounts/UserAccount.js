@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -8,16 +8,21 @@ import {
   TouchableWithoutFeedback,
   KeyboardAvoidingView,
   ScrollView,
+  Alert,
 } from 'react-native';
 import textSize from '../../constants/textSize';
 import strings from '../../constants/localization';
 import {useTheme} from '@react-navigation/native';
 import {InputTextArea} from '../../components/InputTextArea';
 import AppButton from '../../constants/AppButton';
+import axios from 'axios';
+import {USER_ACCOUNT, USER_ACCOUNTDATA} from '../../store/action';
+import {useDispatch, useSelector} from 'react-redux';
 
 const UserAccount = ({navigation}) => {
   const {colors} = useTheme();
   const theme = useTheme();
+  const dispatch = useDispatch();
 
   const [userId, setUserId] = useState('');
   const [name, setName] = useState('');
@@ -26,10 +31,36 @@ const UserAccount = ({navigation}) => {
   const [btcadd, setBtcAdd] = useState('');
   const [mobile, setmobile] = useState('');
   const [email, setEmail] = useState('');
+  const [userdata, setUserData] = useState('');
+  const [showresult, setShowResult] = useState(false);
 
-  const CreateAcc = () => {
-    console.log('userId' + userId, ' name' + name);
-  };
+  const token =
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjlkNWY0ZDQ0Yzc0MmM5NzJjZTllYmM1NTM2M2YwMzRhNzJlYzhiYzNjYWI5MTUwOTgyNjNiNzM0NzRjNThkNjRkNTdjMjg5Mjg2ZDYxYTdiIn0.eyJhdWQiOiI2IiwianRpIjoiOWQ1ZjRkNDRjNzQyYzk3MmNlOWViYzU1MzYzZjAzNGE3MmVjOGJjM2NhYjkxNTA5ODI2M2I3MzQ3NGM1OGQ2NGQ1N2MyODkyODZkNjFhN2IiLCJpYXQiOjE2MzgxNzI1ODIsIm5iZiI6MTYzODE3MjU4MiwiZXhwIjoxNjY5NzA4NTgyLCJzdWIiOiIyIiwic2NvcGVzIjpbIioiXX0.gJgMgEiXuGDWAiq62HN2Fy7BTskWUgEHqbluVltqKmJ9hkGBnJ47lXiJkE1TprVNIfiDWyNOGsG0NtTue0eJJMFzkLmjM7TQoJ1t0Q-raYqgASqh9mz9_c4cJ_wj4eMZY0hfW1x4kMz__z6VDsrxuA3sdX4aEj9PBVjuZQTLemyZTmnaRQSUBu2dMqvnsjywiKef-yD5hp_YqE7agSus2lDMFxJ5wNQLwHxxo1CAsY5-zgWcidE2rrS6rsuhuUClmP4x4nvcuO6Eo5fnm6s4-YU5pjlyreArNGN601VdvvBaFE-gVTNipFgFFgO3-ZgmVpKYrh96zj7gArTFXPrvVhhGvJLyw2CcFGEQZ5j3QY5gVocDMzbOjPttUSWhSeazHLuajhRCccgLWA9V1co6QwMHq7gqm8AexL6WRfBAqZBr_GzH9zPvsKLJX-m6izNHpTxXHggIpVBbZlvnnvkj1X5GxzUGegKoh2DahhYg4zQsqUpcXNGot6YkHC_2y37nGao8fJql3jEpdKyud9AJqpsXOwAxZUwcTeAhEgWpnmZjyLO4AQ2lzk3yop0LQQokJwCE6ywJrKIz4lFK5IEIaRbT_lbwNHVED0IPRvUlwaP4odHwiHeMYKphyPwwUPqZPRwo492Ki2zbYXI5_MvWAVREsRFJnjK3ZQCqDqnch-0';
+  const Bgimage = require('../../assets/panelBG.png');
+  const accountData = useSelector(state => state.account.useraccountData);
+
+  const UserId = accountData.data.user_id;
+  const Name = accountData.data.fullname;
+  const SponserId = accountData.data.sponser;
+  const Country = accountData.data.country;
+  const Email = accountData.data.email;
+  const Mobile = accountData.data.mobile;
+  const BtcAdd = accountData.data.btc_address;
+
+  useEffect(() => {
+    dispatch({
+      type: USER_ACCOUNT,
+      payload: {
+        token: token,
+      },
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log('accountData========', accountData);
+  }, [accountData]);
+
+  const CreateAcc = () => {};
 
   return (
     <KeyboardAvoidingView
@@ -37,10 +68,10 @@ const UserAccount = ({navigation}) => {
       style={{flex: 1}}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ImageBackground
-          source={require('../../assets/splashscreen_background.png')}
+          source={Bgimage}
           resizeMode="cover"
           style={styles(colors).bgImg}>
-          <ScrollView style={{flex: 1, marginVertical: 20}}>
+          <ScrollView style={styles(colors).accountView}>
             <View style={styles(colors).body}>
               <View style={styles(colors).innerView}>
                 <Text style={styles(colors).label}>{strings.UserId}</Text>
@@ -48,7 +79,8 @@ const UserAccount = ({navigation}) => {
                   placeholder="Cbhc565"
                   placeholderTextColor={colors.heading}
                   setValue={text => setUserId(text)}
-                  value={userId}
+                  value={UserId}
+                  //  value={userId}
                   name={'person'}
                   size={20}
                 />
@@ -58,7 +90,8 @@ const UserAccount = ({navigation}) => {
                   placeholder="name"
                   placeholderTextColor={colors.heading}
                   setValue={text => setName(text)}
-                  value={name}
+                  // value={name}
+                  value={Name}
                   name={'person'}
                   size={20}
                   maxLength={15}
@@ -69,7 +102,8 @@ const UserAccount = ({navigation}) => {
                   placeholder="sponser id"
                   placeholderTextColor={colors.heading}
                   setValue={text => setSponserID(text)}
-                  value={sponserId}
+                  // value={sponserId}
+                  value={SponserId}
                   name={'groups'}
                   size={20}
                   maxLength={10}
@@ -80,7 +114,8 @@ const UserAccount = ({navigation}) => {
                   placeholder="India"
                   placeholderTextColor={colors.heading}
                   setValue={text => setCountry(text)}
-                  value={country}
+                  // value={country}
+                  value={Country}
                   IconName={'ios-location'}
                   IconSize={20}
                   maxLength={15}
@@ -91,7 +126,8 @@ const UserAccount = ({navigation}) => {
                   placeholder=" Address"
                   placeholderTextColor={colors.heading}
                   setValue={text => setBtcAdd(text)}
-                  value={btcadd}
+                  //value={btcadd}
+                  value={BtcAdd}
                   materialCName={'bitcoin'}
                   msize={20}
                   maxLength={20}
@@ -104,7 +140,8 @@ const UserAccount = ({navigation}) => {
                   keyboardType={'email-address'}
                   placeholderTextColor={colors.heading}
                   setValue={text => setEmail(text)}
-                  value={email}
+                  //value={email}
+                  value={Email}
                   IconName={'mail'}
                   IconSize={20}
                   maxLength={15}
@@ -117,19 +154,21 @@ const UserAccount = ({navigation}) => {
                   maxLength={10}
                   placeholderTextColor={colors.heading}
                   setValue={text => setmobile(text)}
-                  value={mobile}
+                  // value={mobile}
+                  value={Mobile}
                   name={'phone-iphone'}
                   size={20}
+                  onEndEditing={() => {
+                    CreateAcc();
+                  }}
+                />
+
+                <AppButton
+                  style={styles(colors).btn}
+                  onPress={() => CreateAcc()}
+                  text={strings.savechanges}
                 />
               </View>
-              <AppButton
-                style={{
-                  width: '90%',
-                  height: '9%',
-                }}
-                onPress={() => {}}
-                text={strings.savechanges}
-              />
             </View>
           </ScrollView>
         </ImageBackground>
@@ -164,15 +203,24 @@ const styles = props =>
 
     innerView: {
       backgroundColor: props.heading,
-      height: 670,
+      height: '100%',
       width: '100%',
       borderRadius: 15,
       padding: 20,
-      top: '10%',
     },
 
     body: {
       alignItems: 'center',
       margin: 20,
+      flex: 1,
+      marginVertical: 20,
+    },
+    accountView: {
+      flex: 1,
+      marginVertical: 20,
+    },
+    btn: {
+      width: '100%',
+      height: '12%',
     },
   });

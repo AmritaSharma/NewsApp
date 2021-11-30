@@ -6,11 +6,12 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {LOGOUT_DATA} from '../action';
 import {ThemeReducer} from './themeReducer';
 import {RevenueReducer} from './revenueReducer';
+import {useraccountReducer} from './useraccountReducer';
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['login', 'theme', 'revenue'],
+  whitelist: ['login', 'theme', 'revenue', 'account'],
 };
 
 const RootReducer = combineReducers({
@@ -18,6 +19,7 @@ const RootReducer = combineReducers({
   login: LoginReducer,
   theme: ThemeReducer,
   revenue: RevenueReducer,
+  account: useraccountReducer,
 });
 
 const rootReducer1 = (state, action) => {

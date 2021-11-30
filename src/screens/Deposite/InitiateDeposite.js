@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -16,31 +16,42 @@ import {useTheme} from '@react-navigation/native';
 import {InputTextArea} from '../../components/InputTextArea';
 import SelectDropdown from 'react-native-select-dropdown';
 import Icon from 'react-native-vector-icons/AntDesign';
+import axios from 'axios';
+
 const InitiateDeposite = ({navigation}) => {
   const [amount, setAmount] = useState('');
   const [prevdeposite, setPrevDeposite] = useState('');
   const [mode, setMode] = useState('');
-
+  const [data, setData] = useState('');
   const modeData = ['Bitcoin', 'Tron', 'Binance'];
-
+  const [userdata, setUserData] = useState('');
+  const [showresult, setShowResult] = useState(false);
   const {colors} = useTheme();
   const theme = useTheme();
+  const bgImage = require('../../assets/panelBG.png');
+  const screenImage = require('../../assets/initdeposite_img.png');
+  const token =
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjlkNWY0ZDQ0Yzc0MmM5NzJjZTllYmM1NTM2M2YwMzRhNzJlYzhiYzNjYWI5MTUwOTgyNjNiNzM0NzRjNThkNjRkNTdjMjg5Mjg2ZDYxYTdiIn0.eyJhdWQiOiI2IiwianRpIjoiOWQ1ZjRkNDRjNzQyYzk3MmNlOWViYzU1MzYzZjAzNGE3MmVjOGJjM2NhYjkxNTA5ODI2M2I3MzQ3NGM1OGQ2NGQ1N2MyODkyODZkNjFhN2IiLCJpYXQiOjE2MzgxNzI1ODIsIm5iZiI6MTYzODE3MjU4MiwiZXhwIjoxNjY5NzA4NTgyLCJzdWIiOiIyIiwic2NvcGVzIjpbIioiXX0.gJgMgEiXuGDWAiq62HN2Fy7BTskWUgEHqbluVltqKmJ9hkGBnJ47lXiJkE1TprVNIfiDWyNOGsG0NtTue0eJJMFzkLmjM7TQoJ1t0Q-raYqgASqh9mz9_c4cJ_wj4eMZY0hfW1x4kMz__z6VDsrxuA3sdX4aEj9PBVjuZQTLemyZTmnaRQSUBu2dMqvnsjywiKef-yD5hp_YqE7agSus2lDMFxJ5wNQLwHxxo1CAsY5-zgWcidE2rrS6rsuhuUClmP4x4nvcuO6Eo5fnm6s4-YU5pjlyreArNGN601VdvvBaFE-gVTNipFgFFgO3-ZgmVpKYrh96zj7gArTFXPrvVhhGvJLyw2CcFGEQZ5j3QY5gVocDMzbOjPttUSWhSeazHLuajhRCccgLWA9V1co6QwMHq7gqm8AexL6WRfBAqZBr_GzH9zPvsKLJX-m6izNHpTxXHggIpVBbZlvnnvkj1X5GxzUGegKoh2DahhYg4zQsqUpcXNGot6YkHC_2y37nGao8fJql3jEpdKyud9AJqpsXOwAxZUwcTeAhEgWpnmZjyLO4AQ2lzk3yop0LQQokJwCE6ywJrKIz4lFK5IEIaRbT_lbwNHVED0IPRvUlwaP4odHwiHeMYKphyPwwUPqZPRwo492Ki2zbYXI5_MvWAVREsRFJnjK3ZQCqDqnch-0';
+
+  const deposite = async () => {};
+
+  useEffect(() => {
+    console.log(userdata, '====userdata');
+    deposite();
+  }, [userdata]);
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <ScrollView>
         <ImageBackground
-          source={require('../../assets/splashscreen_background.png')}
+          source={bgImage}
           resizeMode="cover"
           style={styles.bgImg}>
           <View style={styles(colors).body}>
-            <Image
-              source={require('../../assets/initdeposite_img.png')}
-              style={{height: 200, width: 260, marginVertical: '18%'}}
-            />
+            <Image source={screenImage} style={styles(colors).img} />
 
-            <ScrollView style={styles(colors).innerView}>
+            <View style={styles(colors).innerView}>
               <Text style={styles(colors).label}>{strings.EnterAmt}</Text>
               <InputTextArea
                 placeholder=" $ Enter Amount"
@@ -64,6 +75,7 @@ const InitiateDeposite = ({navigation}) => {
                 setValue={prevdeposite => setPrevDeposite(prevdeposite)}
                 value={prevdeposite}
                 maxLength={6}
+                //onEndEditing={deposite()}
               />
 
               <Text style={styles(colors).label}> {strings.SelectMode}</Text>
@@ -84,16 +96,11 @@ const InitiateDeposite = ({navigation}) => {
                 />
                 <Icon name="caretdown" size={20} style={{right: 40, top: 10}} />
               </View>
-            </ScrollView>
+            </View>
 
             <AppButton
-              style={{
-                marginVertical: 5,
-                width: '90%',
-                bottom: '13%',
-                paddingBottom: 50,
-              }}
-              onPress={() => {}}
+              style={styles(colors).btn}
+              onPress={() => deposite()}
               text={strings.InitiatePayment}
             />
           </View>
@@ -110,6 +117,12 @@ const styles = props =>
     bgImg: {
       height: '100%',
       width: '100%',
+    },
+
+    img: {
+      height: 200,
+      width: 260,
+      marginVertical: '10%',
     },
 
     label: {
@@ -139,12 +152,18 @@ const styles = props =>
       alignItems: 'center',
       justifyContent: 'space-between',
       borderColor: props.borderColor,
-      borderWidth: 1.5,
+      borderWidth: 1,
       borderRadius: 25,
       backgroundColor: props.heading,
     },
     DDtextstyle: {
       color: props.headerColor,
       textAlign: 'left',
+    },
+    btn: {
+      marginVertical: 5,
+      width: '90%',
+      bottom: '12%',
+      paddingBottom: 50,
     },
   });
